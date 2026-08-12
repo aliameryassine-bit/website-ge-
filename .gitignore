@@ -1,0 +1,6 @@
+# Python bytecode from the ui-ux-pro-max skill scripts
+__pycache__/
+*.py[cod]
+
+# Generated design system output
+.pytest_cache/
