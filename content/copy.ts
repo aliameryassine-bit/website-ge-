@@ -627,6 +627,122 @@ export const COPY = {
   },
 
   /**
+   * GDPR consent.
+   *
+   * One purpose per form, stated in the sentence itself: consent to be replied
+   * to about THIS request. Not a marketing opt-in wearing a reply's clothes —
+   * bundling the two is what makes a consent record worthless, because it stops
+   * being clear what the person agreed to.
+   *
+   * Unticked by default and required. `CONSENT_VERSION` in
+   * src/lib/forms/schemas.ts is stored with every submission alongside this
+   * text, so a record always says which wording its owner actually saw.
+   *
+   * STILL NEEDED FROM A DPO: the retention period, the lawful basis stated on
+   * the privacy page, and confirmation that consent is the right basis here
+   * rather than legitimate interest for a B2B enquiry. The wording below is
+   * plain-language product copy, not legal advice.
+   */
+  consent: {
+    pilot:
+      'Green Exchange may use these details to reply to this pilot request and arrange a site assessment.',
+    dataRoom:
+      'Green Exchange may use these details to review this request and reply about data room access.',
+    privacyLinkText: 'How we handle your details',
+    privacyHref: '/legal/privacy',
+  },
+
+  /**
+   * What a refused submission says.
+   *
+   * Every branch ends with a way to reach us, because the one outcome this site
+   * cannot afford is a lead that reaches nobody and knows it reached nobody.
+   */
+  formFailure: {
+    delivery: {
+      heading: 'This did not send',
+      body: 'Nothing was recorded, so please do not treat this as submitted. Email us directly and we will pick it up from there.',
+    },
+    rateLimited: {
+      heading: 'Too many submissions from this connection',
+      body: 'Wait and try again, or email us directly if this is urgent.',
+    },
+    stale: {
+      heading: 'This page has been open too long',
+      body: 'Reload the page and submit again — your details are still in the fields below. Nothing was sent.',
+    },
+    suspectedBot: {
+      heading: 'This submission was blocked',
+      body: 'An automated-submission check rejected this. If you are a person, email us directly and we will handle it that way.',
+    },
+    /** Rendered where the contact address is unknown, rather than a bare dash. */
+    fallbackUnknown: 'A direct contact address has not been published yet.',
+    /** Development only. Never shown to a visitor. */
+    fallbackUnknownHint: 'Set contact-email in content/facts.ts.',
+    fallbackPrefix: 'Email us directly:',
+  },
+
+  /**
+   * Success pages. Real routes, not a toast.
+   *
+   * Each one answers the two questions a person actually has after submitting:
+   * what happens now, and by when. The "by when" is a fact, not a sentence
+   * written here — see pilot-response-time and data-room-review-time in
+   * content/facts.ts. Until those carry real values the build gate blocks a
+   * production deploy, which is the intended behaviour: a response commitment
+   * is a promise the company makes, not one this file invents.
+   */
+  received: {
+    pilot: {
+      eyebrow: 'Pilot request received',
+      heading: 'We have your request.',
+      referenceLabel: 'Your reference',
+      referenceNote: 'Quote this if you follow up.',
+      nextHeading: 'What happens next',
+      steps: [
+        {
+          heading: 'We read it and come back to you',
+          body: 'A person reviews the request and replies to the address you gave, to confirm we have it and to ask anything missing about the site.',
+        },
+        {
+          heading: 'Site assessment',
+          body: 'We look at the entrance or car park you have in mind: siting, power, connectivity and collection access. This can start as a call and a photo of the doorway.',
+        },
+        {
+          heading: 'Install plan for one named store',
+          body: 'You get a written plan for a single site — placement, servicing rota, and what we need from your team — before anything is committed.',
+        },
+      ],
+      responseLabel: 'Response time',
+      changedYourMind:
+        'If you need to correct anything you sent, reply to the confirmation email or write to us directly.',
+    },
+    dataRoom: {
+      eyebrow: 'Request lodged',
+      heading: 'Your request is with us.',
+      referenceLabel: 'Your reference',
+      referenceNote: 'Quote this if you follow up.',
+      nextHeading: 'What happens next',
+      steps: [
+        {
+          heading: 'A person reviews the request',
+          body: 'Requests are reviewed individually against who is asking and why. Nothing is granted automatically, and submitting this form has granted nothing.',
+        },
+        {
+          heading: 'We reply either way',
+          body: 'You get an answer whether or not access is granted. A decision not to open the data room is not a silence.',
+        },
+        {
+          heading: 'Access, if granted, is a time-limited link',
+          body: 'Approved requesters receive a signed link to the materials that expires. It is issued to you by name and is not transferable.',
+        },
+      ],
+      responseLabel: 'Review time',
+      notGranted: 'Access has not been granted by this submission.',
+    },
+  },
+
+  /**
    * Persistent investor disclaimer.
    *
    * PLACEHOLDER ONLY. `scripts/check-legal.ts` fails a production build while

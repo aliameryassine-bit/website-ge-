@@ -483,6 +483,26 @@ const FACT_TABLE = {
     'Contact phone',
     'Include the country code. Consider whether an Egypt-local number is needed for retail enquiries.',
   ),
+
+  // ---------------------------------------------------------------------
+  // Response commitments.
+  //
+  // These are the "by when" on the two confirmation pages. They are promises
+  // the company makes to a named person who has just handed over their
+  // details, which is exactly why they are not written into copy.ts as a
+  // sentence: only the business can decide what it can actually hold to. Set
+  // them to something conservative and true rather than something impressive.
+  // ---------------------------------------------------------------------
+  'pilot-response-time': placeholder(
+    'pilot-response-time',
+    'Pilot request response time',
+    'What a retail chain is told on the confirmation page, e.g. "two working days". Commit to what can be met on a bad week, not a good one.',
+  ),
+  'data-room-review-time': placeholder(
+    'data-room-review-time',
+    'Data room request review time',
+    'How long an investor waits for a decision either way. A slower stated time that is always met beats a fast one that is not.',
+  ),
 } as const satisfies Record<string, Fact>;
 
 /** Every valid fact id. Use this for props so bad ids fail at compile time. */

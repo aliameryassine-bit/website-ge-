@@ -3,6 +3,10 @@ import type { Metadata } from 'next';
 import { DataRoomRequestForm } from '@/components/sections/investors/DataRoomRequestForm';
 import { Eyebrow } from '@/components/ui/Panel';
 import { COPY } from '@/content/copy';
+import { issueFormToken } from '@/lib/forms/spam';
+
+/** Dynamic so the signed timing token is minted per request, not at build. */
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Request data room access',
@@ -20,7 +24,7 @@ export default function DataRoomRequestPage() {
         <p className="max-w-measure text-lead text-ink-muted">{COPY.dataRoomRequest.intro}</p>
       </header>
 
-      <DataRoomRequestForm />
+      <DataRoomRequestForm token={issueFormToken()} />
     </main>
   );
 }

@@ -6,6 +6,15 @@ import { FactValue, FactRow } from '@/components/ui/FactValue';
 import { Eyebrow, Panel } from '@/components/ui/Panel';
 import { COPY } from '@/content/copy';
 import type { FactId } from '@/content/facts';
+import { issueFormToken } from '@/lib/forms/spam';
+
+/**
+ * Dynamic because the embedded pilot form carries a signed timing token minted
+ * at render. The page is otherwise static content, so this trades page caching
+ * for a spam check that cannot be forged — the right way round for the route
+ * that carries goal one of the site.
+ */
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'For retailers',
@@ -175,7 +184,7 @@ export default function ForRetailersPage() {
 
       {/* ---------- 7 · Pilot CTA ---------- */}
       <div className="border-t border-alu/25 pt-2xl">
-        <PilotForm />
+        <PilotForm token={issueFormToken()} />
       </div>
     </main>
   );
