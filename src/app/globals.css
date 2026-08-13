@@ -272,6 +272,103 @@
 }
 
 /* ==========================================================================
+   TECHNOLOGY SEQUENCE — pinned, scroll-linked.
+
+   Tiering is done entirely in CSS so there is no hydration flip in the markup:
+
+   - Pinned only when ALL THREE hold: motion is welcome, the viewport is lg or
+     wider, and `data-tech-live` is present (the driver sets it on mount, so no
+     JavaScript means no pin).
+   - Otherwise the section is a plain vertical list with a static stage: steps
+     lose their scroll-distance min-height, the stage stops being sticky.
+
+   Only opacity and transform are animated. The stage never changes size, so
+   nothing here can trigger layout.
+   ========================================================================== */
+
+/*
+  Three stage states, so the machine fills in as material passes through it:
+  dormant ahead of the material, lit at the active step, and left half-lit once
+  travelled. Opacity only — no colour, size or position changes.
+*/
+[data-tech] [data-stage] {
+  opacity: 0.25;
+  transition: opacity var(--duration-component) var(--ease-enter);
+}
+
+[data-tech] [data-stage][data-state='passed'] {
+  opacity: 0.6;
+}
+
+[data-tech] [data-stage][data-state='active'] {
+  opacity: 1;
+}
+
+/*
+  Before the driver has run — and in the plain-list tiers — every stage is
+  legible rather than sitting at a quarter opacity nobody chose.
+*/
+[data-tech]:not([data-step]) [data-stage] {
+  opacity: 1;
+}
+
+/* The travelling container. Transform only, positioned per stage by the driver. */
+[data-tech] [data-tech-token] {
+  transform: translateY(var(--tech-token-y, 0px));
+  transition: transform var(--duration-state) var(--ease-continuous);
+}
+
+/* Progress rail fill. Scale rather than height, so it cannot reflow. */
+[data-tech] [data-tech-rail-fill] {
+  transform: scaleY(var(--tech-progress, 0));
+  transform-origin: top center;
+}
+
+/* Without the driver, or under reduced motion, the token sits at the intake. */
+@media (prefers-reduced-motion: reduce) {
+  /* Static composition: the token rests at the intake, every stage is legible,
+     and the rail reads as complete rather than as a stalled progress bar. */
+  [data-tech] [data-tech-token] {
+    transform: none;
+    transition: none;
+  }
+  [data-tech] [data-stage],
+  [data-tech] [data-stage][data-state='passed'],
+  [data-tech] [data-stage][data-state='future'] {
+    opacity: 1;
+    transition: none;
+  }
+  [data-tech] [data-tech-rail-fill] {
+    transform: scaleY(1);
+  }
+}
+
+/*
+  Gated on :root[data-js], which a parser-blocking one-liner in the layout sets
+  before first paint. That timing is the point: claiming the pinned height in
+  the first paint is what keeps this section's CLS at zero. Gating on an
+  attribute written by a mount effect measured 0.1043.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @media (min-width: 64rem) {
+    :root[data-js] [data-tech] [data-tech-stage] {
+      position: sticky;
+      /* Clear of the sticky header. */
+      top: var(--spacing-3xl);
+      align-self: start;
+    }
+
+    /* Scroll distance per step: this is what the pin is spent on. */
+    :root[data-js] [data-tech] [data-tech-step] {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+/* ==========================================================================
    REDUCED MOTION — global short circuit.
 
    MotionConfig handles the Motion library and Lenis is never started, but

@@ -225,6 +225,89 @@ export const COPY = {
     },
   },
 
+  /**
+   * The journey of one container, in the order it actually happens.
+   *
+   * Three corrections to the obvious reading of the sequence, each for a
+   * mechanical reason:
+   *
+   * 1. SORTING PRECEDES COMPACTION. The machine has to know the material
+   *    before it can route it, and each stream is compacted differently — PET
+   *    is perforated so it cannot be re-inflated and refunded twice, cans are
+   *    flattened. A crushed mixed mass cannot be sorted afterwards.
+   * 2. RETURNING VALUE IS A STEP. It is the entire point of a reverse vending
+   *    machine and it happens at the machine, immediately after acceptance.
+   * 3. IDENTIFY AND VALIDATE ARE DIFFERENT. Identification reads the
+   *    container; validation decides whether it is a registered,
+   *    deposit-bearing container and hands back anything it cannot place.
+   *
+   * Baling happens at a processing centre rather than in the store, which is
+   * why it sits after collection.
+   */
+  technology: {
+    eyebrow: 'Technology',
+    headline: 'One container, end to end.',
+    intro:
+      'What happens between a depositor putting a bottle in and a reprocessor buying the material back. Each step carries the specification that governs it.',
+    progressLabel: 'Sequence progress',
+    steps: [
+      {
+        id: 'deposit',
+        title: 'Deposit',
+        body: 'The depositor feeds a single container into the intake. One at a time, upright or on its side — the machine indexes it onto the transport before anything else happens.',
+        factId: 'accepted-container-sizes',
+      },
+      {
+        id: 'identify',
+        title: 'Identify',
+        body: 'A barcode read establishes which product it is. In parallel, near-infrared sensing reads the polymer and an inductive sensor detects metal, so the machine knows the material even if the label is damaged.',
+        factId: 'container-recognition-rate',
+      },
+      {
+        id: 'validate',
+        title: 'Validate',
+        body: 'The read is checked against the register of deposit-bearing containers, and the container is checked for shape and emptiness. Anything unrecognised is handed straight back rather than swallowed.',
+        factId: 'deposit-cycle-per-container',
+      },
+      {
+        id: 'return-value',
+        title: 'Return value',
+        body: 'Accepted containers are credited to the depositor at the machine — the reason they came. Value is redeemable in the store, which is what turns a return trip into a shopping trip.',
+        factId: 'deposit-value-per-container',
+      },
+      {
+        id: 'sort',
+        title: 'Sort by stream',
+        body: 'The container is diverted to its own path on the strength of the material read: PET one way, aluminium the other. Sorting happens here, before anything is crushed, because a compacted mixed mass cannot be separated.',
+        factId: 'stream-separation-purity',
+      },
+      {
+        id: 'compact',
+        title: 'Compact',
+        body: 'Each stream is compacted its own way. PET is perforated and flattened so it cannot be re-inflated and claimed twice; cans are pressed flat. This is what makes a collection worth sending a vehicle for.',
+        factId: 'compaction-ratio',
+      },
+      {
+        id: 'store',
+        title: 'Store',
+        body: 'Compacted material drops into a separate bin per stream, never a single mixed hopper. Fill level is monitored continuously, so a collection is scheduled against real volume rather than a calendar.',
+        factId: 'machine-capacity-per-collection',
+      },
+      {
+        id: 'collect',
+        title: 'Collect and report',
+        body: 'Green Exchange collects on a route driven by fill level. Every accepted container is already counted, so the site receives volumes by stream and machine availability without anyone tallying anything.',
+        factId: 'servicing-frequency',
+      },
+      {
+        id: 'offtake',
+        title: 'Bale and offtake',
+        body: 'Material is baled by stream at a processing centre, not in the store, then sold to a reprocessor. Separation quality upstream is what the bale is priced on.',
+        factId: 'value-per-tonne-baled-pet',
+      },
+    ],
+  },
+
   // -----------------------------------------------------------------
   // Forms
   // -----------------------------------------------------------------

@@ -62,6 +62,26 @@ export const FACTS = {
     'Accepted container sizes',
     'Range, e.g. min–max volume for PET and aluminium.',
   ),
+  'container-recognition-rate': placeholder(
+    'container-recognition-rate',
+    'First-pass recognition rate',
+    'Share of registered containers accepted on the first insertion. The figure that decides whether a queue forms at the entrance.',
+  ),
+  'deposit-value-per-container': placeholder(
+    'deposit-value-per-container',
+    'Value returned per container',
+    'What the depositor receives. Set by the scheme or by Green Exchange where no scheme exists — state which.',
+  ),
+  'stream-separation-purity': placeholder(
+    'stream-separation-purity',
+    'Stream separation purity',
+    'Share of each bin that is the intended material. Drives the price a reprocessor will pay.',
+  ),
+  'compaction-ratio': placeholder(
+    'compaction-ratio',
+    'Compaction ratio',
+    'Volume reduction per container. Sets how long a bin lasts, and therefore the servicing interval.',
+  ),
 
   // ---------------------------------------------------------------------
   // Retail footprint and servicing burden

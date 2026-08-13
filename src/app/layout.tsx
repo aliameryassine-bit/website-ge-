@@ -70,6 +70,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${array.variable} ${archivo.variable} ${martianMono.variable}`}>
       <body className="min-h-dvh bg-ground text-ink antialiased">
+        {/*
+          Marks the document as JavaScript-capable BEFORE first paint.
+
+          Progressive-enhancement layouts that depend on a runtime — the pinned
+          technology sequence is the one here — must be able to claim their
+          final height in the first paint. Setting a flag from a mount effect
+          instead costs a layout shift: the sequence measured CLS 0.1043,
+          straight through the 0.1 threshold, because nine steps grew from auto
+          to 450px after hydration while the section was on screen.
+
+          Parser-blocking and one line, so it runs before anything renders.
+          Without JavaScript the attribute is never set and those layouts fall
+          back to their plain-list form, which is the intent.
+        */}
+        <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.dataset.js="1"' }} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-sm focus:left-sm focus:z-50 focus:bg-action focus:px-md focus:py-sm focus:text-label focus:text-on-action focus:uppercase"
