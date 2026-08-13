@@ -38,3 +38,46 @@ export async function getCopy(): Promise<Copy> {
 export function useCopy(): Copy {
   return useMessages() as unknown as Copy;
 }
+
+/**
+ * The namespaces that reach a CLIENT component, and therefore the only ones
+ * that need to be serialised into the document.
+ *
+ * next-intl forwards the whole message tree to the browser by default. That put
+ * all 30.1 KB of copy into every page's RSC payload — the homepage was shipping
+ * the investor thesis, the ROI assumptions and the data room declaration to
+ * render a hero and a fork. This list is the union of what the client
+ * components below actually read:
+ *
+ *   site, nav, cta, a11y  Header, MobileMenu, on every route
+ *   consent, formFailure  PilotForm, DataRoomRequestForm
+ *   forRetailers          PilotForm (pilot), RoiCalculator (roi)
+ *   dataRoomRequest       DataRoomRequestForm
+ *   impact                MaterialFlow
+ *   technology            TechnologySequence
+ *
+ * Everything else is server-rendered to HTML and never needed as data. Keep
+ * this list in step when a component gains 'use client' — a missing namespace
+ * shows up as the [MISSING: …] fallback rather than as silence.
+ */
+export const CLIENT_NAMESPACES = [
+  'site',
+  'nav',
+  'cta',
+  'a11y',
+  'consent',
+  'formFailure',
+  'forRetailers',
+  'dataRoomRequest',
+  'impact',
+  'technology',
+] as const;
+
+/** Narrows a full message tree to the namespaces the browser needs. */
+export function clientMessages(messages: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const namespace of CLIENT_NAMESPACES) {
+    if (namespace in messages) out[namespace] = messages[namespace];
+  }
+  return out;
+}

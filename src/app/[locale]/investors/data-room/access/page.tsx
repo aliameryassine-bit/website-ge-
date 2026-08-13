@@ -31,7 +31,11 @@ export default async function DataRoomAccessPage({
   if (!result.valid) {
     const expired = result.reason === 'expired';
     return (
-      <main id="main" className="mx-auto flex max-w-page flex-col gap-lg px-md py-3xl md:px-xl">
+      <main
+        id="main"
+        tabIndex={-1}
+        className="mx-auto flex max-w-page flex-col gap-lg px-md py-3xl md:px-xl"
+      >
         <Eyebrow>Data room</Eyebrow>
         <h1 className="font-display text-section text-ink">
           {expired ? 'This link has expired' : 'This link is not valid'}
@@ -48,7 +52,11 @@ export default async function DataRoomAccessPage({
   const expiresAt = new Date(result.payload.expiresAt);
 
   return (
-    <main id="main" className="mx-auto flex max-w-page flex-col gap-2xl px-md py-2xl md:px-xl">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto flex max-w-page flex-col gap-2xl px-md py-2xl md:px-xl"
+    >
       <header className="flex flex-col gap-lg">
         <Eyebrow>Data room</Eyebrow>
         <h1 className="font-display text-section text-ink">Materials</h1>

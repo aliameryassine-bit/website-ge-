@@ -118,21 +118,36 @@ export async function Hero() {
                   data-fact-id={fact.id}
                   data-fact-status={fact.status}
                 >
-                  <dd data-readout className="text-readout-m text-ink">
-                    {fact.value}
+                  {/*
+                    DOM order is dt then dd, which is what a definition list
+                    requires and what a screen reader reads. The visual order is
+                    value-first, so `order` flips the pair for sighted readers —
+                    `order` is direction-agnostic, so this still mirrors under
+                    RTL where flex-row-reverse would have fought the dir.
+                  */}
+                  <dt className="order-2 text-label text-ink-muted uppercase">{fact.label}</dt>
+                  {/*
+                    The pending badge lives INSIDE the dd, not beside it. A dl
+                    group may only contain dt and dd elements, so a sibling span
+                    made the whole list invalid — and the badge is a qualifier on
+                    the value, which is what the dd is.
+                  */}
+                  <dd className="order-1 flex items-baseline gap-sm">
+                    <span data-readout className="text-readout-m text-ink">
+                      {fact.value}
+                    </span>
+                    {pending ? (
+                      <>
+                        <span className="sr-only">{COPY.a11y.placeholderFact}</span>
+                        <span
+                          aria-hidden="true"
+                          className="border border-optic-ink px-xs text-data text-optic-ink uppercase"
+                        >
+                          pending
+                        </span>
+                      </>
+                    ) : null}
                   </dd>
-                  {pending ? (
-                    <>
-                      <span className="sr-only">{COPY.a11y.placeholderFact}</span>
-                      <span
-                        aria-hidden="true"
-                        className="border border-optic-ink px-xs text-data text-optic-ink uppercase"
-                      >
-                        pending
-                      </span>
-                    </>
-                  ) : null}
-                  <dt className="text-label text-ink-muted uppercase">{fact.label}</dt>
                 </div>
               );
             })}

@@ -1,15 +1,22 @@
 'use client';
 
-import { Link, usePathname } from '@/i18n/navigation';
-import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
 
 import { ButtonLink } from '@/components/ui/Button';
 import { useCopy } from '@/i18n/copy';
-import { useFocusTrap } from '@/lib/use-focus-trap';
-import { useReducedMotion } from '@/lib/use-reduced-motion';
-import { useScrollLock } from '@/lib/use-scroll-lock';
+import { Link, usePathname } from '@/i18n/navigation';
 import { useScrollPast } from '@/lib/use-scroll-past';
+
+/**
+ * Loaded on demand. Motion is only used inside the overlay, so importing it
+ * here would put the library in the baseline of every route to serve a menu a
+ * desktop visitor never opens. `ssr: false` is safe because the overlay only
+ * ever exists as a response to a click.
+ */
+const MobileMenu = dynamic(() => import('./MobileMenu').then((m) => m.MobileMenu), {
+  ssr: false,
+});
 
 /**
  * Global header.
@@ -32,7 +39,6 @@ const HERO_THRESHOLD = 120;
 export function Header() {
   const COPY = useCopy();
   const scrolled = useScrollPast(HERO_THRESHOLD);
-  const reduced = useReducedMotion();
   const pathname = usePathname();
 
   /**
@@ -44,21 +50,6 @@ export function Header() {
   const [openedOn, setOpenedOn] = useState<string | null>(null);
   const open = openedOn === pathname;
   const close = () => setOpenedOn(null);
-
-  const overlay = useRef<HTMLDivElement>(null);
-
-  useScrollLock(open);
-  useFocusTrap(overlay, open);
-
-  // Escape closes.
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpenedOn(null);
-    };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open]);
 
   const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
@@ -143,81 +134,29 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile overlay */}
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            id="site-menu"
-            ref={overlay}
-            role="dialog"
-            aria-modal="true"
-            aria-label={COPY.a11y.menuLabel}
-            tabIndex={-1}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: reduced ? 0 : 0.22,
-            }}
-            className="fixed inset-0 top-0 z-50 flex h-dvh flex-col overflow-y-auto bg-ground px-md pt-sm pb-2xl xl:hidden"
-          >
-            <div className="flex items-center justify-between gap-md">
-              <span className="font-display text-subsection text-ink">{COPY.site.name}</span>
-              <button
-                type="button"
-                onClick={close}
-                className="flex size-11 items-center justify-center border border-alu/40 text-ink transition-colors duration-[var(--duration-state)] ease-enter hover:border-action hover:text-action"
-              >
-                <span className="sr-only">{COPY.a11y.closeMenu}</span>
-                <MenuGlyph open />
-              </button>
-            </div>
+      {/* Mobile overlay — code-split; see the dynamic import above. */}
+      <MobileMenu open={open} onClose={close} isCurrent={isCurrent} glyph={<MenuGlyph open />} />
 
-            <nav aria-label={COPY.nav.label} className="mt-2xl flex flex-col">
-              {COPY.nav.items.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, y: reduced ? 0 : 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: reduced ? 0 : 0.22,
-                    // 40ms per item, inside the 30–50ms stagger band.
-                    delay: reduced ? 0 : 0.04 * index,
-                  }}
-                  className="border-b border-alu/20"
-                >
-                  <Link
-                    href={item.href}
-                    aria-current={isCurrent(item.href) ? 'page' : undefined}
-                    className={[
-                      'flex min-h-14 items-center font-display text-subsection transition-colors',
-                      'duration-[var(--duration-state)] ease-enter',
-                      isCurrent(item.href) ? 'text-action' : 'text-ink hover:text-action',
-                    ].join(' ')}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-
-            <motion.div
-              initial={{ opacity: 0, y: reduced ? 0 : 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: reduced ? 0 : 0.22,
-                delay: reduced ? 0 : 0.04 * COPY.nav.items.length,
-              }}
-              className="mt-2xl flex flex-col gap-sm"
-            >
-              <ButtonLink href={COPY.cta.pilot.href}>{COPY.cta.pilot.label}</ButtonLink>
-              <ButtonLink href={COPY.cta.investorAccess.href} variant="secondary">
-                {COPY.cta.investorAccess.label}
-              </ButtonLink>
-            </motion.div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {/*
+        Without JavaScript the toggle does nothing and the desktop nav is hidden
+        below xl, which left a phone with no navigation at all. This is the same
+        links as a plain list. It costs nothing when scripting is on, and it is
+        the difference between a usable site and a dead end for anyone on a
+        locked-down browser or a failed script load.
+      */}
+      <noscript>
+        <nav aria-label={COPY.nav.label} className="border-t border-alu/20 px-md py-sm xl:hidden">
+          <ul className="flex flex-wrap gap-x-lg gap-y-sm">
+            {COPY.nav.items.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-label text-ink-muted uppercase">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </noscript>
     </header>
   );
 }

@@ -1,29 +1,38 @@
 import type { Metadata } from 'next';
 
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/routing';
+
 import { setRequestLocale } from 'next-intl/server';
 
+/*
+  Imported statically, and that was measured rather than assumed. Splitting these
+  two out with next/dynamic — both are below the fold — made this route WORSE:
+  median LCP went 2.62s to 3.20s. On a high-latency link an extra chunk is an
+  extra round trip that cannot start until the main bundle has parsed, and that
+  costs more than the parallelism gains. Code splitting is not free; it moved
+  work off the main chunk and onto the critical path.
+*/
 import { PilotForm } from '@/components/sections/retailers/PilotForm';
 import { RoiCalculator } from '@/components/sections/retailers/RoiCalculator';
 import { FactValue, FactRow } from '@/components/ui/FactValue';
 import { Eyebrow, Panel } from '@/components/ui/Panel';
 import { getCopy } from '@/i18n/copy';
-import type { FactId } from '@/content/facts';
-import { issueFormToken } from '@/lib/forms/spam';
+import { toFactId } from '@/content/facts';
 
-/**
- * Dynamic because the embedded pilot form carries a signed timing token minted
- * at render. The page is otherwise static content, so this trades page caching
- * for a spam check that cannot be forged — the right way round for the route
- * that carries goal one of the site.
- */
-export const dynamic = 'force-dynamic';
-
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const COPY = await getCopy();
-  return {
-    title: 'For retailers',
-    description: COPY.forRetailers.hero.subhead,
-  };
+  return pageMetadata({
+    title: COPY.seo.forRetailers.title,
+    description: COPY.seo.forRetailers.description,
+    href: '/for-retailers',
+    locale: locale as Locale,
+  });
 }
 
 function Section({
@@ -60,7 +69,11 @@ export default async function ForRetailersPage({
   const COPY = await getCopy();
   const COPY_R = COPY.forRetailers;
   return (
-    <main id="main" className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl"
+    >
       {/* ---------- 1 · Their problem, not our product ---------- */}
       <header className="flex flex-col gap-lg">
         <Eyebrow>{COPY_R.hero.eyebrow}</Eyebrow>
@@ -98,7 +111,18 @@ export default async function ForRetailersPage({
             Wide table, so it scrolls inside its own container rather than
             making the page scroll sideways.
           */}
-          <div className="overflow-x-auto">
+          {/*
+            tabIndex makes the scroll container reachable, so a keyboard user
+            can pan a table wider than the viewport; without it the right-hand
+            columns are unreachable without a mouse. role+label stop it being
+            announced as an unnamed group.
+          */}
+          <div
+            className="overflow-x-auto"
+            tabIndex={0}
+            role="region"
+            aria-label={COPY_R.deployment.placementHeading}
+          >
             <table className="w-full min-w-[48rem] border-collapse text-start">
               <caption className="sr-only">{COPY_R.deployment.placementHeading}</caption>
               <thead>
@@ -145,7 +169,7 @@ export default async function ForRetailersPage({
       <Section id="footprint" heading={COPY_R.footprint.heading} intro={COPY_R.footprint.intro}>
         <dl className="flex max-w-measure flex-col gap-md">
           {COPY_R.footprint.specs.map((id) => (
-            <FactRow key={id} id={id as FactId} />
+            <FactRow key={id} id={toFactId(id)} />
           ))}
         </dl>
         <p className="max-w-measure border-l-2 border-action pl-md text-body text-ink">
@@ -161,7 +185,7 @@ export default async function ForRetailersPage({
               <h3 className="font-display text-subsection text-ink">{item.question}</h3>
               <p className="max-w-measure text-body text-ink-muted">{item.answer}</p>
               <div className="flex flex-wrap items-center gap-md border-t border-alu/20 pt-md">
-                <FactValue id={item.factId as FactId} />
+                <FactValue id={toFactId(item.factId)} />
                 <span className="text-label text-ink-muted uppercase">
                   {COPY_R.servicing.heading}
                 </span>
@@ -180,7 +204,7 @@ export default async function ForRetailersPage({
               <p className="text-body text-ink-muted">{item.body}</p>
               <dl className="flex flex-col gap-md border-t border-alu/20 pt-md">
                 {item.factIds.map((id) => (
-                  <FactRow key={id} id={id as FactId} />
+                  <FactRow key={id} id={toFactId(id)} />
                 ))}
               </dl>
             </Panel>
@@ -195,7 +219,7 @@ export default async function ForRetailersPage({
 
       {/* ---------- 7 · Pilot CTA ---------- */}
       <div className="border-t border-alu/25 pt-2xl">
-        <PilotForm token={issueFormToken()} />
+        <PilotForm />
       </div>
     </main>
   );

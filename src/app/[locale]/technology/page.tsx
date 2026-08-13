@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/routing';
+
 import { setRequestLocale } from 'next-intl/server';
 
 import { TechnologySequence } from '@/components/sections/TechnologySequence';
@@ -7,12 +10,19 @@ import { ButtonLink } from '@/components/ui/Button';
 import { Panel } from '@/components/ui/Panel';
 import { getCopy } from '@/i18n/copy';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const COPY = await getCopy();
-  return {
-    title: 'Technology',
-    description: COPY.technology.intro,
-  };
+  return pageMetadata({
+    title: COPY.seo.technology.title,
+    description: COPY.seo.technology.description,
+    href: '/technology',
+    locale: locale as Locale,
+  });
 }
 
 export default async function TechnologyPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -21,7 +31,7 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
   setRequestLocale(locale);
   const COPY = await getCopy();
   return (
-    <main id="main" className="flex flex-col">
+    <main id="main" tabIndex={-1} className="flex flex-col">
       <TechnologySequence />
 
       <div className="mx-auto w-full max-w-page px-md pb-3xl md:px-xl">

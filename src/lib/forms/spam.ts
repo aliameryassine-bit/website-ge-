@@ -1,5 +1,3 @@
-import { createHmac, timingSafeEqual } from 'node:crypto';
-
 /**
  * Spam controls with no visible captcha: a honeypot field and a timing check.
  *
@@ -7,15 +5,16 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
  * form taxes the exact people we want most, and a retail operations lead on a
  * phone in a car park will abandon rather than solve a puzzle.
  *
- * THE TIMING TOKEN is issued when the form renders and verified on submit. It
- * is signed, because an unsigned timestamp in a hidden field is a suggestion:
- * anything scripted just writes an older value. The signature covers the
- * timestamp, so the elapsed time cannot be edited.
+ * THE TIMING TOKEN is issued as a cookie by middleware on the first HTML
+ * response and verified when a form is submitted. It is signed, because an
+ * unsigned timestamp is a suggestion: anything scripted just writes an older
+ * value. The signature covers the timestamp, so the elapsed time cannot be
+ * edited.
  *
- * Because the token is issued at render time, a page that is statically
- * prerendered would bake in a build-time timestamp and reject every real
- * submission. The routes that carry these forms are therefore dynamic. That is
- * the cost of a tamper-proof timing check and it is a deliberate trade.
+ * WEB CRYPTO, not node:crypto. Middleware runs on the Edge runtime, where
+ * node:crypto does not exist — importing it failed the build rather than
+ * failing quietly, which is the right way round. The cost is that signing is
+ * async; both callers already were.
  *
  * DEGRADATION: with no FORM_SIGNING_SECRET set, tokens are issued unsigned and
  * the window is still enforced, so the check keeps catching naive bots on an
@@ -40,22 +39,52 @@ function secret(): string | null {
   return value && value.length >= 32 ? value : null;
 }
 
-function sign(payload: string, key: string): string {
-  return createHmac('sha256', key).update(payload).digest('base64url');
+function base64url(bytes: ArrayBuffer): string {
+  let binary = '';
+  for (const byte of new Uint8Array(bytes)) binary += String.fromCharCode(byte);
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
-/** Called at render time, in a server component. */
-export function issueFormToken(now: number = Date.now()): string {
+async function sign(payload: string, key: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const cryptoKey = await crypto.subtle.importKey(
+    'raw',
+    encoder.encode(key),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign'],
+  );
+  return base64url(await crypto.subtle.sign('HMAC', cryptoKey, encoder.encode(payload)));
+}
+
+/**
+ * Constant-time string comparison.
+ *
+ * `===` on a signature leaks how many leading characters matched. There is no
+ * timingSafeEqual on the Edge runtime, so this compares every byte regardless
+ * of where the first difference is.
+ */
+function safeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let difference = 0;
+  for (let index = 0; index < a.length; index += 1) {
+    difference |= a.charCodeAt(index) ^ b.charCodeAt(index);
+  }
+  return difference === 0;
+}
+
+/** Called by middleware when a visitor has no token yet. */
+export async function issueFormToken(now: number = Date.now()): Promise<string> {
   const issued = String(now);
   const key = secret();
-  return key ? `${issued}${SEPARATOR}${sign(issued, key)}` : issued;
+  return key ? `${issued}${SEPARATOR}${await sign(issued, key)}` : issued;
 }
 
 export type TimingResult =
   | { ok: true; elapsedSeconds: number }
   | { ok: false; reason: 'too-fast' | 'stale' | 'invalid'; elapsedSeconds?: number };
 
-export function checkFormToken(raw: string, now: number = Date.now()): TimingResult {
+export async function checkFormToken(raw: string, now: number = Date.now()): Promise<TimingResult> {
   const value = raw.trim();
   if (!value) return { ok: false, reason: 'invalid' };
 
@@ -67,10 +96,7 @@ export function checkFormToken(raw: string, now: number = Date.now()): TimingRes
   if (key) {
     // A secret is configured, so an unsigned or wrongly signed token is a forgery.
     if (!provided) return { ok: false, reason: 'invalid' };
-    const expected = Buffer.from(sign(issuedRaw, key));
-    const actual = Buffer.from(provided);
-    // Length must match first: timingSafeEqual throws on unequal lengths.
-    if (expected.length !== actual.length || !timingSafeEqual(expected, actual)) {
+    if (!safeEqual(await sign(issuedRaw, key), provided)) {
       return { ok: false, reason: 'invalid' };
     }
   }
@@ -79,7 +105,7 @@ export function checkFormToken(raw: string, now: number = Date.now()): TimingRes
   if (!Number.isFinite(issued) || issued <= 0) return { ok: false, reason: 'invalid' };
 
   const elapsedSeconds = (now - issued) / 1000;
-  // A token issued in the future is either a clock skew or a forgery attempt.
+  // A token issued in the future is either clock skew or a forgery attempt.
   if (elapsedSeconds < 0) return { ok: false, reason: 'invalid' };
   if (elapsedSeconds < MIN_SECONDS) return { ok: false, reason: 'too-fast', elapsedSeconds };
   if (elapsedSeconds > MAX_SECONDS) return { ok: false, reason: 'stale', elapsedSeconds };

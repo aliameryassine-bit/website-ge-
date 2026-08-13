@@ -20,7 +20,12 @@
     "check:legal": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-legal.ts",
     "grant:data-room": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/grant-data-room.ts",
     "build:messages": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/build-messages.ts",
-    "check:i18n": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-i18n.ts"
+    "check:i18n": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-i18n.ts",
+    "audit:lighthouse": "node scripts/audit/lighthouse.mjs",
+    "audit:axe": "node scripts/audit/axe.mjs",
+    "audit:keyboard": "node scripts/audit/keyboard.mjs",
+    "audit:bundle": "node scripts/audit/bundle-audit.mjs",
+    "audit:fonts": "node scripts/audit/font-audit.mjs"
   },
   "dependencies": {
     "lenis": "^1.1.20",
@@ -32,6 +37,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.10.0",
     "@types/react": "^19.1.0",
@@ -40,7 +46,9 @@
     "eslint-config-next": "^16.3.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.7",
+    "lighthouse": "^13.4.1",
     "lint-staged": "^15.3.0",
+    "playwright": "^1.62.1",
     "prettier": "^3.4.2",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0"

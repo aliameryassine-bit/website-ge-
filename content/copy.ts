@@ -19,6 +19,65 @@ export const COPY = {
       'Reverse vending machines for PET bottles and aluminium cans, built and operated by Green Exchange.',
   },
 
+  /**
+   * Per-route titles and descriptions, written for what someone is actually
+   * searching when they land here — not restated headlines.
+   *
+   * Two audiences search differently. An operations lead types "reverse vending
+   * machine supermarket space requirements"; an investor types "deposit return
+   * scheme Egypt". Each description answers the question in its title with a
+   * mechanism, because a description that repeats the title earns no click.
+   *
+   * NO NUMBERS. Every figure on this site is a PLACEHOLDER, and a search
+   * snippet is the last place to invent one. Descriptions state what the page
+   * contains, not what the figures say.
+   *
+   * Length: descriptions target 140–160 characters. Longer is truncated in the
+   * result and the tail is wasted.
+   */
+  seo: {
+    home: {
+      title: 'Reverse vending machines for PET and aluminium',
+      description:
+        'Green Exchange builds and operates reverse vending machines that take back PET bottles and aluminium cans at the store entrance, and return value to the depositor.',
+    },
+    technology: {
+      title: 'How a reverse vending machine works, step by step',
+      description:
+        'The journey of a container: identification, validation, compaction, sorting by material stream, on-board storage, collection, baling and offtake to a reprocessor.',
+    },
+    forRetailers: {
+      title: 'Reverse vending for supermarkets: space, servicing and revenue',
+      description:
+        'What a take-back machine costs a retail chain in floor space, staff time and attention — the footprint spec, who services it, and what comes back to the store.',
+    },
+    impact: {
+      title: 'Material recovery: what we measure and how',
+      description:
+        'How recovered tonnage is counted at the machine and reconciled against weighed collections, and where Egypt’s PET actually goes between consumption and recovery.',
+    },
+    investors: {
+      title: 'Deposit return infrastructure in Egypt',
+      description:
+        'Reverse vending machines built in Romania and operated in Egypt. Revenue from recovered material and retail partnerships. Data room access is reviewed individually.',
+    },
+    pilot: {
+      title: 'Request a pilot for one store',
+      description:
+        'A pilot is a single site, a defined review period and a written assessment. Tell us the chain and the store; we come back with a site assessment.',
+    },
+    company: {
+      title: 'The company behind the machines',
+      description:
+        'Who operates Green Exchange, where it is registered, and how the Romanian build and the Egyptian deployment fit together.',
+    },
+    dataRoom: {
+      title: 'Request data room access',
+      description:
+        'Access is granted to named individuals after review. Nothing is granted on submission.',
+    },
+  },
+
   nav: {
     label: 'Primary',
     items: [

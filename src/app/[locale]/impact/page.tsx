@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/routing';
+
 import { setRequestLocale } from 'next-intl/server';
 
 import { MaterialFlow } from '@/components/sections/impact/MaterialFlow';
@@ -7,14 +10,21 @@ import { ButtonLink } from '@/components/ui/Button';
 import { Counter } from '@/components/ui/Counter';
 import { Eyebrow, Panel } from '@/components/ui/Panel';
 import { getCopy } from '@/i18n/copy';
-import type { FactId } from '@/content/facts';
+import { toFactId } from '@/content/facts';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const COPY = await getCopy();
-  return {
-    title: 'Impact',
-    description: COPY.impact.hero.subhead,
-  };
+  return pageMetadata({
+    title: COPY.seo.impact.title,
+    description: COPY.seo.impact.description,
+    href: '/impact',
+    locale: locale as Locale,
+  });
 }
 
 function Section({
@@ -48,7 +58,11 @@ export default async function ImpactPage({ params }: { params: Promise<{ locale:
   const COPY = await getCopy();
   const C = COPY.impact;
   return (
-    <main id="main" className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl"
+    >
       <header className="flex flex-col gap-lg">
         <Eyebrow>{C.hero.eyebrow}</Eyebrow>
         <h1 className="font-display text-nameplate text-ink">{C.hero.headline}</h1>
@@ -59,7 +73,7 @@ export default async function ImpactPage({ params }: { params: Promise<{ locale:
       <Section id="recovery" heading={C.counters.heading} intro={C.counters.intro}>
         <div className="grid gap-2xl sm:grid-cols-2 lg:grid-cols-4">
           {C.counters.ids.map((id) => (
-            <Counter key={id} id={id as FactId} />
+            <Counter key={id} id={toFactId(id)} />
           ))}
         </div>
       </Section>

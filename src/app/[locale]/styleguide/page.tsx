@@ -68,7 +68,11 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
   const type = typeTokens();
 
   return (
-    <main id="main" className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl"
+    >
       <header className="flex flex-col gap-md">
         <Eyebrow>Internal reference · noindex</Eyebrow>
         <h1 className="font-display text-nameplate text-ink">Styleguide</h1>

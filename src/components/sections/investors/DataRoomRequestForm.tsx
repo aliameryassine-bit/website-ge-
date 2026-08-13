@@ -3,12 +3,12 @@
 import { useActionState, useMemo } from 'react';
 
 import { Button } from '@/components/ui/Button';
-import { CheckboxField, FormToken, Honeypot, SelectField, TextField } from '@/components/ui/Field';
+import { CheckboxField, Honeypot, SelectField, TextField } from '@/components/ui/Field';
 import { FormFailure } from '@/components/ui/FormFailure';
 import { Panel } from '@/components/ui/Panel';
 import { useCopy } from '@/i18n/copy';
 import { requestDataRoomAccess } from '@/lib/forms/actions';
-import { DATA_ROOM_FIELDS, dataRoomSchema } from '@/lib/forms/schemas';
+import { DATA_ROOM_FIELDS } from '@/lib/forms/fields';
 import { DATA_ROOM_INITIAL_STATE } from '@/lib/forms/state';
 import { useFormValidation } from '@/lib/forms/use-form-validation';
 
@@ -26,7 +26,7 @@ import { useFormValidation } from '@/lib/forms/use-form-validation';
  * everything they typed at the last step.
  */
 
-export function DataRoomRequestForm({ token }: { token: string }) {
+export function DataRoomRequestForm() {
   const COPY = useCopy();
   const [state, formAction, pending] = useActionState(
     requestDataRoomAccess,
@@ -34,14 +34,21 @@ export function DataRoomRequestForm({ token }: { token: string }) {
   );
   const copy = COPY.dataRoomRequest;
 
-  // Rebuilt only if the copy changes; the schema closes over the type list.
-  const schema = useMemo(
-    () => dataRoomSchema(copy.investorTypes, copy.declaration.requiredError),
+  /*
+    The schema closes over the locale's investor-type list and declaration
+    error, so the loader is built here rather than at module scope. useMemo
+    keeps its identity stable so the hook fetches once.
+  */
+  const loadSchema = useMemo(
+    () => () =>
+      import('@/lib/forms/schemas').then((m) =>
+        m.dataRoomSchema(copy.investorTypes, copy.declaration.requiredError),
+      ),
     [copy.investorTypes, copy.declaration.requiredError],
   );
 
   const { formRef, errors, onBlur, onSubmit } = useFormValidation({
-    schema,
+    loadSchema,
     fields: DATA_ROOM_FIELDS,
     serverErrors: state.errors,
   });
@@ -57,7 +64,6 @@ export function DataRoomRequestForm({ token }: { token: string }) {
         className="flex flex-col gap-lg"
       >
         <Honeypot />
-        <FormToken value={token} />
 
         <TextField
           name="name"

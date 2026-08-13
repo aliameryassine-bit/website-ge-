@@ -2,6 +2,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { COPY } from '../content/copy.ts';
+import { FACTS } from '../content/facts.ts';
 import { routing } from '../src/i18n/routing.ts';
 
 /**
@@ -26,19 +27,22 @@ import { routing } from '../src/i18n/routing.ts';
  */
 
 /**
- * Keys whose values are NOT copy: routes, fact ids, and the legal marker.
- * Translating a href breaks navigation; translating a fact id breaks the build
- * gate that keeps invented numbers off the site.
+ * Keys whose values are NOT copy: routes and the legal marker.
+ * Translating a href breaks navigation.
  */
-const NON_TRANSLATABLE_KEYS = new Set([
-  'href',
-  'marker',
-  'factId',
-  'factIds',
-  'ids',
-  'specs',
-  'privacyHref',
-]);
+const NON_TRANSLATABLE_KEYS = new Set(['href', 'marker', 'privacyHref']);
+
+/**
+ * Every fact id, checked structurally rather than by the key that holds it.
+ *
+ * An earlier version of this script excluded fact ids by key name — factId,
+ * factIds, ids, specs — and missed `investorsPublic.market.figures`, which is
+ * also a list of fact ids. The result was FACTS['[[RO]] egypt-annual-pet-
+ * consumption'], undefined, and a crash on /ro/investors and /ar/investors that
+ * only surfaced when those routes started prerendering. Matching the value
+ * against the real fact table cannot miss a key nobody thought of.
+ */
+const FACT_IDS = new Set(Object.keys(FACTS));
 
 /** A path is a route, not a sentence. */
 function isRoute(value: string): boolean {
@@ -65,6 +69,7 @@ function transform(node: Node, locale: string, path: string[], key?: string): No
   if (typeof node !== 'string') return node;
   if (key && NON_TRANSLATABLE_KEYS.has(key)) return node;
   if (isRoute(node)) return node;
+  if (FACT_IDS.has(node)) return node;
   if (locale === routing.defaultLocale) return node;
 
   outstanding.push({ locale, path: path.join('.'), english: node });

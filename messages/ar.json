@@ -3,6 +3,40 @@
     "name": "[[AR]] Green Exchange",
     "descriptor": "[[AR]] Reverse vending machines for PET bottles and aluminium cans, built and operated by Green Exchange."
   },
+  "seo": {
+    "home": {
+      "title": "[[AR]] Reverse vending machines for PET and aluminium",
+      "description": "[[AR]] Green Exchange builds and operates reverse vending machines that take back PET bottles and aluminium cans at the store entrance, and return value to the depositor."
+    },
+    "technology": {
+      "title": "[[AR]] How a reverse vending machine works, step by step",
+      "description": "[[AR]] The journey of a container: identification, validation, compaction, sorting by material stream, on-board storage, collection, baling and offtake to a reprocessor."
+    },
+    "forRetailers": {
+      "title": "[[AR]] Reverse vending for supermarkets: space, servicing and revenue",
+      "description": "[[AR]] What a take-back machine costs a retail chain in floor space, staff time and attention — the footprint spec, who services it, and what comes back to the store."
+    },
+    "impact": {
+      "title": "[[AR]] Material recovery: what we measure and how",
+      "description": "[[AR]] How recovered tonnage is counted at the machine and reconciled against weighed collections, and where Egypt’s PET actually goes between consumption and recovery."
+    },
+    "investors": {
+      "title": "[[AR]] Deposit return infrastructure in Egypt",
+      "description": "[[AR]] Reverse vending machines built in Romania and operated in Egypt. Revenue from recovered material and retail partnerships. Data room access is reviewed individually."
+    },
+    "pilot": {
+      "title": "[[AR]] Request a pilot for one store",
+      "description": "[[AR]] A pilot is a single site, a defined review period and a written assessment. Tell us the chain and the store; we come back with a site assessment."
+    },
+    "company": {
+      "title": "[[AR]] The company behind the machines",
+      "description": "[[AR]] Who operates Green Exchange, where it is registered, and how the Romanian build and the Egyptian deployment fit together."
+    },
+    "dataRoom": {
+      "title": "[[AR]] Request data room access",
+      "description": "[[AR]] Access is granted to named individuals after review. Nothing is granted on submission."
+    }
+  },
   "nav": {
     "label": "[[AR]] Primary",
     "items": [
@@ -416,10 +450,10 @@
       "heading": "[[AR]] Market context",
       "intro": "[[AR]] Four figures matter here, and each appears only when it carries a named public source. Anything unsourced is absent from this page rather than shown with a caveat.",
       "figures": [
-        "[[AR]] egypt-annual-pet-consumption",
-        "[[AR]] egypt-pet-collection-rate",
-        "[[AR]] egypt-aluminium-collection-rate",
-        "[[AR]] egypt-regulatory-direction"
+        "egypt-annual-pet-consumption",
+        "egypt-pet-collection-rate",
+        "egypt-aluminium-collection-rate",
+        "egypt-regulatory-direction"
       ],
       "pendingHeading": "[[AR]] No sourced market figures are published yet",
       "pendingBody": "[[AR]] The figures for this section have not been tied to a named public source. Rather than publish them with a hedge, they are withheld until each one cites the instrument or dataset it comes from. The full market analysis, with its sources, is in the data room.",
@@ -452,11 +486,11 @@
       "heading": "[[AR]] Where we actually are",
       "intro": "[[AR]] Stated conservatively and stage-appropriately. Built, signed and deployed are separate counts and are kept separate; an unmeasured figure is shown as unmeasured rather than rounded up.",
       "figures": [
-        "[[AR]] company-stage",
-        "[[AR]] machines-built",
-        "[[AR]] machines-deployed",
-        "[[AR]] pilots-signed",
-        "[[AR]] lois-signed"
+        "company-stage",
+        "machines-built",
+        "machines-deployed",
+        "pilots-signed",
+        "lois-signed"
       ],
       "note": "[[AR]] A letter of intent is not a pilot and a pilot is not a rollout. Conflating them is the most common way an early company overstates itself, so these are counted separately here."
     },

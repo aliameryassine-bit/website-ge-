@@ -514,6 +514,36 @@ export function getFact(id: FactId): Fact {
   return FACTS[id];
 }
 
+/**
+ * Narrows strings from the message files to real fact ids.
+ *
+ * Copy carries lists of fact ids — which specs a page shows, which figures a
+ * section cites — and those arrive from JSON as plain strings. Casting them
+ * with `as FactId` is a lie that held right up until the message generator
+ * prefixed them with a translation marker: `FACTS['[[RO]] egypt-annual-pet-
+ * consumption']` was undefined and /ro/investors crashed at build.
+ *
+ * This throws instead, naming the id, because a marketing page silently
+ * dropping the figure it was built to cite is the worse failure. It runs at
+ * build time for every static route, so a bad id cannot reach production.
+ */
+export function toFactIds(values: readonly string[]): FactId[] {
+  return values.map((value) => {
+    if (!(value in FACT_TABLE)) {
+      throw new Error(
+        `Unknown fact id ${JSON.stringify(value)} referenced from copy. ` +
+          'Check content/copy.ts and that scripts/build-messages.ts is not translating it.',
+      );
+    }
+    return value as FactId;
+  });
+}
+
+/** Single-id form of `toFactIds`. */
+export function toFactId(value: string): FactId {
+  return toFactIds([value])[0] as FactId;
+}
+
 export function isPlaceholder(fact: Fact): boolean {
   return fact.status === 'PLACEHOLDER';
 }

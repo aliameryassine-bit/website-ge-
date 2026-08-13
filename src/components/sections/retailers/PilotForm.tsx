@@ -3,12 +3,12 @@
 import { useActionState } from 'react';
 
 import { Button } from '@/components/ui/Button';
-import { CheckboxField, FormToken, Honeypot, TextField } from '@/components/ui/Field';
+import { CheckboxField, Honeypot, TextField } from '@/components/ui/Field';
 import { FormFailure } from '@/components/ui/FormFailure';
 import { Panel } from '@/components/ui/Panel';
 import { useCopy } from '@/i18n/copy';
 import { submitPilotRequest } from '@/lib/forms/actions';
-import { PILOT_FIELDS, pilotSchema } from '@/lib/forms/schemas';
+import { PILOT_FIELDS } from '@/lib/forms/fields';
 import { PILOT_INITIAL_STATE } from '@/lib/forms/state';
 import { useFormValidation } from '@/lib/forms/use-form-validation';
 
@@ -24,16 +24,20 @@ import { useFormValidation } from '@/lib/forms/use-form-validation';
  * redirects to /pilot/received, so the confirmation is a page with a URL rather
  * than a piece of state a reload would erase.
  *
- * The token prop is minted server-side per render; see src/lib/forms/spam.ts.
+ * The anti-spam timing token rides in a cookie set by middleware, so this
+ * component needs nothing from the server render and the page stays static.
  */
 
-export function PilotForm({ token, heading = true }: { token: string; heading?: boolean }) {
+/** Module-level so its identity is stable across renders. */
+const LOAD_PILOT_SCHEMA = () => import('@/lib/forms/schemas').then((m) => m.pilotSchema);
+
+export function PilotForm({ heading = true }: { heading?: boolean }) {
   const COPY = useCopy();
   const [state, formAction, pending] = useActionState(submitPilotRequest, PILOT_INITIAL_STATE);
   const copy = COPY.forRetailers.pilot;
 
   const { formRef, errors, onBlur, onSubmit } = useFormValidation({
-    schema: pilotSchema,
+    loadSchema: LOAD_PILOT_SCHEMA,
     fields: PILOT_FIELDS,
     serverErrors: state.errors,
   });
@@ -59,7 +63,6 @@ export function PilotForm({ token, heading = true }: { token: string; heading?: 
           className="flex flex-col gap-lg"
         >
           <Honeypot />
-          <FormToken value={token} />
 
           <TextField
             name="company"

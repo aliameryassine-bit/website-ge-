@@ -1,7 +1,7 @@
 'use server';
 
 import { getLocale } from 'next-intl/server';
-import { headers } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 import { redirect } from 'next/navigation';
 
@@ -49,7 +49,13 @@ async function gate<Field extends string>(formData: FormData): Promise<FormState
     return { status: 'failed', errors: {}, reason: 'suspected-bot' };
   }
 
-  const timing = checkFormToken(String(formData.get(TIMING_FIELD) ?? ''));
+  /*
+    From the cookie the middleware set on the first HTML response, not from a
+    hidden field. That is what lets the form pages be static; see
+    src/middleware.ts.
+  */
+  const timingCookie = (await cookies()).get(TIMING_FIELD)?.value ?? '';
+  const timing = await checkFormToken(timingCookie);
   if (!timing.ok) {
     console.warn(`[forms] rejected: timing ${timing.reason} (${timing.elapsedSeconds ?? '?'}s)`);
     // A stale token is a real person on a page left open; say so and let them

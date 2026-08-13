@@ -156,9 +156,10 @@ export function TechnologySequence() {
     >
       <header className="mb-2xl flex flex-col gap-lg">
         <Eyebrow>{COPY.technology.eyebrow}</Eyebrow>
-        <h2 id="tech-heading" className="font-display text-section text-ink">
+        {/* The page's own heading, so /technology has an h1 like every other route. */}
+        <h1 id="tech-heading" className="font-display text-section text-ink">
           {COPY.technology.headline}
-        </h2>
+        </h1>
         <p className="max-w-measure text-lead text-ink-muted">{COPY.technology.intro}</p>
       </header>
 
@@ -186,7 +187,9 @@ export function TechnologySequence() {
                 <span data-readout className="text-data text-ink-muted">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-display text-subsection text-ink">{step.title}</h3>
+                {/* h2, not h3: the section heading above is the page's h1, and
+                    a jump from h1 to h3 leaves a gap in the heading outline. */}
+                <h2 className="font-display text-subsection text-ink">{step.title}</h2>
               </div>
               <p className="max-w-measure text-body text-ink-muted">{step.body}</p>
               {/* One specification per step, carrying its own status and source. */}

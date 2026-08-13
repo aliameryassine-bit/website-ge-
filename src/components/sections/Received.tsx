@@ -52,18 +52,28 @@ export function Received({
   const valid = reference && REFERENCE_PATTERN.test(reference) ? reference : undefined;
 
   return (
-    <main id="main" className="mx-auto flex max-w-page flex-col gap-2xl px-md py-2xl md:px-xl">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto flex max-w-page flex-col gap-2xl px-md py-2xl md:px-xl"
+    >
       <header className="flex flex-col gap-lg">
         <Eyebrow>{eyebrow}</Eyebrow>
         {/*
-          role="status" rather than an alert: this is the outcome of an action
-          the person just took, and it is announced on arrival without
-          interrupting. The heading is also the page's h1, so a screen reader
-          landing here reads the outcome first.
+          The live region is a SEPARATE element, not the heading.
+
+          role="status" on the h1 replaced its heading semantics: axe reported
+          the confirmation pages as having no h1 at all, which is exactly what a
+          screen reader's heading list would have shown. The announcement and
+          the heading are two jobs, so they are two elements — the h1 is a plain
+          h1, and the outcome is announced by a visually hidden status region
+          that also covers client-side navigation, where no page-load
+          announcement happens.
         */}
-        <h1 role="status" className="font-display text-nameplate text-ink">
-          {heading}
-        </h1>
+        <p role="status" className="sr-only">
+          {eyebrow}. {heading}
+        </p>
+        <h1 className="font-display text-nameplate text-ink">{heading}</h1>
 
         {children}
       </header>

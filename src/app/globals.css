@@ -26,9 +26,17 @@
   --color-yellow: #f0c23c;
   /* False-colour of the NIR sorting optics. Identification moments only. */
   --color-nir: #7a5af0;
-  /* Accessibility variant of NIR: 3.94:1 on housing. Large/UI text only,
-     never body copy. NIR itself is 2.32:1 and must never carry type. */
-  --color-nir-tint: #a78bfa;
+  /*
+    Accessibility variant of NIR. NIR itself is 2.32:1 on housing and must never
+    carry type.
+
+    Lightened from #a78bfa, which measured 3.94:1 against the housing ground —
+    below the 4.5:1 floor for small text, and this token is only ever used at
+    --text-data size on the "pending" and "not yet measured" badges. #c4b5fd
+    measures 5.80:1 on ground and 9.64:1 on the belt, so it clears AA with room
+    left for the badges to be nudged smaller later.
+  */
+  --color-nir-tint: #c4b5fd;
 
   /* ---- Semantic aliases — what components actually reference ---------- */
   --color-ground: var(--color-housing);

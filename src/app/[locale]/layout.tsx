@@ -2,12 +2,15 @@ import type { Metadata, Viewport } from 'next';
 import { Archivo, IBM_Plex_Sans_Arabic, Martian_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { MotionProvider } from '@/components/MotionProvider';
+import { OrganizationSchema } from '@/components/StructuredData';
 import { Footer } from '@/components/sections/Footer';
 import { Header } from '@/components/sections/Header';
+import { clientMessages } from '@/i18n/copy';
+import { localeAlternates, SITE_URL } from '@/lib/seo';
 import { DIRECTION, routing, type Locale } from '@/i18n/routing';
 
 import '../globals.css';
@@ -29,7 +32,28 @@ const array = localFont({
   ],
   variable: '--font-array',
   display: 'swap',
-  preload: true,
+  /*
+    NOT preloaded, and this was measured both ways rather than assumed.
+
+    Preloading it is the intuitive choice — Array renders the nameplate, which
+    is the LCP element — and it made every route WORSE on the mobile profile:
+    LCP went 1.72s to 2.57s on the home page and 2.64s to 3.19s on
+    /for-retailers. On a throttled link a 52 KB preload competes with the
+    stylesheet and the hydration bundle for the same few hundred kilobits, and
+    it wins that race at the expense of the things that actually block painting.
+
+    With `display: swap` the nameplate paints immediately in the metric-matched
+    fallback and swaps when Array arrives, so LCP is not waiting on the font.
+    The Arabic routes get the same benefit for free: Array is never applied
+    under :lang(ar), so without a preload link it is never fetched there.
+  */
+  preload: false,
+  /*
+    `adjustFontFallback` is left at its default. It synthesises a fallback with
+    Array's metrics so the swap does not move the nameplate — disabling it was a
+    mistake made while chasing bytes, and it is the setting that keeps CLS at 0
+    through the swap.
+  */
   fallback: ['ui-sans-serif', 'system-ui', 'sans-serif'],
 });
 
@@ -43,7 +67,12 @@ const archivo = Archivo({
   variable: '--font-archivo',
   display: 'swap',
   preload: false,
-  axes: ['wdth'],
+  /*
+    No `wdth` axis. It was requested and never used — nothing in the type scale
+    or any component sets a width — and carrying a second variable axis cost
+    83.8 KB against 27.4 KB for the weight-only file. Add it back only when a
+    design actually calls for a width, and re-measure when doing so.
+  */
 });
 
 /**
@@ -55,6 +84,12 @@ const martianMono = Martian_Mono({
   variable: '--font-martian',
   display: 'swap',
   preload: false,
+  /*
+    Two static instances rather than the full variable range. The scale uses
+    exactly two weights here — 400 for --text-data, 500 for the readouts — and
+    the variable file carried the whole 100–800 range at 111 KB to serve them.
+  */
+  weight: ['400', '500'],
 });
 
 /**
@@ -105,14 +140,15 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'site' });
 
   return {
+    /*
+      Required for the generated Open Graph cards: without it Next emits a
+      relative og:image URL, which no social platform will fetch. Every page's
+      canonical and alternates are absolute for the same reason.
+    */
+    metadataBase: new URL(SITE_URL),
     title: { default: t('name'), template: `%s — ${t('name')}` },
     description: t('descriptor'),
-    // Tells search engines the three are the same page in different languages.
-    alternates: {
-      languages: Object.fromEntries(
-        routing.locales.map((code) => [code, code === routing.defaultLocale ? '/' : `/${code}`]),
-      ),
-    },
+    alternates: { canonical: '/', languages: localeAlternates('/') },
   };
 }
 
@@ -138,6 +174,8 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const direction = DIRECTION[locale as Locale];
+  /* Only what a client component reads crosses into the document. */
+  const messages = clientMessages(await getMessages());
 
   return (
     <html
@@ -176,7 +214,13 @@ export default async function LocaleLayout({
           back to their plain-list form, which is the intent.
         */}
         <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.dataset.js="1"' }} />
-        <NextIntlClientProvider>
+        {/*
+          Organization and Product JSON-LD, once per document. Every property is
+          dropped rather than guessed while its fact is a PLACEHOLDER — see the
+          component.
+        */}
+        <OrganizationSchema locale={locale as Locale} />
+        <NextIntlClientProvider messages={messages}>
           <SkipLink />
           <MotionProvider>
             <div className="flex min-h-dvh flex-col">
@@ -197,6 +241,12 @@ async function SkipLink() {
   return (
     <a
       href="#main"
+      /*
+        Every page's <main> carries tabIndex={-1}. Without it the browser scrolls
+        to the anchor but leaves focus on the skip link, so the next Tab returns
+        to the header and the link achieves nothing for the keyboard user it
+        exists for. Measured: focus was on `body` after activating it.
+      */
       /* `start` rather than `left`: it follows the reading direction. */
       className="sr-only focus:not-sr-only focus:absolute focus:start-sm focus:top-sm focus:z-50 focus:bg-action focus:px-md focus:py-sm focus:text-label focus:text-on-action focus:uppercase"
     >

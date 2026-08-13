@@ -22,7 +22,11 @@ export async function StubPage({
 }) {
   const COPY = await getCopy();
   return (
-    <main id="main" className="mx-auto flex max-w-page flex-col gap-xl px-md py-3xl md:px-xl">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto flex max-w-page flex-col gap-xl px-md py-3xl md:px-xl"
+    >
       <Eyebrow>{COPY.site.name}</Eyebrow>
       <h1 className="max-w-measure font-display text-nameplate text-ink">{title}</h1>
 

@@ -1,28 +1,28 @@
 'use client';
 
-import Lenis from 'lenis';
-import { MotionConfig } from 'motion/react';
 import { useEffect, type ReactNode } from 'react';
 
 import { useReducedMotion } from '@/lib/use-reduced-motion';
 
 /**
- * Root motion boundary. Two jobs:
+ * Root scroll boundary.
  *
- * 1. MotionConfig with reducedMotion="user" — every Motion animation in the
- *    tree respects the OS preference without any component opting in.
- *    Transform/opacity animations are skipped to their end state.
- * 2. Lenis smooth scroll is only ever constructed when motion is welcome.
- *    Not "started then stopped" — never instantiated, so it cannot hijack a
- *    single frame of scrolling for someone who asked for stillness.
+ * Lenis smooth scroll is only ever constructed when motion is welcome. Not
+ * "started then stopped" — never instantiated, so it cannot hijack a single
+ * frame of scrolling for someone who asked for stillness.
  *
- * The motion physics come from the token layer, so a duration or curve can
- * only be changed in globals.css.
+ * IMPORTED DYNAMICALLY, with a measurement behind it: statically imported,
+ * Lenis and Motion shared a 47.7 KB gzip chunk in the baseline of EVERY route,
+ * paid for by every visitor including the ones who asked for reduced motion and
+ * never run a frame of it. Now none of it is fetched until after paint, and
+ * under `reduce` it is never fetched at all.
+ *
+ * MotionConfig used to live here, wrapping the whole tree. It moved into
+ * MobileMenu, the only component in the codebase that animates with Motion,
+ * because a provider at the root pulled the library into every page to serve an
+ * overlay most visitors never open. The reduced-motion contract is unchanged —
+ * the config now sits with the thing it configures.
  */
-
-/** Matches --duration-section / --ease-enter in globals.css. */
-const SECTION_SECONDS = 0.42;
-const EASE_ENTER: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function MotionProvider({ children }: { children: ReactNode }) {
   const reduced = useReducedMotion();
@@ -30,37 +30,37 @@ export function MotionProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (reduced) return;
 
-    const lenis = new Lenis({
-      duration: 1.1,
-      // Belts run at constant speed; scroll should feel weighty, not springy.
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      // Never smooth touch: it fights the platform's own scroll physics and
-      // makes a phone feel broken.
-      syncTouch: false,
+    let lenis: { raf(time: number): void; destroy(): void } | null = null;
+    let frame = 0;
+    let cancelled = false;
+
+    void import('lenis').then(({ default: Lenis }) => {
+      if (cancelled) return;
+      lenis = new Lenis({
+        duration: 1.1,
+        // Belts run at constant speed; scroll should feel weighty, not springy.
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        // Never smooth touch: it fights the platform's own scroll physics and
+        // makes a phone feel broken.
+        syncTouch: false,
+      });
+
+      const raf = (time: number) => {
+        lenis?.raf(time);
+        frame = requestAnimationFrame(raf);
+      };
+      frame = requestAnimationFrame(raf);
     });
 
-    let frame = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      frame = requestAnimationFrame(raf);
-    };
-    frame = requestAnimationFrame(raf);
-
     return () => {
+      cancelled = true;
       cancelAnimationFrame(frame);
-      lenis.destroy();
+      lenis?.destroy();
     };
   }, [reduced]);
 
-  return (
-    <MotionConfig
-      reducedMotion="user"
-      transition={reduced ? { duration: 0 } : { duration: SECTION_SECONDS, ease: EASE_ENTER }}
-    >
-      {children}
-    </MotionConfig>
-  );
+  return children;
 }
 
 export default MotionProvider;

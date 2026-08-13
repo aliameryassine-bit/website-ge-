@@ -20,7 +20,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   // Required for this localised route to render statically.
   setRequestLocale(locale);
   return (
-    <main id="main" className="flex flex-col">
+    <main id="main" tabIndex={-1} className="flex flex-col">
       <Hero />
       <Fork />
     </main>

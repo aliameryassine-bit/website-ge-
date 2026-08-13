@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { HONEYPOT_FIELD, TIMING_FIELD } from '@/lib/forms/schemas';
+import { HONEYPOT_FIELD } from '@/lib/forms/fields';
 
 /**
  * Form field primitives, shared by both conversion paths.
@@ -204,11 +204,6 @@ export function Honeypot() {
       />
     </div>
   );
-}
-
-/** Signed issue time for the timing check. Minted server-side per render. */
-export function FormToken({ value }: { value: string }) {
-  return <input type="hidden" name={TIMING_FIELD} defaultValue={value} />;
 }
 
 export { controlClass };

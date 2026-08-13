@@ -7,3 +7,6 @@ design-system
 
 # Not parseable by Prettier
 .env.example
+
+# Audit scripts, run ad hoc
+scripts/audit/*.mjs

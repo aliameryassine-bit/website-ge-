@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/routing';
+
 import { setRequestLocale } from 'next-intl/server';
 
 import { ButtonLink } from '@/components/ui/Button';
@@ -7,15 +10,22 @@ import { Eyebrow, Panel } from '@/components/ui/Panel';
 import { FactRow } from '@/components/ui/FactValue';
 import { SourcedFigure, anyPubliclyCitable } from '@/components/ui/SourcedFigure';
 import { getCopy } from '@/i18n/copy';
-import type { FactId } from '@/content/facts';
+import { toFactIds } from '@/content/facts';
 import { TEAM } from '@/content/team';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const COPY = await getCopy();
-  return {
-    title: 'For investors',
-    description: COPY.investorsPublic.hero.thesis[0],
-  };
+  return pageMetadata({
+    title: COPY.seo.investors.title,
+    description: COPY.seo.investors.description,
+    href: '/investors',
+    locale: locale as Locale,
+  });
 }
 
 function Section({
@@ -48,12 +58,16 @@ export default async function InvestorsPage({ params }: { params: Promise<{ loca
   setRequestLocale(locale);
   const COPY = await getCopy();
   const C = COPY.investorsPublic;
-  const marketFigures = C.market.figures as readonly FactId[];
-  const tractionFigures = C.traction.figures as readonly FactId[];
+  const marketFigures = toFactIds(C.market.figures);
+  const tractionFigures = toFactIds(C.traction.figures);
   const marketPublishable = anyPubliclyCitable(marketFigures);
 
   return (
-    <main id="main" className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="mx-auto flex max-w-page flex-col gap-3xl px-md py-2xl md:px-xl"
+    >
       {/* ---------- 1 · Thesis, three sentences ---------- */}
       <header className="flex flex-col gap-lg">
         <Eyebrow>{C.hero.eyebrow}</Eyebrow>

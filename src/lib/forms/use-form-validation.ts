@@ -1,9 +1,9 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { z } from 'zod';
 
-import { fieldErrors, formValues } from './schemas';
+import { formValues } from './fields';
 
 /**
  * Client-side validation against the SAME schema the server uses.
@@ -21,6 +21,14 @@ import { fieldErrors, formValues } from './schemas';
  *
  * NO-JAVASCRIPT: none of this runs, the form posts to the server action, and the
  * same schema produces the same messages on the page that comes back.
+ *
+ * THE SCHEMA IS FETCHED AFTER PAINT. Zod measured 64.9 KB gzip — a third of the
+ * JavaScript on the pilot and data room routes — for a check the server repeats
+ * as the authority. Loading it with the page delayed the form appearing in order
+ * to speed up an error message. Now the form renders immediately and the client
+ * gate arms a moment later; anything submitted in that window is validated
+ * server-side and comes back with the same messages, which is the no-JavaScript
+ * path that already had to work.
  */
 
 type Validator = {
@@ -28,23 +36,48 @@ type Validator = {
 };
 
 export function useFormValidation<Field extends string>({
-  schema,
+  loadSchema,
   fields,
   serverErrors,
 }: {
-  schema: Validator;
+  /** Resolves the schema. Called once, after mount. */
+  loadSchema: () => Promise<Validator>;
   fields: readonly Field[];
   serverErrors: Partial<Record<Field, string>>;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
+  const [schema, setSchema] = useState<Validator | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void loadSchema().then((loaded) => {
+      if (!cancelled) setSchema(loaded);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // Loaders are module-level arrow functions; re-running on identity would
+    // refetch on every render for no gain.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [clientErrors, setClientErrors] = useState<Partial<Record<Field, string>>>({});
   const [touched, setTouched] = useState<ReadonlySet<Field>>(new Set());
   const [submitAttempted, setSubmitAttempted] = useState(false);
 
   const parse = useCallback(
     (form: HTMLFormElement): Partial<Record<Field, string>> => {
+      // Not armed yet: the server is still the authority, so nothing is blocked.
+      if (!schema) return {};
       const result = schema.safeParse(formValues(new FormData(form), fields));
-      return result.success ? {} : fieldErrors(result.error, fields);
+      if (result.success) return {};
+
+      const flattened = result.error.issues;
+      const out: Partial<Record<Field, string>> = {};
+      for (const issue of flattened) {
+        const key = issue.path[0] as Field | undefined;
+        if (key && fields.includes(key) && !out[key]) out[key] = issue.message;
+      }
+      return out;
     },
     [schema, fields],
   );

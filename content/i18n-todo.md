@@ -39,7 +39,7 @@ company reads as an unserious one.
 - **Legal strings** under `investorDisclaimer` and `dataRoomRequest.declaration`
   are placeholders pending a lawyer in English too. Do not translate them yet.
 
-## Outstanding: 388 strings per locale, 776 total
+## Outstanding: 395 strings per locale, 790 total
 
 ### `a11y` — 8 strings
 
@@ -375,7 +375,7 @@ company reads as an unserious one.
 | `investors.dataRoom.headline`      | Data room                                                                                                                                                |
 | `investors.dataRoom.body`          | Financial model, deployment plan, machine specification and offtake terms. Access on request.                                                            |
 
-### `investorsPublic` — 39 strings
+### `investorsPublic` — 30 strings
 
 | Key                                     | English                                                                                                                                                                                                                                                                 |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -386,10 +386,6 @@ company reads as an unserious one.
 | `investorsPublic.hero.thesis.2`         | Regulation is moving toward producer responsibility across the region, and the operators holding retail siting agreements and collection routes when it lands are the ones who can serve it.                                                                            |
 | `investorsPublic.market.heading`        | Market context                                                                                                                                                                                                                                                          |
 | `investorsPublic.market.intro`          | Four figures matter here, and each appears only when it carries a named public source. Anything unsourced is absent from this page rather than shown with a caveat.                                                                                                     |
-| `investorsPublic.market.figures.0`      | egypt-annual-pet-consumption                                                                                                                                                                                                                                            |
-| `investorsPublic.market.figures.1`      | egypt-pet-collection-rate                                                                                                                                                                                                                                               |
-| `investorsPublic.market.figures.2`      | egypt-aluminium-collection-rate                                                                                                                                                                                                                                         |
-| `investorsPublic.market.figures.3`      | egypt-regulatory-direction                                                                                                                                                                                                                                              |
 | `investorsPublic.market.pendingHeading` | No sourced market figures are published yet                                                                                                                                                                                                                             |
 | `investorsPublic.market.pendingBody`    | The figures for this section have not been tied to a named public source. Rather than publish them with a hedge, they are withheld until each one cites the instrument or dataset it comes from. The full market analysis, with its sources, is in the data room.       |
 | `investorsPublic.market.regulatoryNote` | Direction of travel, not a prediction: Egypt legislated a framework for waste management in 2020, and producer-responsibility instruments across MENA have followed the same pattern. We do not model a mandate date, and nothing on this page depends on one arriving. |
@@ -406,11 +402,6 @@ company reads as an unserious one.
 | `investorsPublic.model.note`            | Which lines carry the model, in what proportion, and at what cost is exactly the question the data room answers. It is not answered here.                                                                                                                               |
 | `investorsPublic.traction.heading`      | Where we actually are                                                                                                                                                                                                                                                   |
 | `investorsPublic.traction.intro`        | Stated conservatively and stage-appropriately. Built, signed and deployed are separate counts and are kept separate; an unmeasured figure is shown as unmeasured rather than rounded up.                                                                                |
-| `investorsPublic.traction.figures.0`    | company-stage                                                                                                                                                                                                                                                           |
-| `investorsPublic.traction.figures.1`    | machines-built                                                                                                                                                                                                                                                          |
-| `investorsPublic.traction.figures.2`    | machines-deployed                                                                                                                                                                                                                                                       |
-| `investorsPublic.traction.figures.3`    | pilots-signed                                                                                                                                                                                                                                                           |
-| `investorsPublic.traction.figures.4`    | lois-signed                                                                                                                                                                                                                                                             |
 | `investorsPublic.traction.note`         | A letter of intent is not a pilot and a pilot is not a rollout. Conflating them is the most common way an early company overstates itself, so these are counted separately here.                                                                                        |
 | `investorsPublic.team.heading`          | Team                                                                                                                                                                                                                                                                    |
 | `investorsPublic.team.intro`            | Real names and real current roles only.                                                                                                                                                                                                                                 |
@@ -480,6 +471,27 @@ company reads as an unserious one.
 | `retail.pilot.steps.1`       | Install and commissioning on an agreed date.                                                                |
 | `retail.pilot.steps.2`       | Defined review period with reporting from day one.                                                          |
 | `retail.pilot.steps.3`       | Written assessment: volumes, availability, and a decision on rollout.                                       |
+
+### `seo` — 16 strings
+
+| Key                            | English                                                                                                                                                              |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `seo.home.title`               | Reverse vending machines for PET and aluminium                                                                                                                       |
+| `seo.home.description`         | Green Exchange builds and operates reverse vending machines that take back PET bottles and aluminium cans at the store entrance, and return value to the depositor.  |
+| `seo.technology.title`         | How a reverse vending machine works, step by step                                                                                                                    |
+| `seo.technology.description`   | The journey of a container: identification, validation, compaction, sorting by material stream, on-board storage, collection, baling and offtake to a reprocessor.   |
+| `seo.forRetailers.title`       | Reverse vending for supermarkets: space, servicing and revenue                                                                                                       |
+| `seo.forRetailers.description` | What a take-back machine costs a retail chain in floor space, staff time and attention — the footprint spec, who services it, and what comes back to the store.      |
+| `seo.impact.title`             | Material recovery: what we measure and how                                                                                                                           |
+| `seo.impact.description`       | How recovered tonnage is counted at the machine and reconciled against weighed collections, and where Egypt’s PET actually goes between consumption and recovery.    |
+| `seo.investors.title`          | Deposit return infrastructure in Egypt                                                                                                                               |
+| `seo.investors.description`    | Reverse vending machines built in Romania and operated in Egypt. Revenue from recovered material and retail partnerships. Data room access is reviewed individually. |
+| `seo.pilot.title`              | Request a pilot for one store                                                                                                                                        |
+| `seo.pilot.description`        | A pilot is a single site, a defined review period and a written assessment. Tell us the chain and the store; we come back with a site assessment.                    |
+| `seo.company.title`            | The company behind the machines                                                                                                                                      |
+| `seo.company.description`      | Who operates Green Exchange, where it is registered, and how the Romanian build and the Egyptian deployment fit together.                                            |
+| `seo.dataRoom.title`           | Request data room access                                                                                                                                             |
+| `seo.dataRoom.description`     | Access is granted to named individuals after review. Nothing is granted on submission.                                                                               |
 
 ### `site` — 2 strings
 
