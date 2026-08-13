@@ -27,7 +27,48 @@ export type Fact = {
    * need both; an internal doc has a name and no URL.
    */
   sourceUrl?: string;
+  /**
+   * The figure as a number, for anything that has to compute or animate with
+   * it. `value` stays the display string; this is the same quantity machine
+   * readable.
+   */
+  numeric?: number;
+  /** What the number counts: "containers", "tonnes", "m²". */
+  unit?: string;
+  /**
+   * The period the figure covers: "since March 2026", "per machine per day",
+   * "trailing 90 days".
+   *
+   * Required for any animated counter, and the reason is not pedantry.
+   * "1.2M containers" is not a claim — it is a number with no referent.
+   * "1.2M containers since March 2026" can be checked, argued with, and
+   * relied on. `isCountable()` refuses to animate without it.
+   */
+  basis?: string;
 };
+
+/**
+ * Whether a fact may be rendered as an animated counter.
+ *
+ * Four conditions, all necessary:
+ * - measured (`verified` or `internal`) — a PLACEHOLDER never animates, it
+ *   renders as a dash, because animating a number nobody has measured is the
+ *   most persuasive way to publish a fiction;
+ * - a numeric value to count toward;
+ * - a unit, so the number means something;
+ * - a time basis, so the number is a claim rather than a decoration.
+ */
+export function isCountable(fact: Fact): boolean {
+  return (
+    (fact.status === 'verified' || fact.status === 'internal') &&
+    typeof fact.numeric === 'number' &&
+    Number.isFinite(fact.numeric) &&
+    typeof fact.unit === 'string' &&
+    fact.unit.length > 0 &&
+    typeof fact.basis === 'string' &&
+    fact.basis.length > 0
+  );
+}
 
 /**
  * Whether a fact may appear on a PUBLIC investor surface.
@@ -56,7 +97,36 @@ function placeholder(id: string, label: string, note?: string): Fact {
   };
 }
 
-export const FACTS = {
+/**
+ * A placeholder for a figure intended to be displayed as a counter.
+ *
+ * Declares the unit and the time basis up front, even while the value is
+ * unknown. Two reasons: it records what we intend to measure and over what
+ * period before anyone measures it, and promoting the fact later becomes a
+ * one-line change — add `numeric`, `value`, `source` and `status` — with no
+ * chance of a number arriving without its basis attached.
+ */
+function countable(id: string, label: string, unit: string, basis: string, note?: string): Fact {
+  return { ...placeholder(id, label, note), unit, basis };
+}
+
+/**
+ * The fact table.
+ *
+ * Declared as a private const so the KEYS are inferred as literals, then
+ * re-exported with every VALUE widened to `Fact`. Both halves matter:
+ *
+ * - literal keys give FactId, so an unknown id fails to compile;
+ * - uniform `Fact` values mean the optional fields — sourceUrl, numeric, unit,
+ *   basis — are always accessible.
+ *
+ * Without the widening, `as const` infers a union of object literal types and
+ * only the entries that happen to declare `sourceUrl` have it. Promoting one
+ * fact by writing a literal object — the obvious way to do it — then breaks
+ * every reader of an optional field with a confusing error somewhere else
+ * entirely. Found exactly that way.
+ */
+const FACT_TABLE = {
   // ---------------------------------------------------------------------
   // Machine operations — what a Head of Operations asks first
   // ---------------------------------------------------------------------
@@ -275,6 +345,34 @@ export const FACTS = {
     'Egypt packaging regulation status',
     'Waste Management Regulation Law 202/2020 and any EPR instrument under it. Needs a citation to the instrument itself, not to commentary about it.',
   ),
+
+  // ---------------------------------------------------------------------
+  // Egypt PET material flow — the four bands of the impact chart.
+  //
+  // These four must reconcile: formally collected + informally collected +
+  // uncollected should equal consumption. The chart checks that and refuses to
+  // draw if they do not, because a flow diagram whose parts do not sum is
+  // worse than no diagram.
+  //
+  // All four need the SAME source, or the comparison is meaningless — mixing a
+  // consumption figure from one study with a collection rate from another
+  // produces a chart that looks authoritative and means nothing.
+  // ---------------------------------------------------------------------
+  'egypt-pet-formally-collected': placeholder(
+    'egypt-pet-formally-collected',
+    'PET formally collected',
+    'Collected through formal municipal or licensed channels. Same source and same year as consumption.',
+  ),
+  'egypt-pet-informally-collected': placeholder(
+    'egypt-pet-informally-collected',
+    'PET informally collected',
+    'Recovered by informal collectors. Usually the largest recovery channel in Egypt and routinely omitted; omitting it overstates the gap we address.',
+  ),
+  'egypt-pet-uncollected': placeholder(
+    'egypt-pet-uncollected',
+    'PET uncollected',
+    'Landfilled, burned or leaked to environment. The residual, not an independent estimate.',
+  ),
   'mena-addressable-retail-sites': placeholder(
     'mena-addressable-retail-sites',
     'Addressable retail sites across MENA',
@@ -309,9 +407,11 @@ export const FACTS = {
     'Team size',
     'Headcount, and state whether it includes founders and part-time.',
   ),
-  'machines-deployed': placeholder(
+  'machines-deployed': countable(
     'machines-deployed',
     'Machines deployed',
+    'machines',
+    'as at BASIS REQUIRED — set the as-at date',
     'If this is currently zero or pre-pilot, say so plainly rather than omitting it.',
   ),
   'retail-partners': placeholder(
@@ -319,18 +419,26 @@ export const FACTS = {
     'Retail partners',
     'Count only. Never name a chain or show a logo without written permission.',
   ),
-  'containers-collected-to-date': placeholder(
+  'containers-collected-to-date': countable(
     'containers-collected-to-date',
-    'Containers collected to date',
+    'Containers collected',
+    'containers',
+    'BASIS REQUIRED — set to the actual start of operation, e.g. "since March 2026"',
+    'The counter refuses to animate until the basis names a real period. A cumulative total with no start date is not a claim.',
   ),
-  'material-recovered-to-date': placeholder(
+  'material-recovered-to-date': countable(
     'material-recovered-to-date',
-    'Material recovered to date',
-    'In tonnes. Split by stream if available.',
+    'Material recovered',
+    'tonnes',
+    'BASIS REQUIRED — set to the actual start of operation',
+    'Split by stream if available. See the methodology note on /impact for how tonnage is derived.',
   ),
-  'depositor-value-returned': placeholder(
+  'depositor-value-returned': countable(
     'depositor-value-returned',
-    'Value returned to depositors to date',
+    'Value returned to depositors',
+    'currency',
+    'BASIS REQUIRED — set to the actual start of operation',
+    'State the currency explicitly in `unit` when this is set.',
   ),
 
   // ---------------------------------------------------------------------
@@ -378,7 +486,9 @@ export const FACTS = {
 } as const satisfies Record<string, Fact>;
 
 /** Every valid fact id. Use this for props so bad ids fail at compile time. */
-export type FactId = keyof typeof FACTS;
+export type FactId = keyof typeof FACT_TABLE;
+
+export const FACTS: Readonly<Record<FactId, Fact>> = FACT_TABLE;
 
 export function getFact(id: FactId): Fact {
   return FACTS[id];

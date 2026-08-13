@@ -410,6 +410,83 @@ export const COPY = {
   },
 
   /**
+   * /impact — recovery, stated as measurement rather than sentiment.
+   *
+   * No trees, globes or droplets anywhere: material is represented as material.
+   * Every figure carries its unit and the period it covers, because a number
+   * without a basis is decoration.
+   */
+  impact: {
+    hero: {
+      eyebrow: 'Impact',
+      headline: 'Material recovered, and how we know.',
+      subhead:
+        'Impact here means tonnes of PET and aluminium that went back into material rather than to landfill, counted per container at the machine. Every figure below states its unit and the period it covers. Anything not yet measured shows as a dash rather than as a number.',
+    },
+
+    counters: {
+      heading: 'Recovery to date',
+      intro:
+        'Cumulative totals from machine telemetry. A figure animates only once it has been measured and has a stated period — until then it is a dash.',
+      ids: [
+        'containers-collected-to-date',
+        'material-recovered-to-date',
+        'machines-deployed',
+        'depositor-value-returned',
+      ],
+    },
+
+    flow: {
+      heading: 'Where Egypt’s PET actually goes',
+      intro:
+        'The gap this business addresses is not between consumption and recycling — it is between consumption and FORMAL recovery. Informal collectors already recover a large share, and leaving them out of the picture would overstate the problem and misrepresent the market.',
+      title: 'Egypt PET material flow: consumed against destination',
+      totalPrefix: 'Total annual consumption:',
+      sourcePrefix: 'Source:',
+      unsourcedHeading: 'Chart not drawn — no public source',
+      unsourcedBody:
+        'The structure of the flow is shown, but not the proportions. Drawing magnitudes without a public source for every band would produce a chart that reads as authoritative and is not. Each band needs a figure from the same study and the same year — mixing sources is how a flow chart ends up looking right and being wrong.',
+      unsourcedDescription:
+        'Structure of the Egypt PET material flow: consumption divides into formally collected, informally collected and uncollected. Proportions are not shown because no public source has been supplied.',
+      mismatchHeading: 'Chart not drawn — bands do not reconcile',
+      mismatchBody:
+        'The three destinations do not sum to total consumption within tolerance, which means at least one figure comes from a different study, a different year or a different definition. The chart refuses to draw rather than hide the discrepancy behind rounding.',
+    },
+
+    methodology: {
+      heading: 'How we calculate recovered tonnage',
+      intro:
+        'Short version: we count containers, not bags. Tonnage is derived from counted containers and weighed collections, and the two are reconciled.',
+      steps: [
+        {
+          heading: 'Count at the point of acceptance',
+          body: 'Every accepted container is counted by the machine at the moment it is validated, by material stream. Rejected containers are not counted. This is a count of objects, not an estimate from volume.',
+        },
+        {
+          heading: 'Weigh at collection',
+          body: 'Each collection is weighed by stream when it leaves the site. That gives an actual mass, independent of the container count.',
+        },
+        {
+          heading: 'Reconcile the two',
+          body: 'Counted containers multiplied by the average container mass for that stream should agree with the weighed mass. Where they diverge, the weighed mass is authoritative and the average mass is corrected — not the other way round.',
+        },
+        {
+          heading: 'Report the weighed figure',
+          body: 'Published tonnage is weighed mass, not modelled mass. Contamination and moisture are part of the weighed figure until material is sorted at the processing centre, so the reported figure is conservative rather than flattering.',
+        },
+      ],
+      exclusions: {
+        heading: 'What is deliberately excluded',
+        items: [
+          'No avoided-emissions figure is published without a stated methodology and a source. A CO₂e number is a calculation, not a measurement, and it inherits every assumption behind it.',
+          'No claim is made about material that leaves our custody. We report what we recovered and sold, not what a reprocessor ultimately did with it.',
+          'Containers rejected by the machine are excluded entirely, even though a depositor carried them in.',
+        ],
+      },
+    },
+  },
+
+  /**
    * /investors — the PUBLIC page. Qualitative and directional only.
    *
    * Hard rules encoded in this copy:

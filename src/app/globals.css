@@ -257,6 +257,20 @@
   }
 }
 
+/*
+  Material flow bands grow from the left on intersection. The BASE state of the
+  element is the finished chart, so no JavaScript and reduced motion both land
+  on a correct, complete chart; this keyframe only ever replaces it with itself.
+*/
+@keyframes flow-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @keyframes hero-travel {
   from {
     opacity: 0;
