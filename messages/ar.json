@@ -283,22 +283,31 @@
         {
           "heading": "[[AR]] Footfall and dwell",
           "body": "[[AR]] A deposit point gives a reason to come, and the value returned is redeemable in store. We will not put a figure on this before a pilot measures it at your site — anyone who does is guessing on your behalf.",
-          "factIds": ["footfall-effect", "dwell-time-effect"]
+          "factIds": [
+            "footfall-effect",
+            "dwell-time-effect"
+          ]
         },
         {
           "heading": "[[AR]] Loyalty integration",
           "body": "[[AR]] Value can be issued to your existing loyalty scheme instead of a paper voucher, which keeps the redemption inside your basket and inside your data.",
-          "factIds": ["voucher-redemption-rate"]
+          "factIds": [
+            "voucher-redemption-rate"
+          ]
         },
         {
           "heading": "[[AR]] ESG reporting output",
           "body": "[[AR]] Volumes by material stream, recovered tonnage, and machine availability, per site, on a fixed cadence — in a form you can put into a disclosure without re-deriving it.",
-          "factIds": ["esg-reporting-cadence"]
+          "factIds": [
+            "esg-reporting-cadence"
+          ]
         },
         {
           "heading": "[[AR]] Compliance positioning",
           "body": "[[AR]] Egypt has no national deposit-return scheme today. Operating collection infrastructure before one exists is a materially different position from retrofitting under a deadline, and it is the one we can help you take.",
-          "factIds": ["retailer-revenue-share"]
+          "factIds": [
+            "retailer-revenue-share"
+          ]
         }
       ]
     },
@@ -539,6 +548,20 @@
       "body": "[[AR]] Nothing was recorded, so please do not treat this as submitted. The request store is not configured in this environment."
     },
     "validationFailed": "[[AR]] Check the highlighted fields."
+  },
+  "errors": {
+    "notFound": {
+      "eyebrow": "[[AR]] Page not found",
+      "heading": "[[AR]] That page does not exist.",
+      "body": "[[AR]] The link may be out of date, or the address mistyped. The two things this site is for are below, and the menu has everything else."
+    },
+    "serverError": {
+      "eyebrow": "[[AR]] Something failed",
+      "heading": "[[AR]] This page did not load.",
+      "body": "[[AR]] The fault is ours, not yours, and it has been logged. Nothing you were part-way through was submitted, so a retry loses nothing.",
+      "retry": "[[AR]] Try again",
+      "fallback": "[[AR]] If it keeps failing, the pilot and data room forms are not the only route — the contact details in the footer reach a person directly."
+    }
   },
   "consent": {
     "pilot": "[[AR]] Green Exchange may use these details to reply to this pilot request and arrange a site assessment.",

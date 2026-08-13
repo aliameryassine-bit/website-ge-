@@ -55,6 +55,8 @@ export function useCopy(): Copy {
  *   dataRoomRequest       DataRoomRequestForm
  *   impact                MaterialFlow
  *   technology            TechnologySequence
+ *   errors                the 500 boundary, which React requires to be a
+ *                         client component and which must not itself fail
  *
  * Everything else is server-rendered to HTML and never needed as data. Keep
  * this list in step when a component gains 'use client' — a missing namespace
@@ -71,6 +73,7 @@ export const CLIENT_NAMESPACES = [
   'dataRoomRequest',
   'impact',
   'technology',
+  'errors',
 ] as const;
 
 /** Narrows a full message tree to the namespaces the browser needs. */

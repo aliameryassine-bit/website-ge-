@@ -686,6 +686,33 @@ export const COPY = {
   },
 
   /**
+   * Error pages.
+   *
+   * A dead end is a lead walking away, so both do the same job: say plainly
+   * what happened, in the site's register, and put the two conversion paths
+   * back in front of the person. No apology theatre, no jokes, no "oops".
+   *
+   * The 500 additionally offers a direct contact route, because someone who
+   * just hit a server error has earned a way through that does not involve
+   * trusting another form.
+   */
+  errors: {
+    notFound: {
+      eyebrow: 'Page not found',
+      heading: 'That page does not exist.',
+      body: 'The link may be out of date, or the address mistyped. The two things this site is for are below, and the menu has everything else.',
+    },
+    serverError: {
+      eyebrow: 'Something failed',
+      heading: 'This page did not load.',
+      body: 'The fault is ours, not yours, and it has been logged. Nothing you were part-way through was submitted, so a retry loses nothing.',
+      retry: 'Try again',
+      fallback:
+        'If it keeps failing, the pilot and data room forms are not the only route — the contact details in the footer reach a person directly.',
+    },
+  },
+
+  /**
    * GDPR consent.
    *
    * One purpose per form, stated in the sentence itself: consent to be replied

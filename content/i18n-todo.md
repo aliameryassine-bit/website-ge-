@@ -39,499 +39,513 @@ company reads as an unserious one.
 - **Legal strings** under `investorDisclaimer` and `dataRoomRequest.declaration`
   are placeholders pending a lawyer in English too. Do not translate them yet.
 
-## Outstanding: 395 strings per locale, 790 total
+## Outstanding: 403 strings per locale, 806 total
 
 ### `a11y` — 8 strings
 
-| Key                    | English                            |
-| ---------------------- | ---------------------------------- |
-| `a11y.skipToContent`   | Skip to main content               |
-| `a11y.mainNav`         | Main navigation                    |
-| `a11y.openMenu`        | Open menu                          |
-| `a11y.closeMenu`       | Close menu                         |
-| `a11y.menuLabel`       | Site menu                          |
-| `a11y.forkLabel`       | Choose the path that describes you |
-| `a11y.currentLanguage` | Current language                   |
-| `a11y.placeholderFact` | Figure not yet published           |
+| Key | English |
+| --- | --- |
+| `a11y.skipToContent` | Skip to main content |
+| `a11y.mainNav` | Main navigation |
+| `a11y.openMenu` | Open menu |
+| `a11y.closeMenu` | Close menu |
+| `a11y.menuLabel` | Site menu |
+| `a11y.forkLabel` | Choose the path that describes you |
+| `a11y.currentLanguage` | Current language |
+| `a11y.placeholderFact` | Figure not yet published |
 
 ### `consent` — 3 strings
 
-| Key                       | English                                                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------- |
-| `consent.pilot`           | Green Exchange may use these details to reply to this pilot request and arrange a site assessment. |
-| `consent.dataRoom`        | Green Exchange may use these details to review this request and reply about data room access.      |
-| `consent.privacyLinkText` | How we handle your details                                                                         |
+| Key | English |
+| --- | --- |
+| `consent.pilot` | Green Exchange may use these details to reply to this pilot request and arrange a site assessment. |
+| `consent.dataRoom` | Green Exchange may use these details to review this request and reply about data room access. |
+| `consent.privacyLinkText` | How we handle your details |
 
 ### `cta` — 6 strings
 
-| Key                        | English                                               |
-| -------------------------- | ----------------------------------------------------- |
-| `cta.pilot.label`          | Request a pilot                                       |
-| `cta.pilot.supporting`     | Site assessment and install plan for a named store.   |
-| `cta.dataRoom.label`       | Request data room access                              |
-| `cta.dataRoom.supporting`  | Unit economics, deployment plan and material offtake. |
-| `cta.investorAccess.label` | Investor access                                       |
-| `cta.spec.label`           | Download machine specification                        |
+| Key | English |
+| --- | --- |
+| `cta.pilot.label` | Request a pilot |
+| `cta.pilot.supporting` | Site assessment and install plan for a named store. |
+| `cta.dataRoom.label` | Request data room access |
+| `cta.dataRoom.supporting` | Unit economics, deployment plan and material offtake. |
+| `cta.investorAccess.label` | Investor access |
+| `cta.spec.label` | Download machine specification |
 
 ### `dataRoomRequest` — 23 strings
 
-| Key                                         | English                                                                                                                                                                                                        |
-| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dataRoomRequest.heading`                   | Request data room access                                                                                                                                                                                       |
-| `dataRoomRequest.intro`                     | Six details and one declaration. Requests are reviewed by a person; nothing is granted on submission.                                                                                                          |
-| `dataRoomRequest.fields.name`               | Full name                                                                                                                                                                                                      |
-| `dataRoomRequest.fields.organisation`       | Organisation                                                                                                                                                                                                   |
-| `dataRoomRequest.fields.role`               | Role                                                                                                                                                                                                           |
-| `dataRoomRequest.fields.investorType`       | Investor type                                                                                                                                                                                                  |
-| `dataRoomRequest.fields.country`            | Country                                                                                                                                                                                                        |
-| `dataRoomRequest.fields.email`              | Work email                                                                                                                                                                                                     |
-| `dataRoomRequest.fields.linkedin`           | LinkedIn profile                                                                                                                                                                                               |
-| `dataRoomRequest.investorTypes.0`           | Angel                                                                                                                                                                                                          |
-| `dataRoomRequest.investorTypes.1`           | Venture capital                                                                                                                                                                                                |
-| `dataRoomRequest.investorTypes.2`           | Family office                                                                                                                                                                                                  |
-| `dataRoomRequest.investorTypes.3`           | Strategic                                                                                                                                                                                                      |
-| `dataRoomRequest.investorTypes.4`           | Other                                                                                                                                                                                                          |
-| `dataRoomRequest.investorTypePrompt`        | Select investor type                                                                                                                                                                                           |
-| `dataRoomRequest.declaration.label`         | PLACEHOLDER — LAWYER TO DRAFT: a self-declaration that the requester is a professional or qualified investor, and that they understand these materials are not an offer of securities.                         |
-| `dataRoomRequest.declaration.requiredError` | You must confirm the declaration to request access.                                                                                                                                                            |
-| `dataRoomRequest.submit`                    | Request access                                                                                                                                                                                                 |
-| `dataRoomRequest.pending.heading`           | Request lodged                                                                                                                                                                                                 |
-| `dataRoomRequest.pending.body`              | Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form. |
-| `dataRoomRequest.failure.heading`           | Request could not be lodged                                                                                                                                                                                    |
-| `dataRoomRequest.failure.body`              | Nothing was recorded, so please do not treat this as submitted. The request store is not configured in this environment.                                                                                       |
-| `dataRoomRequest.validationFailed`          | Check the highlighted fields.                                                                                                                                                                                  |
+| Key | English |
+| --- | --- |
+| `dataRoomRequest.heading` | Request data room access |
+| `dataRoomRequest.intro` | Six details and one declaration. Requests are reviewed by a person; nothing is granted on submission. |
+| `dataRoomRequest.fields.name` | Full name |
+| `dataRoomRequest.fields.organisation` | Organisation |
+| `dataRoomRequest.fields.role` | Role |
+| `dataRoomRequest.fields.investorType` | Investor type |
+| `dataRoomRequest.fields.country` | Country |
+| `dataRoomRequest.fields.email` | Work email |
+| `dataRoomRequest.fields.linkedin` | LinkedIn profile |
+| `dataRoomRequest.investorTypes.0` | Angel |
+| `dataRoomRequest.investorTypes.1` | Venture capital |
+| `dataRoomRequest.investorTypes.2` | Family office |
+| `dataRoomRequest.investorTypes.3` | Strategic |
+| `dataRoomRequest.investorTypes.4` | Other |
+| `dataRoomRequest.investorTypePrompt` | Select investor type |
+| `dataRoomRequest.declaration.label` | PLACEHOLDER — LAWYER TO DRAFT: a self-declaration that the requester is a professional or qualified investor, and that they understand these materials are not an offer of securities. |
+| `dataRoomRequest.declaration.requiredError` | You must confirm the declaration to request access. |
+| `dataRoomRequest.submit` | Request access |
+| `dataRoomRequest.pending.heading` | Request lodged |
+| `dataRoomRequest.pending.body` | Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form. |
+| `dataRoomRequest.failure.heading` | Request could not be lodged |
+| `dataRoomRequest.failure.body` | Nothing was recorded, so please do not treat this as submitted. The request store is not configured in this environment. |
+| `dataRoomRequest.validationFailed` | Check the highlighted fields. |
+
+### `errors` — 8 strings
+
+| Key | English |
+| --- | --- |
+| `errors.notFound.eyebrow` | Page not found |
+| `errors.notFound.heading` | That page does not exist. |
+| `errors.notFound.body` | The link may be out of date, or the address mistyped. The two things this site is for are below, and the menu has everything else. |
+| `errors.serverError.eyebrow` | Something failed |
+| `errors.serverError.heading` | This page did not load. |
+| `errors.serverError.body` | The fault is ours, not yours, and it has been logged. Nothing you were part-way through was submitted, so a retry loses nothing. |
+| `errors.serverError.retry` | Try again |
+| `errors.serverError.fallback` | If it keeps failing, the pilot and data room forms are not the only route — the contact details in the footer reach a person directly. |
 
 ### `footer` — 11 strings
 
-| Key                          | English                |
-| ---------------------------- | ---------------------- |
-| `footer.company`             | Green Exchange         |
-| `footer.legal`               | Registered in Romania. |
-| `footer.rights`              | All rights reserved.   |
-| `footer.registrationHeading` | Registered entity      |
-| `footer.contactHeading`      | Contact                |
-| `footer.legalHeading`        | Legal                  |
-| `footer.languageHeading`     | Language               |
-| `footer.links.0.label`       | Privacy                |
-| `footer.links.1.label`       | Cookies                |
-| `footer.links.2.label`       | Terms                  |
-| `footer.links.3.label`       | Investor disclaimer    |
+| Key | English |
+| --- | --- |
+| `footer.company` | Green Exchange |
+| `footer.legal` | Registered in Romania. |
+| `footer.rights` | All rights reserved. |
+| `footer.registrationHeading` | Registered entity |
+| `footer.contactHeading` | Contact |
+| `footer.legalHeading` | Legal |
+| `footer.languageHeading` | Language |
+| `footer.links.0.label` | Privacy |
+| `footer.links.1.label` | Cookies |
+| `footer.links.2.label` | Terms |
+| `footer.links.3.label` | Investor disclaimer |
 
 ### `forRetailers` — 98 strings
 
-| Key                                              | English                                                                                                                                                                                                                                   |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `forRetailers.hero.eyebrow`                      | For retail operators                                                                                                                                                                                                                      |
-| `forRetailers.hero.headline`                     | Take-back arrives as three costs: floor space, staff time, and attention.                                                                                                                                                                 |
-| `forRetailers.hero.subhead`                      | Green Exchange installs and operates the machine, so the only one you carry is the floor space. This page states how much of it, what the machine needs from the site, who does the work when something jams, and what comes back to you. |
-| `forRetailers.deployment.heading`                | Deployment model                                                                                                                                                                                                                          |
-| `forRetailers.deployment.intro`                  | One line each, so there is no question about where the boundary sits. The machine stays on our balance sheet and our rota.                                                                                                                |
-| `forRetailers.deployment.columns.0.heading`      | What we install                                                                                                                                                                                                                           |
-| `forRetailers.deployment.columns.0.items.0`      | The machine, commissioned and tested on site                                                                                                                                                                                              |
-| `forRetailers.deployment.columns.0.items.1`      | Signage at the deposit point                                                                                                                                                                                                              |
-| `forRetailers.deployment.columns.0.items.2`      | Connectivity and remote monitoring                                                                                                                                                                                                        |
-| `forRetailers.deployment.columns.0.items.3`      | Fill-level telemetry that schedules its own collection                                                                                                                                                                                    |
-| `forRetailers.deployment.columns.1.heading`      | What we own and operate                                                                                                                                                                                                                   |
-| `forRetailers.deployment.columns.1.items.0`      | The hardware, for its whole life                                                                                                                                                                                                          |
-| `forRetailers.deployment.columns.1.items.1`      | Collection, transport and baling                                                                                                                                                                                                          |
-| `forRetailers.deployment.columns.1.items.2`      | Maintenance, spares and fault response                                                                                                                                                                                                    |
-| `forRetailers.deployment.columns.1.items.3`      | Material offtake and the reporting you receive                                                                                                                                                                                            |
-| `forRetailers.deployment.columns.2.heading`      | What you provide                                                                                                                                                                                                                          |
-| `forRetailers.deployment.columns.2.items.0`      | Floor space at an agreed position                                                                                                                                                                                                         |
-| `forRetailers.deployment.columns.2.items.1`      | A power supply within reach of it                                                                                                                                                                                                         |
-| `forRetailers.deployment.columns.2.items.2`      | Access for a collection vehicle                                                                                                                                                                                                           |
-| `forRetailers.deployment.columns.2.items.3`      | A named site contact — not a trained operator                                                                                                                                                                                             |
-| `forRetailers.deployment.placementHeading`       | Placement options                                                                                                                                                                                                                         |
-| `forRetailers.deployment.placementIntro`         | Three positions, and they trade off against each other. The right one is a site-by-site decision made at the assessment, not a policy.                                                                                                    |
-| `forRetailers.deployment.placementColumns.0`     | Placement                                                                                                                                                                                                                                 |
-| `forRetailers.deployment.placementColumns.1`     | Space comes from                                                                                                                                                                                                                          |
-| `forRetailers.deployment.placementColumns.2`     | Weather exposure                                                                                                                                                                                                                          |
-| `forRetailers.deployment.placementColumns.3`     | Footfall exposure                                                                                                                                                                                                                         |
-| `forRetailers.deployment.placementColumns.4`     | Servicing access                                                                                                                                                                                                                          |
-| `forRetailers.deployment.placementColumns.5`     | Power run                                                                                                                                                                                                                                 |
-| `forRetailers.deployment.placements.0.name`      | Inside the entrance                                                                                                                                                                                                                       |
-| `forRetailers.deployment.placements.0.space`     | Sales floor                                                                                                                                                                                                                               |
-| `forRetailers.deployment.placements.0.weather`   | None — fully sheltered                                                                                                                                                                                                                    |
-| `forRetailers.deployment.placements.0.footfall`  | Highest: every visitor passes it                                                                                                                                                                                                          |
-| `forRetailers.deployment.placements.0.servicing` | During trading hours, through the entrance                                                                                                                                                                                                |
-| `forRetailers.deployment.placements.0.power`     | Shortest, from the store board                                                                                                                                                                                                            |
-| `forRetailers.deployment.placements.1.name`      | Under an external canopy                                                                                                                                                                                                                  |
-| `forRetailers.deployment.placements.1.space`     | External area, not sales floor                                                                                                                                                                                                            |
-| `forRetailers.deployment.placements.1.weather`   | Sheltered from rain, exposed to heat                                                                                                                                                                                                      |
-| `forRetailers.deployment.placements.1.footfall`  | High: visible on the approach                                                                                                                                                                                                             |
-| `forRetailers.deployment.placements.1.servicing` | Outside trading hours, no entry to the store                                                                                                                                                                                              |
-| `forRetailers.deployment.placements.1.power`     | External run required                                                                                                                                                                                                                     |
-| `forRetailers.deployment.placements.2.name`      | Car park island                                                                                                                                                                                                                           |
-| `forRetailers.deployment.placements.2.space`     | Parking bay, no sales floor at all                                                                                                                                                                                                        |
-| `forRetailers.deployment.placements.2.weather`   | Full exposure — needs the outdoor specification                                                                                                                                                                                           |
-| `forRetailers.deployment.placements.2.footfall`  | Lower: a deliberate stop, not a passing one                                                                                                                                                                                               |
-| `forRetailers.deployment.placements.2.servicing` | Easiest — vehicle pulls alongside                                                                                                                                                                                                         |
-| `forRetailers.deployment.placements.2.power`     | Longest run, and a civils job                                                                                                                                                                                                             |
-| `forRetailers.footprint.heading`                 | Footprint and site requirements                                                                                                                                                                                                           |
-| `forRetailers.footprint.intro`                   | What a site engineer needs before they can say yes. Every figure here is measured or marked as unmeasured — none of it is indicative.                                                                                                     |
-| `forRetailers.footprint.note`                    | Service clearance is additional to the machine footprint. A site that fits the machine but not the clearance is not a site.                                                                                                               |
-| `forRetailers.servicing.heading`                 | Servicing                                                                                                                                                                                                                                 |
-| `forRetailers.servicing.intro`                   | The part that decides whether this is an asset or a chore. None of it lands on your staff.                                                                                                                                                |
-| `forRetailers.servicing.items.0.question`        | Who empties it?                                                                                                                                                                                                                           |
-| `forRetailers.servicing.items.0.answer`          | We do. A Green Exchange crew collects on a route driven by fill-level telemetry, not by a calendar and not by a phone call from your duty manager.                                                                                        |
-| `forRetailers.servicing.items.1.question`        | What happens when it jams?                                                                                                                                                                                                                |
-| `forRetailers.servicing.items.1.answer`          | The machine reports the fault itself and takes itself out of service so it cannot swallow another container. Your site contact does not diagnose anything; they do not need a key. We attend.                                             |
-| `forRetailers.servicing.items.2.question`        | What is the uptime commitment?                                                                                                                                                                                                            |
-| `forRetailers.servicing.items.2.answer`          | Availability is measured per machine over a stated window and reported to you with the volumes. A machine that is down is our problem and it appears in your report, not just ours.                                                       |
-| `forRetailers.benefits.heading`                  | What comes back to you                                                                                                                                                                                                                    |
-| `forRetailers.benefits.intro`                    | Four things, in the order a board will ask about them. Two of them are unmeasured, and this page says so rather than borrowing a number from another market.                                                                              |
-| `forRetailers.benefits.items.0.heading`          | Footfall and dwell                                                                                                                                                                                                                        |
-| `forRetailers.benefits.items.0.body`             | A deposit point gives a reason to come, and the value returned is redeemable in store. We will not put a figure on this before a pilot measures it at your site — anyone who does is guessing on your behalf.                             |
-| `forRetailers.benefits.items.1.heading`          | Loyalty integration                                                                                                                                                                                                                       |
-| `forRetailers.benefits.items.1.body`             | Value can be issued to your existing loyalty scheme instead of a paper voucher, which keeps the redemption inside your basket and inside your data.                                                                                       |
-| `forRetailers.benefits.items.2.heading`          | ESG reporting output                                                                                                                                                                                                                      |
-| `forRetailers.benefits.items.2.body`             | Volumes by material stream, recovered tonnage, and machine availability, per site, on a fixed cadence — in a form you can put into a disclosure without re-deriving it.                                                                   |
-| `forRetailers.benefits.items.3.heading`          | Compliance positioning                                                                                                                                                                                                                    |
-| `forRetailers.benefits.items.3.body`             | Egypt has no national deposit-return scheme today. Operating collection infrastructure before one exists is a materially different position from retrofitting under a deadline, and it is the one we can help you take.                   |
-| `forRetailers.roi.heading`                       | Estimate the scale                                                                                                                                                                                                                        |
-| `forRetailers.roi.intro`                         | Set your own numbers. The model is deliberately simple and every coefficient behind it is listed below, with the source it has to come from.                                                                                              |
-| `forRetailers.roi.inputs.stores`                 | Stores in scope                                                                                                                                                                                                                           |
-| `forRetailers.roi.inputs.dailyFootfall`          | Average daily visitors per store                                                                                                                                                                                                          |
-| `forRetailers.roi.inputs.machinesPerStore`       | Machines per store                                                                                                                                                                                                                        |
-| `forRetailers.roi.outputs.containers`            | Containers recovered per month                                                                                                                                                                                                            |
-| `forRetailers.roi.outputs.tonnage`               | Material recovered per month                                                                                                                                                                                                              |
-| `forRetailers.roi.outputs.benefit`               | Estimated benefit to you per month                                                                                                                                                                                                        |
-| `forRetailers.roi.disclaimer`                    | These outputs are estimates produced by a model, not a quotation and not a forecast. They are only as good as the assumptions listed below, and they carry no commercial commitment.                                                      |
-| `forRetailers.roi.assumptionsHeading`            | Assumptions in this model                                                                                                                                                                                                                 |
-| `forRetailers.roi.assumptions.0`                 | Every visitor is counted once per day, and a fixed share of visitors deposits containers.                                                                                                                                                 |
-| `forRetailers.roi.assumptions.1`                 | Deposits cannot exceed what the machines on site can physically accept, so throughput caps the result.                                                                                                                                    |
-| `forRetailers.roi.assumptions.2`                 | The split between PET and aluminium is treated as constant across all sites.                                                                                                                                                              |
-| `forRetailers.roi.assumptions.3`                 | Container mass is an average over the size mix actually returned, not a single container size.                                                                                                                                            |
-| `forRetailers.roi.assumptions.4`                 | Material value is a spot price per tonne and is volatile; the benefit range does not model that volatility.                                                                                                                               |
-| `forRetailers.roi.assumptions.5`                 | Your benefit is a share of recovered material value only. Redemption in store, footfall effects and compliance value are excluded — they are real, and none of them is measured yet.                                                      |
-| `forRetailers.roi.assumptions.6`                 | No capital cost, operating cost or price appears here. Commercial terms are a conversation, not a calculator.                                                                                                                             |
-| `forRetailers.roi.unavailableHeading`            | This calculator cannot produce a number yet                                                                                                                                                                                               |
-| `forRetailers.roi.unavailableBody`               | The coefficients below have not been measured. Rather than fill them with plausible values, the model reports that it cannot compute. Every input above still works, and the moment a pilot supplies these figures the outputs appear.    |
-| `forRetailers.roi.throughputNote`                | At these settings machine throughput is the limit, not footfall — additional visitors would not add containers.                                                                                                                           |
-| `forRetailers.pilot.heading`                     | Request a pilot                                                                                                                                                                                                                           |
-| `forRetailers.pilot.intro`                       | One site, a defined review period, and a written assessment at the end of it. No price, no commitment on this page — a pilot conversation.                                                                                                |
-| `forRetailers.pilot.progressiveSummary`          | Add role and city (optional)                                                                                                                                                                                                              |
-| `forRetailers.pilot.fields.company`              | Chain or company                                                                                                                                                                                                                          |
-| `forRetailers.pilot.fields.email`                | Work email                                                                                                                                                                                                                                |
-| `forRetailers.pilot.fields.stores`               | Number of stores                                                                                                                                                                                                                          |
-| `forRetailers.pilot.fields.role`                 | Your role                                                                                                                                                                                                                                 |
-| `forRetailers.pilot.fields.city`                 | City                                                                                                                                                                                                                                      |
-| `forRetailers.pilot.submit`                      | Request a pilot                                                                                                                                                                                                                           |
-| `forRetailers.pilot.unconfigured`                | This form has no destination configured yet, so nothing was sent. Your details were validated but not stored.                                                                                                                             |
-| `forRetailers.pilot.validationFailed`            | Check the highlighted fields.                                                                                                                                                                                                             |
+| Key | English |
+| --- | --- |
+| `forRetailers.hero.eyebrow` | For retail operators |
+| `forRetailers.hero.headline` | Take-back arrives as three costs: floor space, staff time, and attention. |
+| `forRetailers.hero.subhead` | Green Exchange installs and operates the machine, so the only one you carry is the floor space. This page states how much of it, what the machine needs from the site, who does the work when something jams, and what comes back to you. |
+| `forRetailers.deployment.heading` | Deployment model |
+| `forRetailers.deployment.intro` | One line each, so there is no question about where the boundary sits. The machine stays on our balance sheet and our rota. |
+| `forRetailers.deployment.columns.0.heading` | What we install |
+| `forRetailers.deployment.columns.0.items.0` | The machine, commissioned and tested on site |
+| `forRetailers.deployment.columns.0.items.1` | Signage at the deposit point |
+| `forRetailers.deployment.columns.0.items.2` | Connectivity and remote monitoring |
+| `forRetailers.deployment.columns.0.items.3` | Fill-level telemetry that schedules its own collection |
+| `forRetailers.deployment.columns.1.heading` | What we own and operate |
+| `forRetailers.deployment.columns.1.items.0` | The hardware, for its whole life |
+| `forRetailers.deployment.columns.1.items.1` | Collection, transport and baling |
+| `forRetailers.deployment.columns.1.items.2` | Maintenance, spares and fault response |
+| `forRetailers.deployment.columns.1.items.3` | Material offtake and the reporting you receive |
+| `forRetailers.deployment.columns.2.heading` | What you provide |
+| `forRetailers.deployment.columns.2.items.0` | Floor space at an agreed position |
+| `forRetailers.deployment.columns.2.items.1` | A power supply within reach of it |
+| `forRetailers.deployment.columns.2.items.2` | Access for a collection vehicle |
+| `forRetailers.deployment.columns.2.items.3` | A named site contact — not a trained operator |
+| `forRetailers.deployment.placementHeading` | Placement options |
+| `forRetailers.deployment.placementIntro` | Three positions, and they trade off against each other. The right one is a site-by-site decision made at the assessment, not a policy. |
+| `forRetailers.deployment.placementColumns.0` | Placement |
+| `forRetailers.deployment.placementColumns.1` | Space comes from |
+| `forRetailers.deployment.placementColumns.2` | Weather exposure |
+| `forRetailers.deployment.placementColumns.3` | Footfall exposure |
+| `forRetailers.deployment.placementColumns.4` | Servicing access |
+| `forRetailers.deployment.placementColumns.5` | Power run |
+| `forRetailers.deployment.placements.0.name` | Inside the entrance |
+| `forRetailers.deployment.placements.0.space` | Sales floor |
+| `forRetailers.deployment.placements.0.weather` | None — fully sheltered |
+| `forRetailers.deployment.placements.0.footfall` | Highest: every visitor passes it |
+| `forRetailers.deployment.placements.0.servicing` | During trading hours, through the entrance |
+| `forRetailers.deployment.placements.0.power` | Shortest, from the store board |
+| `forRetailers.deployment.placements.1.name` | Under an external canopy |
+| `forRetailers.deployment.placements.1.space` | External area, not sales floor |
+| `forRetailers.deployment.placements.1.weather` | Sheltered from rain, exposed to heat |
+| `forRetailers.deployment.placements.1.footfall` | High: visible on the approach |
+| `forRetailers.deployment.placements.1.servicing` | Outside trading hours, no entry to the store |
+| `forRetailers.deployment.placements.1.power` | External run required |
+| `forRetailers.deployment.placements.2.name` | Car park island |
+| `forRetailers.deployment.placements.2.space` | Parking bay, no sales floor at all |
+| `forRetailers.deployment.placements.2.weather` | Full exposure — needs the outdoor specification |
+| `forRetailers.deployment.placements.2.footfall` | Lower: a deliberate stop, not a passing one |
+| `forRetailers.deployment.placements.2.servicing` | Easiest — vehicle pulls alongside |
+| `forRetailers.deployment.placements.2.power` | Longest run, and a civils job |
+| `forRetailers.footprint.heading` | Footprint and site requirements |
+| `forRetailers.footprint.intro` | What a site engineer needs before they can say yes. Every figure here is measured or marked as unmeasured — none of it is indicative. |
+| `forRetailers.footprint.note` | Service clearance is additional to the machine footprint. A site that fits the machine but not the clearance is not a site. |
+| `forRetailers.servicing.heading` | Servicing |
+| `forRetailers.servicing.intro` | The part that decides whether this is an asset or a chore. None of it lands on your staff. |
+| `forRetailers.servicing.items.0.question` | Who empties it? |
+| `forRetailers.servicing.items.0.answer` | We do. A Green Exchange crew collects on a route driven by fill-level telemetry, not by a calendar and not by a phone call from your duty manager. |
+| `forRetailers.servicing.items.1.question` | What happens when it jams? |
+| `forRetailers.servicing.items.1.answer` | The machine reports the fault itself and takes itself out of service so it cannot swallow another container. Your site contact does not diagnose anything; they do not need a key. We attend. |
+| `forRetailers.servicing.items.2.question` | What is the uptime commitment? |
+| `forRetailers.servicing.items.2.answer` | Availability is measured per machine over a stated window and reported to you with the volumes. A machine that is down is our problem and it appears in your report, not just ours. |
+| `forRetailers.benefits.heading` | What comes back to you |
+| `forRetailers.benefits.intro` | Four things, in the order a board will ask about them. Two of them are unmeasured, and this page says so rather than borrowing a number from another market. |
+| `forRetailers.benefits.items.0.heading` | Footfall and dwell |
+| `forRetailers.benefits.items.0.body` | A deposit point gives a reason to come, and the value returned is redeemable in store. We will not put a figure on this before a pilot measures it at your site — anyone who does is guessing on your behalf. |
+| `forRetailers.benefits.items.1.heading` | Loyalty integration |
+| `forRetailers.benefits.items.1.body` | Value can be issued to your existing loyalty scheme instead of a paper voucher, which keeps the redemption inside your basket and inside your data. |
+| `forRetailers.benefits.items.2.heading` | ESG reporting output |
+| `forRetailers.benefits.items.2.body` | Volumes by material stream, recovered tonnage, and machine availability, per site, on a fixed cadence — in a form you can put into a disclosure without re-deriving it. |
+| `forRetailers.benefits.items.3.heading` | Compliance positioning |
+| `forRetailers.benefits.items.3.body` | Egypt has no national deposit-return scheme today. Operating collection infrastructure before one exists is a materially different position from retrofitting under a deadline, and it is the one we can help you take. |
+| `forRetailers.roi.heading` | Estimate the scale |
+| `forRetailers.roi.intro` | Set your own numbers. The model is deliberately simple and every coefficient behind it is listed below, with the source it has to come from. |
+| `forRetailers.roi.inputs.stores` | Stores in scope |
+| `forRetailers.roi.inputs.dailyFootfall` | Average daily visitors per store |
+| `forRetailers.roi.inputs.machinesPerStore` | Machines per store |
+| `forRetailers.roi.outputs.containers` | Containers recovered per month |
+| `forRetailers.roi.outputs.tonnage` | Material recovered per month |
+| `forRetailers.roi.outputs.benefit` | Estimated benefit to you per month |
+| `forRetailers.roi.disclaimer` | These outputs are estimates produced by a model, not a quotation and not a forecast. They are only as good as the assumptions listed below, and they carry no commercial commitment. |
+| `forRetailers.roi.assumptionsHeading` | Assumptions in this model |
+| `forRetailers.roi.assumptions.0` | Every visitor is counted once per day, and a fixed share of visitors deposits containers. |
+| `forRetailers.roi.assumptions.1` | Deposits cannot exceed what the machines on site can physically accept, so throughput caps the result. |
+| `forRetailers.roi.assumptions.2` | The split between PET and aluminium is treated as constant across all sites. |
+| `forRetailers.roi.assumptions.3` | Container mass is an average over the size mix actually returned, not a single container size. |
+| `forRetailers.roi.assumptions.4` | Material value is a spot price per tonne and is volatile; the benefit range does not model that volatility. |
+| `forRetailers.roi.assumptions.5` | Your benefit is a share of recovered material value only. Redemption in store, footfall effects and compliance value are excluded — they are real, and none of them is measured yet. |
+| `forRetailers.roi.assumptions.6` | No capital cost, operating cost or price appears here. Commercial terms are a conversation, not a calculator. |
+| `forRetailers.roi.unavailableHeading` | This calculator cannot produce a number yet |
+| `forRetailers.roi.unavailableBody` | The coefficients below have not been measured. Rather than fill them with plausible values, the model reports that it cannot compute. Every input above still works, and the moment a pilot supplies these figures the outputs appear. |
+| `forRetailers.roi.throughputNote` | At these settings machine throughput is the limit, not footfall — additional visitors would not add containers. |
+| `forRetailers.pilot.heading` | Request a pilot |
+| `forRetailers.pilot.intro` | One site, a defined review period, and a written assessment at the end of it. No price, no commitment on this page — a pilot conversation. |
+| `forRetailers.pilot.progressiveSummary` | Add role and city (optional) |
+| `forRetailers.pilot.fields.company` | Chain or company |
+| `forRetailers.pilot.fields.email` | Work email |
+| `forRetailers.pilot.fields.stores` | Number of stores |
+| `forRetailers.pilot.fields.role` | Your role |
+| `forRetailers.pilot.fields.city` | City |
+| `forRetailers.pilot.submit` | Request a pilot |
+| `forRetailers.pilot.unconfigured` | This form has no destination configured yet, so nothing was sent. Your details were validated but not stored. |
+| `forRetailers.pilot.validationFailed` | Check the highlighted fields. |
 
 ### `fork` — 15 strings
 
-| Key                       | English                                                             |
-| ------------------------- | ------------------------------------------------------------------- |
-| `fork.eyebrow`            | Two ways in                                                         |
-| `fork.retail.title`       | I run retail stores                                                 |
-| `fork.retail.summary`     | Floor space, servicing, revenue share, and reporting you can file.  |
-| `fork.retail.preview.0`   | Footprint, power, and collection access per machine                 |
-| `fork.retail.preview.1`   | Who services the machine, and how often                             |
-| `fork.retail.preview.2`   | Revenue share and in-store redemption                               |
-| `fork.retail.preview.3`   | Volumes and availability, reported per site                         |
-| `fork.retail.cta`         | Request a pilot                                                     |
-| `fork.investor.title`     | I invest                                                            |
-| `fork.investor.summary`   | Unit economics, payback, material offtake, and the deployment plan. |
-| `fork.investor.preview.0` | Capital and operating cost per machine                              |
-| `fork.investor.preview.1` | Payback period and the assumptions behind it                        |
-| `fork.investor.preview.2` | Offtake pricing by material stream                                  |
-| `fork.investor.preview.3` | Egypt deployment plan and MENA expansion case                       |
-| `fork.investor.cta`       | Investor access                                                     |
+| Key | English |
+| --- | --- |
+| `fork.eyebrow` | Two ways in |
+| `fork.retail.title` | I run retail stores |
+| `fork.retail.summary` | Floor space, servicing, revenue share, and reporting you can file. |
+| `fork.retail.preview.0` | Footprint, power, and collection access per machine |
+| `fork.retail.preview.1` | Who services the machine, and how often |
+| `fork.retail.preview.2` | Revenue share and in-store redemption |
+| `fork.retail.preview.3` | Volumes and availability, reported per site |
+| `fork.retail.cta` | Request a pilot |
+| `fork.investor.title` | I invest |
+| `fork.investor.summary` | Unit economics, payback, material offtake, and the deployment plan. |
+| `fork.investor.preview.0` | Capital and operating cost per machine |
+| `fork.investor.preview.1` | Payback period and the assumptions behind it |
+| `fork.investor.preview.2` | Offtake pricing by material stream |
+| `fork.investor.preview.3` | Egypt deployment plan and MENA expansion case |
+| `fork.investor.cta` | Investor access |
 
 ### `formFailure` — 11 strings
 
-| Key                                | English                                                                                                              |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `formFailure.delivery.heading`     | This did not send                                                                                                    |
-| `formFailure.delivery.body`        | Nothing was recorded, so please do not treat this as submitted. Email us directly and we will pick it up from there. |
-| `formFailure.rateLimited.heading`  | Too many submissions from this connection                                                                            |
-| `formFailure.rateLimited.body`     | Wait and try again, or email us directly if this is urgent.                                                          |
-| `formFailure.stale.heading`        | This page has been open too long                                                                                     |
-| `formFailure.stale.body`           | Reload the page and submit again — your details are still in the fields below. Nothing was sent.                     |
-| `formFailure.suspectedBot.heading` | This submission was blocked                                                                                          |
-| `formFailure.suspectedBot.body`    | An automated-submission check rejected this. If you are a person, email us directly and we will handle it that way.  |
-| `formFailure.fallbackUnknown`      | A direct contact address has not been published yet.                                                                 |
-| `formFailure.fallbackUnknownHint`  | Set contact-email in content/facts.ts.                                                                               |
-| `formFailure.fallbackPrefix`       | Email us directly:                                                                                                   |
+| Key | English |
+| --- | --- |
+| `formFailure.delivery.heading` | This did not send |
+| `formFailure.delivery.body` | Nothing was recorded, so please do not treat this as submitted. Email us directly and we will pick it up from there. |
+| `formFailure.rateLimited.heading` | Too many submissions from this connection |
+| `formFailure.rateLimited.body` | Wait and try again, or email us directly if this is urgent. |
+| `formFailure.stale.heading` | This page has been open too long |
+| `formFailure.stale.body` | Reload the page and submit again — your details are still in the fields below. Nothing was sent. |
+| `formFailure.suspectedBot.heading` | This submission was blocked |
+| `formFailure.suspectedBot.body` | An automated-submission check rejected this. If you are a person, email us directly and we will handle it that way. |
+| `formFailure.fallbackUnknown` | A direct contact address has not been published yet. |
+| `formFailure.fallbackUnknownHint` | Set contact-email in content/facts.ts. |
+| `formFailure.fallbackPrefix` | Email us directly: |
 
 ### `forms` — 25 strings
 
-| Key                             | English                                                                   |
-| ------------------------------- | ------------------------------------------------------------------------- |
-| `forms.pilot.headline`          | Request a pilot                                                           |
-| `forms.pilot.subhead`           | Tell us the chain and the store. We come back with a site assessment.     |
-| `forms.pilot.fields.name`       | Full name                                                                 |
-| `forms.pilot.fields.role`       | Role                                                                      |
-| `forms.pilot.fields.company`    | Chain or company                                                          |
-| `forms.pilot.fields.email`      | Work email                                                                |
-| `forms.pilot.fields.phone`      | Phone                                                                     |
-| `forms.pilot.fields.storeCount` | Number of stores                                                          |
-| `forms.pilot.fields.city`       | City                                                                      |
-| `forms.pilot.fields.siteType`   | Intended placement                                                        |
-| `forms.pilot.fields.message`    | Anything we should know about the site                                    |
-| `forms.pilot.submit`            | Request a pilot                                                           |
-| `forms.pilot.success`           | Received. We will come back to you with next steps for a site assessment. |
-| `forms.pilot.error`             | That did not send. Please try again, or email us directly.                |
-| `forms.dataRoom.headline`       | Request data room access                                                  |
-| `forms.dataRoom.subhead`        | Access is granted to named individuals.                                   |
-| `forms.dataRoom.fields.name`    | Full name                                                                 |
-| `forms.dataRoom.fields.firm`    | Firm                                                                      |
-| `forms.dataRoom.fields.email`   | Work email                                                                |
-| `forms.dataRoom.fields.type`    | Investor type                                                             |
-| `forms.dataRoom.fields.ticket`  | Typical cheque size                                                       |
-| `forms.dataRoom.fields.message` | What you want to see first                                                |
-| `forms.dataRoom.submit`         | Request access                                                            |
-| `forms.dataRoom.success`        | Received. We will review and come back to you about access.               |
-| `forms.dataRoom.error`          | That did not send. Please try again, or email us directly.                |
+| Key | English |
+| --- | --- |
+| `forms.pilot.headline` | Request a pilot |
+| `forms.pilot.subhead` | Tell us the chain and the store. We come back with a site assessment. |
+| `forms.pilot.fields.name` | Full name |
+| `forms.pilot.fields.role` | Role |
+| `forms.pilot.fields.company` | Chain or company |
+| `forms.pilot.fields.email` | Work email |
+| `forms.pilot.fields.phone` | Phone |
+| `forms.pilot.fields.storeCount` | Number of stores |
+| `forms.pilot.fields.city` | City |
+| `forms.pilot.fields.siteType` | Intended placement |
+| `forms.pilot.fields.message` | Anything we should know about the site |
+| `forms.pilot.submit` | Request a pilot |
+| `forms.pilot.success` | Received. We will come back to you with next steps for a site assessment. |
+| `forms.pilot.error` | That did not send. Please try again, or email us directly. |
+| `forms.dataRoom.headline` | Request data room access |
+| `forms.dataRoom.subhead` | Access is granted to named individuals. |
+| `forms.dataRoom.fields.name` | Full name |
+| `forms.dataRoom.fields.firm` | Firm |
+| `forms.dataRoom.fields.email` | Work email |
+| `forms.dataRoom.fields.type` | Investor type |
+| `forms.dataRoom.fields.ticket` | Typical cheque size |
+| `forms.dataRoom.fields.message` | What you want to see first |
+| `forms.dataRoom.submit` | Request access |
+| `forms.dataRoom.success` | Received. We will review and come back to you about access. |
+| `forms.dataRoom.error` | That did not send. Please try again, or email us directly. |
 
 ### `home` — 26 strings
 
-| Key                                    | English                                                                                                                                                                                                             |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `home.hero.headline.base`              | Take back PET and aluminium at the store entrance.                                                                                                                                                                  |
-| `home.hero.headline.scaled.before`     | Take back                                                                                                                                                                                                           |
-| `home.hero.headline.scaled.after`      | containers a day, at the store entrance.                                                                                                                                                                            |
-| `home.hero.subhead`                    | Green Exchange builds and operates reverse vending machines that accept used PET bottles and aluminium cans and return value to the depositor. We install, service and report. Your staff do not touch the machine. |
-| `home.hero.specHeading`                | Per machine                                                                                                                                                                                                         |
-| `home.hero.scrollCue`                  | Next — two ways in                                                                                                                                                                                                  |
-| `home.proposition.headline`            | One machine, three outcomes                                                                                                                                                                                         |
-| `home.proposition.retail.headline`     | Return footfall to the store                                                                                                                                                                                        |
-| `home.proposition.retail.body`         | Depositors come to the machine, and the machine sits inside your footprint. Value returned to the depositor can be redeemed in store.                                                                               |
-| `home.proposition.operations.headline` | No servicing burden on store staff                                                                                                                                                                                  |
-| `home.proposition.operations.body`     | Collection, maintenance and material logistics are ours. You provide floor space and power.                                                                                                                         |
-| `home.proposition.compliance.headline` | Reporting you can put in a disclosure                                                                                                                                                                               |
-| `home.proposition.compliance.body`     | Every deposit is counted by stream. Recovered tonnage is reported per site on a fixed cadence.                                                                                                                      |
-| `home.howItWorks.headline`             | How a deposit works                                                                                                                                                                                                 |
-| `home.howItWorks.steps.0.headline`     | Insert                                                                                                                                                                                                              |
-| `home.howItWorks.steps.0.body`         | The depositor feeds in a PET bottle or aluminium can. The machine identifies the container and the stream.                                                                                                          |
-| `home.howItWorks.steps.1.headline`     | Validate and compact                                                                                                                                                                                                |
-| `home.howItWorks.steps.1.body`         | Accepted containers are compacted and sorted by material on board, so a collection carries more.                                                                                                                    |
-| `home.howItWorks.steps.2.headline`     | Return value                                                                                                                                                                                                        |
-| `home.howItWorks.steps.2.body`         | The depositor receives value for the container, redeemable in store.                                                                                                                                                |
-| `home.howItWorks.steps.3.headline`     | Collect and bale                                                                                                                                                                                                    |
-| `home.howItWorks.steps.3.body`         | We collect on a scheduled route, bale by stream, and report the recovered tonnage back to the site.                                                                                                                 |
-| `home.traction.headline`               | Where we are now                                                                                                                                                                                                    |
-| `home.traction.body`                   | Current deployment and recovery figures, updated as machines go live.                                                                                                                                               |
-| `home.closing.headline`                | Start with one store.                                                                                                                                                                                               |
-| `home.closing.body`                    | A pilot is a single site, a defined review period, and a written assessment at the end of it.                                                                                                                       |
+| Key | English |
+| --- | --- |
+| `home.hero.headline.base` | Take back PET and aluminium at the store entrance. |
+| `home.hero.headline.scaled.before` | Take back |
+| `home.hero.headline.scaled.after` | containers a day, at the store entrance. |
+| `home.hero.subhead` | Green Exchange builds and operates reverse vending machines that accept used PET bottles and aluminium cans and return value to the depositor. We install, service and report. Your staff do not touch the machine. |
+| `home.hero.specHeading` | Per machine |
+| `home.hero.scrollCue` | Next — two ways in |
+| `home.proposition.headline` | One machine, three outcomes |
+| `home.proposition.retail.headline` | Return footfall to the store |
+| `home.proposition.retail.body` | Depositors come to the machine, and the machine sits inside your footprint. Value returned to the depositor can be redeemed in store. |
+| `home.proposition.operations.headline` | No servicing burden on store staff |
+| `home.proposition.operations.body` | Collection, maintenance and material logistics are ours. You provide floor space and power. |
+| `home.proposition.compliance.headline` | Reporting you can put in a disclosure |
+| `home.proposition.compliance.body` | Every deposit is counted by stream. Recovered tonnage is reported per site on a fixed cadence. |
+| `home.howItWorks.headline` | How a deposit works |
+| `home.howItWorks.steps.0.headline` | Insert |
+| `home.howItWorks.steps.0.body` | The depositor feeds in a PET bottle or aluminium can. The machine identifies the container and the stream. |
+| `home.howItWorks.steps.1.headline` | Validate and compact |
+| `home.howItWorks.steps.1.body` | Accepted containers are compacted and sorted by material on board, so a collection carries more. |
+| `home.howItWorks.steps.2.headline` | Return value |
+| `home.howItWorks.steps.2.body` | The depositor receives value for the container, redeemable in store. |
+| `home.howItWorks.steps.3.headline` | Collect and bale |
+| `home.howItWorks.steps.3.body` | We collect on a scheduled route, bale by stream, and report the recovered tonnage back to the site. |
+| `home.traction.headline` | Where we are now |
+| `home.traction.body` | Current deployment and recovery figures, updated as machines go live. |
+| `home.closing.headline` | Start with one store. |
+| `home.closing.body` | A pilot is a single site, a defined review period, and a written assessment at the end of it. |
 
 ### `impact` — 29 strings
 
-| Key                                     | English                                                                                                                                                                                                                                                                                                                         |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `impact.hero.eyebrow`                   | Impact                                                                                                                                                                                                                                                                                                                          |
-| `impact.hero.headline`                  | Material recovered, and how we know.                                                                                                                                                                                                                                                                                            |
-| `impact.hero.subhead`                   | Impact here means tonnes of PET and aluminium that went back into material rather than to landfill, counted per container at the machine. Every figure below states its unit and the period it covers. Anything not yet measured shows as a dash rather than as a number.                                                       |
-| `impact.counters.heading`               | Recovery to date                                                                                                                                                                                                                                                                                                                |
-| `impact.counters.intro`                 | Cumulative totals from machine telemetry. A figure animates only once it has been measured and has a stated period — until then it is a dash.                                                                                                                                                                                   |
-| `impact.flow.heading`                   | Where Egypt’s PET actually goes                                                                                                                                                                                                                                                                                                 |
-| `impact.flow.intro`                     | The gap this business addresses is not between consumption and recycling — it is between consumption and FORMAL recovery. Informal collectors already recover a large share, and leaving them out of the picture would overstate the problem and misrepresent the market.                                                       |
-| `impact.flow.title`                     | Egypt PET material flow: consumed against destination                                                                                                                                                                                                                                                                           |
-| `impact.flow.totalPrefix`               | Total annual consumption:                                                                                                                                                                                                                                                                                                       |
-| `impact.flow.sourcePrefix`              | Source:                                                                                                                                                                                                                                                                                                                         |
-| `impact.flow.unsourcedHeading`          | Chart not drawn — no public source                                                                                                                                                                                                                                                                                              |
-| `impact.flow.unsourcedBody`             | The structure of the flow is shown, but not the proportions. Drawing magnitudes without a public source for every band would produce a chart that reads as authoritative and is not. Each band needs a figure from the same study and the same year — mixing sources is how a flow chart ends up looking right and being wrong. |
-| `impact.flow.unsourcedDescription`      | Structure of the Egypt PET material flow: consumption divides into formally collected, informally collected and uncollected. Proportions are not shown because no public source has been supplied.                                                                                                                              |
-| `impact.flow.mismatchHeading`           | Chart not drawn — bands do not reconcile                                                                                                                                                                                                                                                                                        |
-| `impact.flow.mismatchBody`              | The three destinations do not sum to total consumption within tolerance, which means at least one figure comes from a different study, a different year or a different definition. The chart refuses to draw rather than hide the discrepancy behind rounding.                                                                  |
-| `impact.methodology.heading`            | How we calculate recovered tonnage                                                                                                                                                                                                                                                                                              |
-| `impact.methodology.intro`              | Short version: we count containers, not bags. Tonnage is derived from counted containers and weighed collections, and the two are reconciled.                                                                                                                                                                                   |
-| `impact.methodology.steps.0.heading`    | Count at the point of acceptance                                                                                                                                                                                                                                                                                                |
-| `impact.methodology.steps.0.body`       | Every accepted container is counted by the machine at the moment it is validated, by material stream. Rejected containers are not counted. This is a count of objects, not an estimate from volume.                                                                                                                             |
-| `impact.methodology.steps.1.heading`    | Weigh at collection                                                                                                                                                                                                                                                                                                             |
-| `impact.methodology.steps.1.body`       | Each collection is weighed by stream when it leaves the site. That gives an actual mass, independent of the container count.                                                                                                                                                                                                    |
-| `impact.methodology.steps.2.heading`    | Reconcile the two                                                                                                                                                                                                                                                                                                               |
-| `impact.methodology.steps.2.body`       | Counted containers multiplied by the average container mass for that stream should agree with the weighed mass. Where they diverge, the weighed mass is authoritative and the average mass is corrected — not the other way round.                                                                                              |
-| `impact.methodology.steps.3.heading`    | Report the weighed figure                                                                                                                                                                                                                                                                                                       |
-| `impact.methodology.steps.3.body`       | Published tonnage is weighed mass, not modelled mass. Contamination and moisture are part of the weighed figure until material is sorted at the processing centre, so the reported figure is conservative rather than flattering.                                                                                               |
-| `impact.methodology.exclusions.heading` | What is deliberately excluded                                                                                                                                                                                                                                                                                                   |
-| `impact.methodology.exclusions.items.0` | No avoided-emissions figure is published without a stated methodology and a source. A CO₂e number is a calculation, not a measurement, and it inherits every assumption behind it.                                                                                                                                              |
-| `impact.methodology.exclusions.items.1` | No claim is made about material that leaves our custody. We report what we recovered and sold, not what a reprocessor ultimately did with it.                                                                                                                                                                                   |
-| `impact.methodology.exclusions.items.2` | Containers rejected by the machine are excluded entirely, even though a depositor carried them in.                                                                                                                                                                                                                              |
+| Key | English |
+| --- | --- |
+| `impact.hero.eyebrow` | Impact |
+| `impact.hero.headline` | Material recovered, and how we know. |
+| `impact.hero.subhead` | Impact here means tonnes of PET and aluminium that went back into material rather than to landfill, counted per container at the machine. Every figure below states its unit and the period it covers. Anything not yet measured shows as a dash rather than as a number. |
+| `impact.counters.heading` | Recovery to date |
+| `impact.counters.intro` | Cumulative totals from machine telemetry. A figure animates only once it has been measured and has a stated period — until then it is a dash. |
+| `impact.flow.heading` | Where Egypt’s PET actually goes |
+| `impact.flow.intro` | The gap this business addresses is not between consumption and recycling — it is between consumption and FORMAL recovery. Informal collectors already recover a large share, and leaving them out of the picture would overstate the problem and misrepresent the market. |
+| `impact.flow.title` | Egypt PET material flow: consumed against destination |
+| `impact.flow.totalPrefix` | Total annual consumption: |
+| `impact.flow.sourcePrefix` | Source: |
+| `impact.flow.unsourcedHeading` | Chart not drawn — no public source |
+| `impact.flow.unsourcedBody` | The structure of the flow is shown, but not the proportions. Drawing magnitudes without a public source for every band would produce a chart that reads as authoritative and is not. Each band needs a figure from the same study and the same year — mixing sources is how a flow chart ends up looking right and being wrong. |
+| `impact.flow.unsourcedDescription` | Structure of the Egypt PET material flow: consumption divides into formally collected, informally collected and uncollected. Proportions are not shown because no public source has been supplied. |
+| `impact.flow.mismatchHeading` | Chart not drawn — bands do not reconcile |
+| `impact.flow.mismatchBody` | The three destinations do not sum to total consumption within tolerance, which means at least one figure comes from a different study, a different year or a different definition. The chart refuses to draw rather than hide the discrepancy behind rounding. |
+| `impact.methodology.heading` | How we calculate recovered tonnage |
+| `impact.methodology.intro` | Short version: we count containers, not bags. Tonnage is derived from counted containers and weighed collections, and the two are reconciled. |
+| `impact.methodology.steps.0.heading` | Count at the point of acceptance |
+| `impact.methodology.steps.0.body` | Every accepted container is counted by the machine at the moment it is validated, by material stream. Rejected containers are not counted. This is a count of objects, not an estimate from volume. |
+| `impact.methodology.steps.1.heading` | Weigh at collection |
+| `impact.methodology.steps.1.body` | Each collection is weighed by stream when it leaves the site. That gives an actual mass, independent of the container count. |
+| `impact.methodology.steps.2.heading` | Reconcile the two |
+| `impact.methodology.steps.2.body` | Counted containers multiplied by the average container mass for that stream should agree with the weighed mass. Where they diverge, the weighed mass is authoritative and the average mass is corrected — not the other way round. |
+| `impact.methodology.steps.3.heading` | Report the weighed figure |
+| `impact.methodology.steps.3.body` | Published tonnage is weighed mass, not modelled mass. Contamination and moisture are part of the weighed figure until material is sorted at the processing centre, so the reported figure is conservative rather than flattering. |
+| `impact.methodology.exclusions.heading` | What is deliberately excluded |
+| `impact.methodology.exclusions.items.0` | No avoided-emissions figure is published without a stated methodology and a source. A CO₂e number is a calculation, not a measurement, and it inherits every assumption behind it. |
+| `impact.methodology.exclusions.items.1` | No claim is made about material that leaves our custody. We report what we recovered and sold, not what a reprocessor ultimately did with it. |
+| `impact.methodology.exclusions.items.2` | Containers rejected by the machine are excluded entirely, even though a depositor carried them in. |
 
 ### `investorDisclaimer` — 2 strings
 
-| Key                          | English                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `investorDisclaimer.heading` | Placeholder disclaimer — not legal text                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `investorDisclaimer.body`    | This block is a placeholder for a disclaimer to be drafted by a qualified lawyer covering, at minimum: that nothing on these pages is an offer or solicitation to buy or sell securities, the jurisdictions in which the materials may be received, forward-looking-statement language, and the basis on which any figure is presented. It has deliberately not been drafted in-house. The production build fails while this placeholder is in place. |
+| Key | English |
+| --- | --- |
+| `investorDisclaimer.heading` | Placeholder disclaimer — not legal text |
+| `investorDisclaimer.body` | This block is a placeholder for a disclaimer to be drafted by a qualified lawyer covering, at minimum: that nothing on these pages is an offer or solicitation to buy or sell securities, the jurisdictions in which the materials may be received, forward-looking-statement language, and the basis on which any figure is presented. It has deliberately not been drafted in-house. The production build fails while this placeholder is in place. |
 
 ### `investors` — 12 strings
 
-| Key                                | English                                                                                                                                                  |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `investors.hero.headline`          | Deposit infrastructure for the Egyptian retail network.                                                                                                  |
-| `investors.hero.subhead`           | Machines built in Romania, deployed and operated in Egypt. Revenue from recovered material and retail partnerships.                                      |
-| `investors.thesis.headline`        | The position                                                                                                                                             |
-| `investors.thesis.body`            | PET and aluminium enter Egypt in volume and are recovered at a fraction of that rate. Retail is where containers are already carried in.                 |
-| `investors.unitEconomics.headline` | Unit economics                                                                                                                                           |
-| `investors.unitEconomics.body`     | Capital cost, operating cost and payback measured per machine. Material offtake priced by stream.                                                        |
-| `investors.defensibility.headline` | Defensibility                                                                                                                                            |
-| `investors.defensibility.body`     | We build the hardware and hold the retail siting agreements and collection routes. Placement compounds: each site makes the next route cheaper to serve. |
-| `investors.market.headline`        | Market                                                                                                                                                   |
-| `investors.market.body`            | Egypt first, on the retail network. MENA is expansion, not the near-term case.                                                                           |
-| `investors.dataRoom.headline`      | Data room                                                                                                                                                |
-| `investors.dataRoom.body`          | Financial model, deployment plan, machine specification and offtake terms. Access on request.                                                            |
+| Key | English |
+| --- | --- |
+| `investors.hero.headline` | Deposit infrastructure for the Egyptian retail network. |
+| `investors.hero.subhead` | Machines built in Romania, deployed and operated in Egypt. Revenue from recovered material and retail partnerships. |
+| `investors.thesis.headline` | The position |
+| `investors.thesis.body` | PET and aluminium enter Egypt in volume and are recovered at a fraction of that rate. Retail is where containers are already carried in. |
+| `investors.unitEconomics.headline` | Unit economics |
+| `investors.unitEconomics.body` | Capital cost, operating cost and payback measured per machine. Material offtake priced by stream. |
+| `investors.defensibility.headline` | Defensibility |
+| `investors.defensibility.body` | We build the hardware and hold the retail siting agreements and collection routes. Placement compounds: each site makes the next route cheaper to serve. |
+| `investors.market.headline` | Market |
+| `investors.market.body` | Egypt first, on the retail network. MENA is expansion, not the near-term case. |
+| `investors.dataRoom.headline` | Data room |
+| `investors.dataRoom.body` | Financial model, deployment plan, machine specification and offtake terms. Access on request. |
 
 ### `investorsPublic` — 30 strings
 
-| Key                                     | English                                                                                                                                                                                                                                                                 |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `investorsPublic.hero.eyebrow`          | For investors                                                                                                                                                                                                                                                           |
-| `investorsPublic.hero.headline`         | Deposit infrastructure, built before the mandate arrives.                                                                                                                                                                                                               |
-| `investorsPublic.hero.thesis.0`         | PET and aluminium enter Egypt in volume and are recovered at a fraction of the rate, because collection depends on informal channels rather than infrastructure.                                                                                                        |
-| `investorsPublic.hero.thesis.1`         | Retail is where those containers are already carried in and out every day, which makes a store entrance the cheapest place to intercept them.                                                                                                                           |
-| `investorsPublic.hero.thesis.2`         | Regulation is moving toward producer responsibility across the region, and the operators holding retail siting agreements and collection routes when it lands are the ones who can serve it.                                                                            |
-| `investorsPublic.market.heading`        | Market context                                                                                                                                                                                                                                                          |
-| `investorsPublic.market.intro`          | Four figures matter here, and each appears only when it carries a named public source. Anything unsourced is absent from this page rather than shown with a caveat.                                                                                                     |
-| `investorsPublic.market.pendingHeading` | No sourced market figures are published yet                                                                                                                                                                                                                             |
-| `investorsPublic.market.pendingBody`    | The figures for this section have not been tied to a named public source. Rather than publish them with a hedge, they are withheld until each one cites the instrument or dataset it comes from. The full market analysis, with its sources, is in the data room.       |
+| Key | English |
+| --- | --- |
+| `investorsPublic.hero.eyebrow` | For investors |
+| `investorsPublic.hero.headline` | Deposit infrastructure, built before the mandate arrives. |
+| `investorsPublic.hero.thesis.0` | PET and aluminium enter Egypt in volume and are recovered at a fraction of the rate, because collection depends on informal channels rather than infrastructure. |
+| `investorsPublic.hero.thesis.1` | Retail is where those containers are already carried in and out every day, which makes a store entrance the cheapest place to intercept them. |
+| `investorsPublic.hero.thesis.2` | Regulation is moving toward producer responsibility across the region, and the operators holding retail siting agreements and collection routes when it lands are the ones who can serve it. |
+| `investorsPublic.market.heading` | Market context |
+| `investorsPublic.market.intro` | Four figures matter here, and each appears only when it carries a named public source. Anything unsourced is absent from this page rather than shown with a caveat. |
+| `investorsPublic.market.pendingHeading` | No sourced market figures are published yet |
+| `investorsPublic.market.pendingBody` | The figures for this section have not been tied to a named public source. Rather than publish them with a hedge, they are withheld until each one cites the instrument or dataset it comes from. The full market analysis, with its sources, is in the data room. |
 | `investorsPublic.market.regulatoryNote` | Direction of travel, not a prediction: Egypt legislated a framework for waste management in 2020, and producer-responsibility instruments across MENA have followed the same pattern. We do not model a mandate date, and nothing on this page depends on one arriving. |
-| `investorsPublic.model.heading`         | How a machine makes money                                                                                                                                                                                                                                               |
-| `investorsPublic.model.intro`           | Four revenue lines. Described as mechanisms only — no figures appear on this page, and the unit economics are in the data room.                                                                                                                                         |
-| `investorsPublic.model.lines.0.heading` | Retailer contract                                                                                                                                                                                                                                                       |
-| `investorsPublic.model.lines.0.body`    | The site pays for placement and service, or takes a share of recovered material value, depending on the deal. Either way the machine is contracted per site rather than sold as hardware.                                                                               |
-| `investorsPublic.model.lines.1.heading` | Material sale                                                                                                                                                                                                                                                           |
-| `investorsPublic.model.lines.1.body`    | Baled PET and aluminium are sold to reprocessors. Separation quality upstream sets the price, which is why sorting happens before compaction rather than after.                                                                                                         |
-| `investorsPublic.model.lines.2.heading` | Brand sponsorship                                                                                                                                                                                                                                                       |
-| `investorsPublic.model.lines.2.body`    | A machine at a store entrance is a branded surface with a measurable interaction count, and beverage producers facing producer-responsibility obligations have a reason to fund collection directly.                                                                    |
-| `investorsPublic.model.lines.3.heading` | Data                                                                                                                                                                                                                                                                    |
-| `investorsPublic.model.lines.3.body`    | Every accepted container is a counted, located, time-stamped return by material and by product. That record is what a producer needs to evidence recovery, and it is the line with the lowest marginal cost.                                                            |
-| `investorsPublic.model.note`            | Which lines carry the model, in what proportion, and at what cost is exactly the question the data room answers. It is not answered here.                                                                                                                               |
-| `investorsPublic.traction.heading`      | Where we actually are                                                                                                                                                                                                                                                   |
-| `investorsPublic.traction.intro`        | Stated conservatively and stage-appropriately. Built, signed and deployed are separate counts and are kept separate; an unmeasured figure is shown as unmeasured rather than rounded up.                                                                                |
-| `investorsPublic.traction.note`         | A letter of intent is not a pilot and a pilot is not a rollout. Conflating them is the most common way an early company overstates itself, so these are counted separately here.                                                                                        |
-| `investorsPublic.team.heading`          | Team                                                                                                                                                                                                                                                                    |
-| `investorsPublic.team.intro`            | Real names and real current roles only.                                                                                                                                                                                                                                 |
-| `investorsPublic.team.pendingHeading`   | Team details are not published yet                                                                                                                                                                                                                                      |
-| `investorsPublic.team.pendingBody`      | No names or roles have been supplied for publication. An investor will verify every person listed on a page like this, so nothing is listed until it is accurate and the individuals have agreed to appear. Team and background are covered in the data room.           |
-| `investorsPublic.cta.heading`           | Request data room access                                                                                                                                                                                                                                                |
-| `investorsPublic.cta.body`              | Access is reviewed and granted manually. Requests are not approved automatically, and submitting this form does not create any commitment on either side.                                                                                                               |
+| `investorsPublic.model.heading` | How a machine makes money |
+| `investorsPublic.model.intro` | Four revenue lines. Described as mechanisms only — no figures appear on this page, and the unit economics are in the data room. |
+| `investorsPublic.model.lines.0.heading` | Retailer contract |
+| `investorsPublic.model.lines.0.body` | The site pays for placement and service, or takes a share of recovered material value, depending on the deal. Either way the machine is contracted per site rather than sold as hardware. |
+| `investorsPublic.model.lines.1.heading` | Material sale |
+| `investorsPublic.model.lines.1.body` | Baled PET and aluminium are sold to reprocessors. Separation quality upstream sets the price, which is why sorting happens before compaction rather than after. |
+| `investorsPublic.model.lines.2.heading` | Brand sponsorship |
+| `investorsPublic.model.lines.2.body` | A machine at a store entrance is a branded surface with a measurable interaction count, and beverage producers facing producer-responsibility obligations have a reason to fund collection directly. |
+| `investorsPublic.model.lines.3.heading` | Data |
+| `investorsPublic.model.lines.3.body` | Every accepted container is a counted, located, time-stamped return by material and by product. That record is what a producer needs to evidence recovery, and it is the line with the lowest marginal cost. |
+| `investorsPublic.model.note` | Which lines carry the model, in what proportion, and at what cost is exactly the question the data room answers. It is not answered here. |
+| `investorsPublic.traction.heading` | Where we actually are |
+| `investorsPublic.traction.intro` | Stated conservatively and stage-appropriately. Built, signed and deployed are separate counts and are kept separate; an unmeasured figure is shown as unmeasured rather than rounded up. |
+| `investorsPublic.traction.note` | A letter of intent is not a pilot and a pilot is not a rollout. Conflating them is the most common way an early company overstates itself, so these are counted separately here. |
+| `investorsPublic.team.heading` | Team |
+| `investorsPublic.team.intro` | Real names and real current roles only. |
+| `investorsPublic.team.pendingHeading` | Team details are not published yet |
+| `investorsPublic.team.pendingBody` | No names or roles have been supplied for publication. An investor will verify every person listed on a page like this, so nothing is listed until it is accurate and the individuals have agreed to appear. Team and background are covered in the data room. |
+| `investorsPublic.cta.heading` | Request data room access |
+| `investorsPublic.cta.body` | Access is reviewed and granted manually. Requests are not approved automatically, and submitting this form does not create any commitment on either side. |
 
 ### `nav` — 6 strings
 
-| Key                 | English       |
-| ------------------- | ------------- |
-| `nav.label`         | Primary       |
-| `nav.items.0.label` | Technology    |
+| Key | English |
+| --- | --- |
+| `nav.label` | Primary |
+| `nav.items.0.label` | Technology |
 | `nav.items.1.label` | For Retailers |
-| `nav.items.2.label` | Impact        |
-| `nav.items.3.label` | Investors     |
-| `nav.items.4.label` | Company       |
+| `nav.items.2.label` | Impact |
+| `nav.items.3.label` | Investors |
+| `nav.items.4.label` | Company |
 
 ### `received` — 26 strings
 
-| Key                                 | English                                                                                                                                                       |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `received.pilot.eyebrow`            | Pilot request received                                                                                                                                        |
-| `received.pilot.heading`            | We have your request.                                                                                                                                         |
-| `received.pilot.referenceLabel`     | Your reference                                                                                                                                                |
-| `received.pilot.referenceNote`      | Quote this if you follow up.                                                                                                                                  |
-| `received.pilot.nextHeading`        | What happens next                                                                                                                                             |
-| `received.pilot.steps.0.heading`    | We read it and come back to you                                                                                                                               |
-| `received.pilot.steps.0.body`       | A person reviews the request and replies to the address you gave, to confirm we have it and to ask anything missing about the site.                           |
-| `received.pilot.steps.1.heading`    | Site assessment                                                                                                                                               |
-| `received.pilot.steps.1.body`       | We look at the entrance or car park you have in mind: siting, power, connectivity and collection access. This can start as a call and a photo of the doorway. |
-| `received.pilot.steps.2.heading`    | Install plan for one named store                                                                                                                              |
-| `received.pilot.steps.2.body`       | You get a written plan for a single site — placement, servicing rota, and what we need from your team — before anything is committed.                         |
-| `received.pilot.responseLabel`      | Response time                                                                                                                                                 |
-| `received.pilot.changedYourMind`    | If you need to correct anything you sent, reply to the confirmation email or write to us directly.                                                            |
-| `received.dataRoom.eyebrow`         | Request lodged                                                                                                                                                |
-| `received.dataRoom.heading`         | Your request is with us.                                                                                                                                      |
-| `received.dataRoom.referenceLabel`  | Your reference                                                                                                                                                |
-| `received.dataRoom.referenceNote`   | Quote this if you follow up.                                                                                                                                  |
-| `received.dataRoom.nextHeading`     | What happens next                                                                                                                                             |
-| `received.dataRoom.steps.0.heading` | A person reviews the request                                                                                                                                  |
-| `received.dataRoom.steps.0.body`    | Requests are reviewed individually against who is asking and why. Nothing is granted automatically, and submitting this form has granted nothing.             |
-| `received.dataRoom.steps.1.heading` | We reply either way                                                                                                                                           |
-| `received.dataRoom.steps.1.body`    | You get an answer whether or not access is granted. A decision not to open the data room is not a silence.                                                    |
-| `received.dataRoom.steps.2.heading` | Access, if granted, is a time-limited link                                                                                                                    |
-| `received.dataRoom.steps.2.body`    | Approved requesters receive a signed link to the materials that expires. It is issued to you by name and is not transferable.                                 |
-| `received.dataRoom.responseLabel`   | Review time                                                                                                                                                   |
-| `received.dataRoom.notGranted`      | Access has not been granted by this submission.                                                                                                               |
+| Key | English |
+| --- | --- |
+| `received.pilot.eyebrow` | Pilot request received |
+| `received.pilot.heading` | We have your request. |
+| `received.pilot.referenceLabel` | Your reference |
+| `received.pilot.referenceNote` | Quote this if you follow up. |
+| `received.pilot.nextHeading` | What happens next |
+| `received.pilot.steps.0.heading` | We read it and come back to you |
+| `received.pilot.steps.0.body` | A person reviews the request and replies to the address you gave, to confirm we have it and to ask anything missing about the site. |
+| `received.pilot.steps.1.heading` | Site assessment |
+| `received.pilot.steps.1.body` | We look at the entrance or car park you have in mind: siting, power, connectivity and collection access. This can start as a call and a photo of the doorway. |
+| `received.pilot.steps.2.heading` | Install plan for one named store |
+| `received.pilot.steps.2.body` | You get a written plan for a single site — placement, servicing rota, and what we need from your team — before anything is committed. |
+| `received.pilot.responseLabel` | Response time |
+| `received.pilot.changedYourMind` | If you need to correct anything you sent, reply to the confirmation email or write to us directly. |
+| `received.dataRoom.eyebrow` | Request lodged |
+| `received.dataRoom.heading` | Your request is with us. |
+| `received.dataRoom.referenceLabel` | Your reference |
+| `received.dataRoom.referenceNote` | Quote this if you follow up. |
+| `received.dataRoom.nextHeading` | What happens next |
+| `received.dataRoom.steps.0.heading` | A person reviews the request |
+| `received.dataRoom.steps.0.body` | Requests are reviewed individually against who is asking and why. Nothing is granted automatically, and submitting this form has granted nothing. |
+| `received.dataRoom.steps.1.heading` | We reply either way |
+| `received.dataRoom.steps.1.body` | You get an answer whether or not access is granted. A decision not to open the data room is not a silence. |
+| `received.dataRoom.steps.2.heading` | Access, if granted, is a time-limited link |
+| `received.dataRoom.steps.2.body` | Approved requesters receive a signed link to the materials that expires. It is issued to you by name and is not transferable. |
+| `received.dataRoom.responseLabel` | Review time |
+| `received.dataRoom.notGranted` | Access has not been granted by this submission. |
 
 ### `retail` — 15 strings
 
-| Key                          | English                                                                                                     |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `retail.hero.headline`       | A deposit point that pays for its floor space.                                                              |
-| `retail.hero.subhead`        | For hypermarket, supermarket and convenience operators placing machines at store entrances or in car parks. |
-| `retail.footprint.headline`  | What the machine needs from the site                                                                        |
-| `retail.footprint.body`      | Floor space, power and access for collection. Nothing else.                                                 |
-| `retail.servicing.headline`  | Who does the work                                                                                           |
-| `retail.servicing.body`      | Green Exchange operates the machine. Collection and maintenance run on our schedule, not your rota.         |
-| `retail.commercial.headline` | How the site earns                                                                                          |
-| `retail.commercial.body`     | Revenue share on recovered material, plus redemption in store when depositors spend the value they receive. |
-| `retail.reporting.headline`  | What you receive                                                                                            |
-| `retail.reporting.body`      | Volumes by stream and by site, recovered tonnage, and machine availability, on a fixed reporting cadence.   |
-| `retail.pilot.headline`      | What a pilot involves                                                                                       |
-| `retail.pilot.steps.0`       | Site assessment: entrance or car park, siting, power and collection access.                                 |
-| `retail.pilot.steps.1`       | Install and commissioning on an agreed date.                                                                |
-| `retail.pilot.steps.2`       | Defined review period with reporting from day one.                                                          |
-| `retail.pilot.steps.3`       | Written assessment: volumes, availability, and a decision on rollout.                                       |
+| Key | English |
+| --- | --- |
+| `retail.hero.headline` | A deposit point that pays for its floor space. |
+| `retail.hero.subhead` | For hypermarket, supermarket and convenience operators placing machines at store entrances or in car parks. |
+| `retail.footprint.headline` | What the machine needs from the site |
+| `retail.footprint.body` | Floor space, power and access for collection. Nothing else. |
+| `retail.servicing.headline` | Who does the work |
+| `retail.servicing.body` | Green Exchange operates the machine. Collection and maintenance run on our schedule, not your rota. |
+| `retail.commercial.headline` | How the site earns |
+| `retail.commercial.body` | Revenue share on recovered material, plus redemption in store when depositors spend the value they receive. |
+| `retail.reporting.headline` | What you receive |
+| `retail.reporting.body` | Volumes by stream and by site, recovered tonnage, and machine availability, on a fixed reporting cadence. |
+| `retail.pilot.headline` | What a pilot involves |
+| `retail.pilot.steps.0` | Site assessment: entrance or car park, siting, power and collection access. |
+| `retail.pilot.steps.1` | Install and commissioning on an agreed date. |
+| `retail.pilot.steps.2` | Defined review period with reporting from day one. |
+| `retail.pilot.steps.3` | Written assessment: volumes, availability, and a decision on rollout. |
 
 ### `seo` — 16 strings
 
-| Key                            | English                                                                                                                                                              |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `seo.home.title`               | Reverse vending machines for PET and aluminium                                                                                                                       |
-| `seo.home.description`         | Green Exchange builds and operates reverse vending machines that take back PET bottles and aluminium cans at the store entrance, and return value to the depositor.  |
-| `seo.technology.title`         | How a reverse vending machine works, step by step                                                                                                                    |
-| `seo.technology.description`   | The journey of a container: identification, validation, compaction, sorting by material stream, on-board storage, collection, baling and offtake to a reprocessor.   |
-| `seo.forRetailers.title`       | Reverse vending for supermarkets: space, servicing and revenue                                                                                                       |
-| `seo.forRetailers.description` | What a take-back machine costs a retail chain in floor space, staff time and attention — the footprint spec, who services it, and what comes back to the store.      |
-| `seo.impact.title`             | Material recovery: what we measure and how                                                                                                                           |
-| `seo.impact.description`       | How recovered tonnage is counted at the machine and reconciled against weighed collections, and where Egypt’s PET actually goes between consumption and recovery.    |
-| `seo.investors.title`          | Deposit return infrastructure in Egypt                                                                                                                               |
-| `seo.investors.description`    | Reverse vending machines built in Romania and operated in Egypt. Revenue from recovered material and retail partnerships. Data room access is reviewed individually. |
-| `seo.pilot.title`              | Request a pilot for one store                                                                                                                                        |
-| `seo.pilot.description`        | A pilot is a single site, a defined review period and a written assessment. Tell us the chain and the store; we come back with a site assessment.                    |
-| `seo.company.title`            | The company behind the machines                                                                                                                                      |
-| `seo.company.description`      | Who operates Green Exchange, where it is registered, and how the Romanian build and the Egyptian deployment fit together.                                            |
-| `seo.dataRoom.title`           | Request data room access                                                                                                                                             |
-| `seo.dataRoom.description`     | Access is granted to named individuals after review. Nothing is granted on submission.                                                                               |
+| Key | English |
+| --- | --- |
+| `seo.home.title` | Reverse vending machines for PET and aluminium |
+| `seo.home.description` | Green Exchange builds and operates reverse vending machines that take back PET bottles and aluminium cans at the store entrance, and return value to the depositor. |
+| `seo.technology.title` | How a reverse vending machine works, step by step |
+| `seo.technology.description` | The journey of a container: identification, validation, compaction, sorting by material stream, on-board storage, collection, baling and offtake to a reprocessor. |
+| `seo.forRetailers.title` | Reverse vending for supermarkets: space, servicing and revenue |
+| `seo.forRetailers.description` | What a take-back machine costs a retail chain in floor space, staff time and attention — the footprint spec, who services it, and what comes back to the store. |
+| `seo.impact.title` | Material recovery: what we measure and how |
+| `seo.impact.description` | How recovered tonnage is counted at the machine and reconciled against weighed collections, and where Egypt’s PET actually goes between consumption and recovery. |
+| `seo.investors.title` | Deposit return infrastructure in Egypt |
+| `seo.investors.description` | Reverse vending machines built in Romania and operated in Egypt. Revenue from recovered material and retail partnerships. Data room access is reviewed individually. |
+| `seo.pilot.title` | Request a pilot for one store |
+| `seo.pilot.description` | A pilot is a single site, a defined review period and a written assessment. Tell us the chain and the store; we come back with a site assessment. |
+| `seo.company.title` | The company behind the machines |
+| `seo.company.description` | Who operates Green Exchange, where it is registered, and how the Romanian build and the Egyptian deployment fit together. |
+| `seo.dataRoom.title` | Request data room access |
+| `seo.dataRoom.description` | Access is granted to named individuals after review. Nothing is granted on submission. |
 
 ### `site` — 2 strings
 
-| Key               | English                                                                                            |
-| ----------------- | -------------------------------------------------------------------------------------------------- |
-| `site.name`       | Green Exchange                                                                                     |
+| Key | English |
+| --- | --- |
+| `site.name` | Green Exchange |
 | `site.descriptor` | Reverse vending machines for PET bottles and aluminium cans, built and operated by Green Exchange. |
 
 ### `technology` — 31 strings
 
-| Key                        | English                                                                                                                                                                                                                 |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `technology.eyebrow`       | Technology                                                                                                                                                                                                              |
-| `technology.headline`      | One container, end to end.                                                                                                                                                                                              |
-| `technology.intro`         | What happens between a depositor putting a bottle in and a reprocessor buying the material back. Each step carries the specification that governs it.                                                                   |
-| `technology.progressLabel` | Sequence progress                                                                                                                                                                                                       |
-| `technology.steps.0.id`    | deposit                                                                                                                                                                                                                 |
-| `technology.steps.0.title` | Deposit                                                                                                                                                                                                                 |
-| `technology.steps.0.body`  | The depositor feeds a single container into the intake. One at a time, upright or on its side — the machine indexes it onto the transport before anything else happens.                                                 |
-| `technology.steps.1.id`    | identify                                                                                                                                                                                                                |
-| `technology.steps.1.title` | Identify                                                                                                                                                                                                                |
-| `technology.steps.1.body`  | A barcode read establishes which product it is. In parallel, near-infrared sensing reads the polymer and an inductive sensor detects metal, so the machine knows the material even if the label is damaged.             |
-| `technology.steps.2.id`    | validate                                                                                                                                                                                                                |
-| `technology.steps.2.title` | Validate                                                                                                                                                                                                                |
-| `technology.steps.2.body`  | The read is checked against the register of deposit-bearing containers, and the container is checked for shape and emptiness. Anything unrecognised is handed straight back rather than swallowed.                      |
-| `technology.steps.3.id`    | return-value                                                                                                                                                                                                            |
-| `technology.steps.3.title` | Return value                                                                                                                                                                                                            |
-| `technology.steps.3.body`  | Accepted containers are credited to the depositor at the machine — the reason they came. Value is redeemable in the store, which is what turns a return trip into a shopping trip.                                      |
-| `technology.steps.4.id`    | sort                                                                                                                                                                                                                    |
-| `technology.steps.4.title` | Sort by stream                                                                                                                                                                                                          |
-| `technology.steps.4.body`  | The container is diverted to its own path on the strength of the material read: PET one way, aluminium the other. Sorting happens here, before anything is crushed, because a compacted mixed mass cannot be separated. |
-| `technology.steps.5.id`    | compact                                                                                                                                                                                                                 |
-| `technology.steps.5.title` | Compact                                                                                                                                                                                                                 |
-| `technology.steps.5.body`  | Each stream is compacted its own way. PET is perforated and flattened so it cannot be re-inflated and claimed twice; cans are pressed flat. This is what makes a collection worth sending a vehicle for.                |
-| `technology.steps.6.id`    | store                                                                                                                                                                                                                   |
-| `technology.steps.6.title` | Store                                                                                                                                                                                                                   |
-| `technology.steps.6.body`  | Compacted material drops into a separate bin per stream, never a single mixed hopper. Fill level is monitored continuously, so a collection is scheduled against real volume rather than a calendar.                    |
-| `technology.steps.7.id`    | collect                                                                                                                                                                                                                 |
-| `technology.steps.7.title` | Collect and report                                                                                                                                                                                                      |
-| `technology.steps.7.body`  | Green Exchange collects on a route driven by fill level. Every accepted container is already counted, so the site receives volumes by stream and machine availability without anyone tallying anything.                 |
-| `technology.steps.8.id`    | offtake                                                                                                                                                                                                                 |
-| `technology.steps.8.title` | Bale and offtake                                                                                                                                                                                                        |
-| `technology.steps.8.body`  | Material is baled by stream at a processing centre, not in the store, then sold to a reprocessor. Separation quality upstream is what the bale is priced on.                                                            |
+| Key | English |
+| --- | --- |
+| `technology.eyebrow` | Technology |
+| `technology.headline` | One container, end to end. |
+| `technology.intro` | What happens between a depositor putting a bottle in and a reprocessor buying the material back. Each step carries the specification that governs it. |
+| `technology.progressLabel` | Sequence progress |
+| `technology.steps.0.id` | deposit |
+| `technology.steps.0.title` | Deposit |
+| `technology.steps.0.body` | The depositor feeds a single container into the intake. One at a time, upright or on its side — the machine indexes it onto the transport before anything else happens. |
+| `technology.steps.1.id` | identify |
+| `technology.steps.1.title` | Identify |
+| `technology.steps.1.body` | A barcode read establishes which product it is. In parallel, near-infrared sensing reads the polymer and an inductive sensor detects metal, so the machine knows the material even if the label is damaged. |
+| `technology.steps.2.id` | validate |
+| `technology.steps.2.title` | Validate |
+| `technology.steps.2.body` | The read is checked against the register of deposit-bearing containers, and the container is checked for shape and emptiness. Anything unrecognised is handed straight back rather than swallowed. |
+| `technology.steps.3.id` | return-value |
+| `technology.steps.3.title` | Return value |
+| `technology.steps.3.body` | Accepted containers are credited to the depositor at the machine — the reason they came. Value is redeemable in the store, which is what turns a return trip into a shopping trip. |
+| `technology.steps.4.id` | sort |
+| `technology.steps.4.title` | Sort by stream |
+| `technology.steps.4.body` | The container is diverted to its own path on the strength of the material read: PET one way, aluminium the other. Sorting happens here, before anything is crushed, because a compacted mixed mass cannot be separated. |
+| `technology.steps.5.id` | compact |
+| `technology.steps.5.title` | Compact |
+| `technology.steps.5.body` | Each stream is compacted its own way. PET is perforated and flattened so it cannot be re-inflated and claimed twice; cans are pressed flat. This is what makes a collection worth sending a vehicle for. |
+| `technology.steps.6.id` | store |
+| `technology.steps.6.title` | Store |
+| `technology.steps.6.body` | Compacted material drops into a separate bin per stream, never a single mixed hopper. Fill level is monitored continuously, so a collection is scheduled against real volume rather than a calendar. |
+| `technology.steps.7.id` | collect |
+| `technology.steps.7.title` | Collect and report |
+| `technology.steps.7.body` | Green Exchange collects on a route driven by fill level. Every accepted container is already counted, so the site receives volumes by stream and machine availability without anyone tallying anything. |
+| `technology.steps.8.id` | offtake |
+| `technology.steps.8.title` | Bale and offtake |
+| `technology.steps.8.body` | Material is baled by stream at a processing centre, not in the store, then sold to a reprocessor. Separation quality upstream is what the bale is priced on. |
+
