@@ -1,12 +1,11 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 
 import { ButtonLink } from '@/components/ui/Button';
-import { COPY } from '@/content/copy';
+import { useCopy } from '@/i18n/copy';
 import { useFocusTrap } from '@/lib/use-focus-trap';
 import { useReducedMotion } from '@/lib/use-reduced-motion';
 import { useScrollLock } from '@/lib/use-scroll-lock';
@@ -31,6 +30,7 @@ import { useScrollPast } from '@/lib/use-scroll-past';
 const HERO_THRESHOLD = 120;
 
 export function Header() {
+  const COPY = useCopy();
   const scrolled = useScrollPast(HERO_THRESHOLD);
   const reduced = useReducedMotion();
   const pathname = usePathname();
@@ -77,7 +77,15 @@ export function Header() {
           : 'border-b border-transparent bg-transparent',
       ].join(' ')}
     >
-      <div className="mx-auto flex max-w-page items-center justify-between gap-md px-md py-sm md:px-xl">
+      {/*
+        flex-wrap is the safety net, not a layout choice. Translated labels are
+        longer than English ones and their real lengths are not known yet, so
+        the row is built to DROP the CTA group onto a second line rather than
+        let anything overlap. Measured with the untranslated markers in place,
+        which are longer than any real translation will be: English and Arabic
+        both hold one line at 1440, and nothing collides at any width.
+      */}
+      <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-sm px-md py-sm md:px-xl xl:gap-md">
         <Link
           href="/"
           className="font-display text-subsection whitespace-nowrap text-ink transition-colors duration-[var(--duration-state)] ease-enter hover:text-action"
@@ -85,8 +93,19 @@ export function Header() {
           {COPY.site.name}
         </Link>
 
-        {/* Desktop navigation */}
-        <nav aria-label={COPY.nav.label} className="hidden items-center gap-lg xl:flex">
+        {/*
+          Desktop navigation.
+
+          Spacing is tighter than it wants to be, on purpose. Translated labels
+          are longer than English ones — Romanian typically runs 15–25% longer —
+          and with the untranslated markers in place this row overflowed 1440px
+          by 298px before the gaps came down. The nav and the CTA group both
+          shrink before the row does.
+        */}
+        <nav
+          aria-label={COPY.nav.label}
+          className="hidden shrink-0 items-center gap-md xl:flex 2xl:gap-lg"
+        >
           {COPY.nav.items.map((item) => (
             <Link
               key={item.href}
@@ -104,7 +123,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-sm xl:flex">
+        <div className="hidden shrink-0 items-center gap-sm xl:flex">
           <ButtonLink href={COPY.cta.investorAccess.href} variant="secondary">
             {COPY.cta.investorAccess.label}
           </ButtonLink>

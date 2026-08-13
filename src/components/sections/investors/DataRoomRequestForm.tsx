@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { CheckboxField, FormToken, Honeypot, SelectField, TextField } from '@/components/ui/Field';
 import { FormFailure } from '@/components/ui/FormFailure';
 import { Panel } from '@/components/ui/Panel';
-import { COPY } from '@/content/copy';
+import { useCopy } from '@/i18n/copy';
 import { requestDataRoomAccess } from '@/lib/forms/actions';
 import { DATA_ROOM_FIELDS, dataRoomSchema } from '@/lib/forms/schemas';
 import { DATA_ROOM_INITIAL_STATE } from '@/lib/forms/state';
@@ -27,6 +27,7 @@ import { useFormValidation } from '@/lib/forms/use-form-validation';
  */
 
 export function DataRoomRequestForm({ token }: { token: string }) {
+  const COPY = useCopy();
   const [state, formAction, pending] = useActionState(
     requestDataRoomAccess,
     DATA_ROOM_INITIAL_STATE,

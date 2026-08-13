@@ -8,7 +8,7 @@
  */
 
 import { FACTS, type FactId } from '@/content/facts';
-import { COPY } from '@/content/copy';
+import { getCopy } from '@/i18n/copy';
 
 type Size = 'readout' | 'data';
 
@@ -17,7 +17,8 @@ const SIZES: Record<Size, string> = {
   data: 'text-data text-ink',
 };
 
-export function FactValue({ id, size = 'readout' }: { id: FactId; size?: Size }) {
+export async function FactValue({ id, size = 'readout' }: { id: FactId; size?: Size }) {
+  const COPY = await getCopy();
   const fact = FACTS[id];
   const pending = fact.status === 'PLACEHOLDER';
 

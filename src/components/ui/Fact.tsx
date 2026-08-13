@@ -14,7 +14,7 @@
  */
 
 import { FACTS, type FactId } from '@/content/facts';
-import { COPY } from '@/content/copy';
+import { getCopy } from '@/i18n/copy';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
@@ -28,7 +28,8 @@ type FactProps = {
   className?: string;
 };
 
-export function Fact({ id, showLabel = true, size = 'm', className }: FactProps) {
+export async function Fact({ id, showLabel = true, size = 'm', className }: FactProps) {
+  const COPY = await getCopy();
   const fact = FACTS[id];
   const isPlaceholder = fact.status === 'PLACEHOLDER';
 

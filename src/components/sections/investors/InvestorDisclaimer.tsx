@@ -1,4 +1,4 @@
-import { COPY } from '@/content/copy';
+import { getCopy } from '@/i18n/copy';
 
 /**
  * Persistent disclaimer, rendered at the foot of every investor route by
@@ -17,7 +17,8 @@ import { COPY } from '@/content/copy';
  * The placeholder is visually loud for the same reason — nobody should be able
  * to look at this page and not notice.
  */
-export function InvestorDisclaimer() {
+export async function InvestorDisclaimer() {
+  const COPY = await getCopy();
   const copy = COPY.investorDisclaimer;
 
   return (

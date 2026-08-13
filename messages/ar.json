@@ -1,0 +1,749 @@
+{
+  "site": {
+    "name": "[[AR]] Green Exchange",
+    "descriptor": "[[AR]] Reverse vending machines for PET bottles and aluminium cans, built and operated by Green Exchange."
+  },
+  "nav": {
+    "label": "[[AR]] Primary",
+    "items": [
+      {
+        "label": "[[AR]] Technology",
+        "href": "/technology"
+      },
+      {
+        "label": "[[AR]] For Retailers",
+        "href": "/for-retailers"
+      },
+      {
+        "label": "[[AR]] Impact",
+        "href": "/impact"
+      },
+      {
+        "label": "[[AR]] Investors",
+        "href": "/investors"
+      },
+      {
+        "label": "[[AR]] Company",
+        "href": "/company"
+      }
+    ]
+  },
+  "fork": {
+    "eyebrow": "[[AR]] Two ways in",
+    "retail": {
+      "title": "[[AR]] I run retail stores",
+      "summary": "[[AR]] Floor space, servicing, revenue share, and reporting you can file.",
+      "preview": [
+        "[[AR]] Footprint, power, and collection access per machine",
+        "[[AR]] Who services the machine, and how often",
+        "[[AR]] Revenue share and in-store redemption",
+        "[[AR]] Volumes and availability, reported per site"
+      ],
+      "cta": "[[AR]] Request a pilot",
+      "href": "/for-retailers"
+    },
+    "investor": {
+      "title": "[[AR]] I invest",
+      "summary": "[[AR]] Unit economics, payback, material offtake, and the deployment plan.",
+      "preview": [
+        "[[AR]] Capital and operating cost per machine",
+        "[[AR]] Payback period and the assumptions behind it",
+        "[[AR]] Offtake pricing by material stream",
+        "[[AR]] Egypt deployment plan and MENA expansion case"
+      ],
+      "cta": "[[AR]] Investor access",
+      "href": "/investors"
+    }
+  },
+  "cta": {
+    "pilot": {
+      "label": "[[AR]] Request a pilot",
+      "href": "/pilot",
+      "supporting": "[[AR]] Site assessment and install plan for a named store."
+    },
+    "dataRoom": {
+      "label": "[[AR]] Request data room access",
+      "href": "/investors/data-room",
+      "supporting": "[[AR]] Unit economics, deployment plan and material offtake."
+    },
+    "investorAccess": {
+      "label": "[[AR]] Investor access",
+      "href": "/investors"
+    },
+    "spec": {
+      "label": "[[AR]] Download machine specification",
+      "href": "/machine"
+    }
+  },
+  "home": {
+    "hero": {
+      "headline": {
+        "base": "[[AR]] Take back PET and aluminium at the store entrance.",
+        "scaled": {
+          "before": "[[AR]] Take back",
+          "after": "[[AR]] containers a day, at the store entrance."
+        }
+      },
+      "subhead": "[[AR]] Green Exchange builds and operates reverse vending machines that accept used PET bottles and aluminium cans and return value to the depositor. We install, service and report. Your staff do not touch the machine.",
+      "specHeading": "[[AR]] Per machine",
+      "scrollCue": "[[AR]] Next — two ways in"
+    },
+    "proposition": {
+      "headline": "[[AR]] One machine, three outcomes",
+      "retail": {
+        "headline": "[[AR]] Return footfall to the store",
+        "body": "[[AR]] Depositors come to the machine, and the machine sits inside your footprint. Value returned to the depositor can be redeemed in store."
+      },
+      "operations": {
+        "headline": "[[AR]] No servicing burden on store staff",
+        "body": "[[AR]] Collection, maintenance and material logistics are ours. You provide floor space and power."
+      },
+      "compliance": {
+        "headline": "[[AR]] Reporting you can put in a disclosure",
+        "body": "[[AR]] Every deposit is counted by stream. Recovered tonnage is reported per site on a fixed cadence."
+      }
+    },
+    "howItWorks": {
+      "headline": "[[AR]] How a deposit works",
+      "steps": [
+        {
+          "headline": "[[AR]] Insert",
+          "body": "[[AR]] The depositor feeds in a PET bottle or aluminium can. The machine identifies the container and the stream."
+        },
+        {
+          "headline": "[[AR]] Validate and compact",
+          "body": "[[AR]] Accepted containers are compacted and sorted by material on board, so a collection carries more."
+        },
+        {
+          "headline": "[[AR]] Return value",
+          "body": "[[AR]] The depositor receives value for the container, redeemable in store."
+        },
+        {
+          "headline": "[[AR]] Collect and bale",
+          "body": "[[AR]] We collect on a scheduled route, bale by stream, and report the recovered tonnage back to the site."
+        }
+      ]
+    },
+    "traction": {
+      "headline": "[[AR]] Where we are now",
+      "body": "[[AR]] Current deployment and recovery figures, updated as machines go live."
+    },
+    "closing": {
+      "headline": "[[AR]] Start with one store.",
+      "body": "[[AR]] A pilot is a single site, a defined review period, and a written assessment at the end of it."
+    }
+  },
+  "forRetailers": {
+    "hero": {
+      "eyebrow": "[[AR]] For retail operators",
+      "headline": "[[AR]] Take-back arrives as three costs: floor space, staff time, and attention.",
+      "subhead": "[[AR]] Green Exchange installs and operates the machine, so the only one you carry is the floor space. This page states how much of it, what the machine needs from the site, who does the work when something jams, and what comes back to you."
+    },
+    "deployment": {
+      "heading": "[[AR]] Deployment model",
+      "intro": "[[AR]] One line each, so there is no question about where the boundary sits. The machine stays on our balance sheet and our rota.",
+      "columns": [
+        {
+          "heading": "[[AR]] What we install",
+          "items": [
+            "[[AR]] The machine, commissioned and tested on site",
+            "[[AR]] Signage at the deposit point",
+            "[[AR]] Connectivity and remote monitoring",
+            "[[AR]] Fill-level telemetry that schedules its own collection"
+          ]
+        },
+        {
+          "heading": "[[AR]] What we own and operate",
+          "items": [
+            "[[AR]] The hardware, for its whole life",
+            "[[AR]] Collection, transport and baling",
+            "[[AR]] Maintenance, spares and fault response",
+            "[[AR]] Material offtake and the reporting you receive"
+          ]
+        },
+        {
+          "heading": "[[AR]] What you provide",
+          "items": [
+            "[[AR]] Floor space at an agreed position",
+            "[[AR]] A power supply within reach of it",
+            "[[AR]] Access for a collection vehicle",
+            "[[AR]] A named site contact — not a trained operator"
+          ]
+        }
+      ],
+      "placementHeading": "[[AR]] Placement options",
+      "placementIntro": "[[AR]] Three positions, and they trade off against each other. The right one is a site-by-site decision made at the assessment, not a policy.",
+      "placementColumns": [
+        "[[AR]] Placement",
+        "[[AR]] Space comes from",
+        "[[AR]] Weather exposure",
+        "[[AR]] Footfall exposure",
+        "[[AR]] Servicing access",
+        "[[AR]] Power run"
+      ],
+      "placements": [
+        {
+          "name": "[[AR]] Inside the entrance",
+          "space": "[[AR]] Sales floor",
+          "weather": "[[AR]] None — fully sheltered",
+          "footfall": "[[AR]] Highest: every visitor passes it",
+          "servicing": "[[AR]] During trading hours, through the entrance",
+          "power": "[[AR]] Shortest, from the store board"
+        },
+        {
+          "name": "[[AR]] Under an external canopy",
+          "space": "[[AR]] External area, not sales floor",
+          "weather": "[[AR]] Sheltered from rain, exposed to heat",
+          "footfall": "[[AR]] High: visible on the approach",
+          "servicing": "[[AR]] Outside trading hours, no entry to the store",
+          "power": "[[AR]] External run required"
+        },
+        {
+          "name": "[[AR]] Car park island",
+          "space": "[[AR]] Parking bay, no sales floor at all",
+          "weather": "[[AR]] Full exposure — needs the outdoor specification",
+          "footfall": "[[AR]] Lower: a deliberate stop, not a passing one",
+          "servicing": "[[AR]] Easiest — vehicle pulls alongside",
+          "power": "[[AR]] Longest run, and a civils job"
+        }
+      ]
+    },
+    "footprint": {
+      "heading": "[[AR]] Footprint and site requirements",
+      "intro": "[[AR]] What a site engineer needs before they can say yes. Every figure here is measured or marked as unmeasured — none of it is indicative.",
+      "note": "[[AR]] Service clearance is additional to the machine footprint. A site that fits the machine but not the clearance is not a site.",
+      "specs": [
+        "floor-space-required-m2",
+        "machine-dimensions",
+        "service-clearance",
+        "floor-loading",
+        "power-requirement",
+        "connectivity-requirement"
+      ]
+    },
+    "servicing": {
+      "heading": "[[AR]] Servicing",
+      "intro": "[[AR]] The part that decides whether this is an asset or a chore. None of it lands on your staff.",
+      "items": [
+        {
+          "question": "[[AR]] Who empties it?",
+          "answer": "[[AR]] We do. A Green Exchange crew collects on a route driven by fill-level telemetry, not by a calendar and not by a phone call from your duty manager.",
+          "factId": "servicing-frequency"
+        },
+        {
+          "question": "[[AR]] What happens when it jams?",
+          "answer": "[[AR]] The machine reports the fault itself and takes itself out of service so it cannot swallow another container. Your site contact does not diagnose anything; they do not need a key. We attend.",
+          "factId": "fault-response-time"
+        },
+        {
+          "question": "[[AR]] What is the uptime commitment?",
+          "answer": "[[AR]] Availability is measured per machine over a stated window and reported to you with the volumes. A machine that is down is our problem and it appears in your report, not just ours.",
+          "factId": "machine-uptime"
+        }
+      ]
+    },
+    "benefits": {
+      "heading": "[[AR]] What comes back to you",
+      "intro": "[[AR]] Four things, in the order a board will ask about them. Two of them are unmeasured, and this page says so rather than borrowing a number from another market.",
+      "items": [
+        {
+          "heading": "[[AR]] Footfall and dwell",
+          "body": "[[AR]] A deposit point gives a reason to come, and the value returned is redeemable in store. We will not put a figure on this before a pilot measures it at your site — anyone who does is guessing on your behalf.",
+          "factIds": ["footfall-effect", "dwell-time-effect"]
+        },
+        {
+          "heading": "[[AR]] Loyalty integration",
+          "body": "[[AR]] Value can be issued to your existing loyalty scheme instead of a paper voucher, which keeps the redemption inside your basket and inside your data.",
+          "factIds": ["voucher-redemption-rate"]
+        },
+        {
+          "heading": "[[AR]] ESG reporting output",
+          "body": "[[AR]] Volumes by material stream, recovered tonnage, and machine availability, per site, on a fixed cadence — in a form you can put into a disclosure without re-deriving it.",
+          "factIds": ["esg-reporting-cadence"]
+        },
+        {
+          "heading": "[[AR]] Compliance positioning",
+          "body": "[[AR]] Egypt has no national deposit-return scheme today. Operating collection infrastructure before one exists is a materially different position from retrofitting under a deadline, and it is the one we can help you take.",
+          "factIds": ["retailer-revenue-share"]
+        }
+      ]
+    },
+    "roi": {
+      "heading": "[[AR]] Estimate the scale",
+      "intro": "[[AR]] Set your own numbers. The model is deliberately simple and every coefficient behind it is listed below, with the source it has to come from.",
+      "inputs": {
+        "stores": "[[AR]] Stores in scope",
+        "dailyFootfall": "[[AR]] Average daily visitors per store",
+        "machinesPerStore": "[[AR]] Machines per store"
+      },
+      "outputs": {
+        "containers": "[[AR]] Containers recovered per month",
+        "tonnage": "[[AR]] Material recovered per month",
+        "benefit": "[[AR]] Estimated benefit to you per month"
+      },
+      "disclaimer": "[[AR]] These outputs are estimates produced by a model, not a quotation and not a forecast. They are only as good as the assumptions listed below, and they carry no commercial commitment.",
+      "assumptionsHeading": "[[AR]] Assumptions in this model",
+      "assumptions": [
+        "[[AR]] Every visitor is counted once per day, and a fixed share of visitors deposits containers.",
+        "[[AR]] Deposits cannot exceed what the machines on site can physically accept, so throughput caps the result.",
+        "[[AR]] The split between PET and aluminium is treated as constant across all sites.",
+        "[[AR]] Container mass is an average over the size mix actually returned, not a single container size.",
+        "[[AR]] Material value is a spot price per tonne and is volatile; the benefit range does not model that volatility.",
+        "[[AR]] Your benefit is a share of recovered material value only. Redemption in store, footfall effects and compliance value are excluded — they are real, and none of them is measured yet.",
+        "[[AR]] No capital cost, operating cost or price appears here. Commercial terms are a conversation, not a calculator."
+      ],
+      "unavailableHeading": "[[AR]] This calculator cannot produce a number yet",
+      "unavailableBody": "[[AR]] The coefficients below have not been measured. Rather than fill them with plausible values, the model reports that it cannot compute. Every input above still works, and the moment a pilot supplies these figures the outputs appear.",
+      "throughputNote": "[[AR]] At these settings machine throughput is the limit, not footfall — additional visitors would not add containers."
+    },
+    "pilot": {
+      "heading": "[[AR]] Request a pilot",
+      "intro": "[[AR]] One site, a defined review period, and a written assessment at the end of it. No price, no commitment on this page — a pilot conversation.",
+      "progressiveSummary": "[[AR]] Add role and city (optional)",
+      "fields": {
+        "company": "[[AR]] Chain or company",
+        "email": "[[AR]] Work email",
+        "stores": "[[AR]] Number of stores",
+        "role": "[[AR]] Your role",
+        "city": "[[AR]] City"
+      },
+      "submit": "[[AR]] Request a pilot",
+      "unconfigured": "[[AR]] This form has no destination configured yet, so nothing was sent. Your details were validated but not stored.",
+      "validationFailed": "[[AR]] Check the highlighted fields."
+    }
+  },
+  "retail": {
+    "hero": {
+      "headline": "[[AR]] A deposit point that pays for its floor space.",
+      "subhead": "[[AR]] For hypermarket, supermarket and convenience operators placing machines at store entrances or in car parks."
+    },
+    "footprint": {
+      "headline": "[[AR]] What the machine needs from the site",
+      "body": "[[AR]] Floor space, power and access for collection. Nothing else."
+    },
+    "servicing": {
+      "headline": "[[AR]] Who does the work",
+      "body": "[[AR]] Green Exchange operates the machine. Collection and maintenance run on our schedule, not your rota."
+    },
+    "commercial": {
+      "headline": "[[AR]] How the site earns",
+      "body": "[[AR]] Revenue share on recovered material, plus redemption in store when depositors spend the value they receive."
+    },
+    "reporting": {
+      "headline": "[[AR]] What you receive",
+      "body": "[[AR]] Volumes by stream and by site, recovered tonnage, and machine availability, on a fixed reporting cadence."
+    },
+    "pilot": {
+      "headline": "[[AR]] What a pilot involves",
+      "steps": [
+        "[[AR]] Site assessment: entrance or car park, siting, power and collection access.",
+        "[[AR]] Install and commissioning on an agreed date.",
+        "[[AR]] Defined review period with reporting from day one.",
+        "[[AR]] Written assessment: volumes, availability, and a decision on rollout."
+      ]
+    }
+  },
+  "impact": {
+    "hero": {
+      "eyebrow": "[[AR]] Impact",
+      "headline": "[[AR]] Material recovered, and how we know.",
+      "subhead": "[[AR]] Impact here means tonnes of PET and aluminium that went back into material rather than to landfill, counted per container at the machine. Every figure below states its unit and the period it covers. Anything not yet measured shows as a dash rather than as a number."
+    },
+    "counters": {
+      "heading": "[[AR]] Recovery to date",
+      "intro": "[[AR]] Cumulative totals from machine telemetry. A figure animates only once it has been measured and has a stated period — until then it is a dash.",
+      "ids": [
+        "containers-collected-to-date",
+        "material-recovered-to-date",
+        "machines-deployed",
+        "depositor-value-returned"
+      ]
+    },
+    "flow": {
+      "heading": "[[AR]] Where Egypt’s PET actually goes",
+      "intro": "[[AR]] The gap this business addresses is not between consumption and recycling — it is between consumption and FORMAL recovery. Informal collectors already recover a large share, and leaving them out of the picture would overstate the problem and misrepresent the market.",
+      "title": "[[AR]] Egypt PET material flow: consumed against destination",
+      "totalPrefix": "[[AR]] Total annual consumption:",
+      "sourcePrefix": "[[AR]] Source:",
+      "unsourcedHeading": "[[AR]] Chart not drawn — no public source",
+      "unsourcedBody": "[[AR]] The structure of the flow is shown, but not the proportions. Drawing magnitudes without a public source for every band would produce a chart that reads as authoritative and is not. Each band needs a figure from the same study and the same year — mixing sources is how a flow chart ends up looking right and being wrong.",
+      "unsourcedDescription": "[[AR]] Structure of the Egypt PET material flow: consumption divides into formally collected, informally collected and uncollected. Proportions are not shown because no public source has been supplied.",
+      "mismatchHeading": "[[AR]] Chart not drawn — bands do not reconcile",
+      "mismatchBody": "[[AR]] The three destinations do not sum to total consumption within tolerance, which means at least one figure comes from a different study, a different year or a different definition. The chart refuses to draw rather than hide the discrepancy behind rounding."
+    },
+    "methodology": {
+      "heading": "[[AR]] How we calculate recovered tonnage",
+      "intro": "[[AR]] Short version: we count containers, not bags. Tonnage is derived from counted containers and weighed collections, and the two are reconciled.",
+      "steps": [
+        {
+          "heading": "[[AR]] Count at the point of acceptance",
+          "body": "[[AR]] Every accepted container is counted by the machine at the moment it is validated, by material stream. Rejected containers are not counted. This is a count of objects, not an estimate from volume."
+        },
+        {
+          "heading": "[[AR]] Weigh at collection",
+          "body": "[[AR]] Each collection is weighed by stream when it leaves the site. That gives an actual mass, independent of the container count."
+        },
+        {
+          "heading": "[[AR]] Reconcile the two",
+          "body": "[[AR]] Counted containers multiplied by the average container mass for that stream should agree with the weighed mass. Where they diverge, the weighed mass is authoritative and the average mass is corrected — not the other way round."
+        },
+        {
+          "heading": "[[AR]] Report the weighed figure",
+          "body": "[[AR]] Published tonnage is weighed mass, not modelled mass. Contamination and moisture are part of the weighed figure until material is sorted at the processing centre, so the reported figure is conservative rather than flattering."
+        }
+      ],
+      "exclusions": {
+        "heading": "[[AR]] What is deliberately excluded",
+        "items": [
+          "[[AR]] No avoided-emissions figure is published without a stated methodology and a source. A CO₂e number is a calculation, not a measurement, and it inherits every assumption behind it.",
+          "[[AR]] No claim is made about material that leaves our custody. We report what we recovered and sold, not what a reprocessor ultimately did with it.",
+          "[[AR]] Containers rejected by the machine are excluded entirely, even though a depositor carried them in."
+        ]
+      }
+    }
+  },
+  "investorsPublic": {
+    "hero": {
+      "eyebrow": "[[AR]] For investors",
+      "headline": "[[AR]] Deposit infrastructure, built before the mandate arrives.",
+      "thesis": [
+        "[[AR]] PET and aluminium enter Egypt in volume and are recovered at a fraction of the rate, because collection depends on informal channels rather than infrastructure.",
+        "[[AR]] Retail is where those containers are already carried in and out every day, which makes a store entrance the cheapest place to intercept them.",
+        "[[AR]] Regulation is moving toward producer responsibility across the region, and the operators holding retail siting agreements and collection routes when it lands are the ones who can serve it."
+      ]
+    },
+    "market": {
+      "heading": "[[AR]] Market context",
+      "intro": "[[AR]] Four figures matter here, and each appears only when it carries a named public source. Anything unsourced is absent from this page rather than shown with a caveat.",
+      "figures": [
+        "[[AR]] egypt-annual-pet-consumption",
+        "[[AR]] egypt-pet-collection-rate",
+        "[[AR]] egypt-aluminium-collection-rate",
+        "[[AR]] egypt-regulatory-direction"
+      ],
+      "pendingHeading": "[[AR]] No sourced market figures are published yet",
+      "pendingBody": "[[AR]] The figures for this section have not been tied to a named public source. Rather than publish them with a hedge, they are withheld until each one cites the instrument or dataset it comes from. The full market analysis, with its sources, is in the data room.",
+      "regulatoryNote": "[[AR]] Direction of travel, not a prediction: Egypt legislated a framework for waste management in 2020, and producer-responsibility instruments across MENA have followed the same pattern. We do not model a mandate date, and nothing on this page depends on one arriving."
+    },
+    "model": {
+      "heading": "[[AR]] How a machine makes money",
+      "intro": "[[AR]] Four revenue lines. Described as mechanisms only — no figures appear on this page, and the unit economics are in the data room.",
+      "lines": [
+        {
+          "heading": "[[AR]] Retailer contract",
+          "body": "[[AR]] The site pays for placement and service, or takes a share of recovered material value, depending on the deal. Either way the machine is contracted per site rather than sold as hardware."
+        },
+        {
+          "heading": "[[AR]] Material sale",
+          "body": "[[AR]] Baled PET and aluminium are sold to reprocessors. Separation quality upstream sets the price, which is why sorting happens before compaction rather than after."
+        },
+        {
+          "heading": "[[AR]] Brand sponsorship",
+          "body": "[[AR]] A machine at a store entrance is a branded surface with a measurable interaction count, and beverage producers facing producer-responsibility obligations have a reason to fund collection directly."
+        },
+        {
+          "heading": "[[AR]] Data",
+          "body": "[[AR]] Every accepted container is a counted, located, time-stamped return by material and by product. That record is what a producer needs to evidence recovery, and it is the line with the lowest marginal cost."
+        }
+      ],
+      "note": "[[AR]] Which lines carry the model, in what proportion, and at what cost is exactly the question the data room answers. It is not answered here."
+    },
+    "traction": {
+      "heading": "[[AR]] Where we actually are",
+      "intro": "[[AR]] Stated conservatively and stage-appropriately. Built, signed and deployed are separate counts and are kept separate; an unmeasured figure is shown as unmeasured rather than rounded up.",
+      "figures": [
+        "[[AR]] company-stage",
+        "[[AR]] machines-built",
+        "[[AR]] machines-deployed",
+        "[[AR]] pilots-signed",
+        "[[AR]] lois-signed"
+      ],
+      "note": "[[AR]] A letter of intent is not a pilot and a pilot is not a rollout. Conflating them is the most common way an early company overstates itself, so these are counted separately here."
+    },
+    "team": {
+      "heading": "[[AR]] Team",
+      "intro": "[[AR]] Real names and real current roles only.",
+      "pendingHeading": "[[AR]] Team details are not published yet",
+      "pendingBody": "[[AR]] No names or roles have been supplied for publication. An investor will verify every person listed on a page like this, so nothing is listed until it is accurate and the individuals have agreed to appear. Team and background are covered in the data room."
+    },
+    "cta": {
+      "heading": "[[AR]] Request data room access",
+      "body": "[[AR]] Access is reviewed and granted manually. Requests are not approved automatically, and submitting this form does not create any commitment on either side."
+    }
+  },
+  "dataRoomRequest": {
+    "heading": "[[AR]] Request data room access",
+    "intro": "[[AR]] Six details and one declaration. Requests are reviewed by a person; nothing is granted on submission.",
+    "fields": {
+      "name": "[[AR]] Full name",
+      "organisation": "[[AR]] Organisation",
+      "role": "[[AR]] Role",
+      "investorType": "[[AR]] Investor type",
+      "country": "[[AR]] Country",
+      "email": "[[AR]] Work email",
+      "linkedin": "[[AR]] LinkedIn profile"
+    },
+    "investorTypes": [
+      "[[AR]] Angel",
+      "[[AR]] Venture capital",
+      "[[AR]] Family office",
+      "[[AR]] Strategic",
+      "[[AR]] Other"
+    ],
+    "investorTypePrompt": "[[AR]] Select investor type",
+    "declaration": {
+      "label": "[[AR]] PLACEHOLDER — LAWYER TO DRAFT: a self-declaration that the requester is a professional or qualified investor, and that they understand these materials are not an offer of securities.",
+      "requiredError": "[[AR]] You must confirm the declaration to request access."
+    },
+    "submit": "[[AR]] Request access",
+    "pending": {
+      "heading": "[[AR]] Request lodged",
+      "body": "[[AR]] Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form."
+    },
+    "failure": {
+      "heading": "[[AR]] Request could not be lodged",
+      "body": "[[AR]] Nothing was recorded, so please do not treat this as submitted. The request store is not configured in this environment."
+    },
+    "validationFailed": "[[AR]] Check the highlighted fields."
+  },
+  "consent": {
+    "pilot": "[[AR]] Green Exchange may use these details to reply to this pilot request and arrange a site assessment.",
+    "dataRoom": "[[AR]] Green Exchange may use these details to review this request and reply about data room access.",
+    "privacyLinkText": "[[AR]] How we handle your details",
+    "privacyHref": "/legal/privacy"
+  },
+  "formFailure": {
+    "delivery": {
+      "heading": "[[AR]] This did not send",
+      "body": "[[AR]] Nothing was recorded, so please do not treat this as submitted. Email us directly and we will pick it up from there."
+    },
+    "rateLimited": {
+      "heading": "[[AR]] Too many submissions from this connection",
+      "body": "[[AR]] Wait and try again, or email us directly if this is urgent."
+    },
+    "stale": {
+      "heading": "[[AR]] This page has been open too long",
+      "body": "[[AR]] Reload the page and submit again — your details are still in the fields below. Nothing was sent."
+    },
+    "suspectedBot": {
+      "heading": "[[AR]] This submission was blocked",
+      "body": "[[AR]] An automated-submission check rejected this. If you are a person, email us directly and we will handle it that way."
+    },
+    "fallbackUnknown": "[[AR]] A direct contact address has not been published yet.",
+    "fallbackUnknownHint": "[[AR]] Set contact-email in content/facts.ts.",
+    "fallbackPrefix": "[[AR]] Email us directly:"
+  },
+  "received": {
+    "pilot": {
+      "eyebrow": "[[AR]] Pilot request received",
+      "heading": "[[AR]] We have your request.",
+      "referenceLabel": "[[AR]] Your reference",
+      "referenceNote": "[[AR]] Quote this if you follow up.",
+      "nextHeading": "[[AR]] What happens next",
+      "steps": [
+        {
+          "heading": "[[AR]] We read it and come back to you",
+          "body": "[[AR]] A person reviews the request and replies to the address you gave, to confirm we have it and to ask anything missing about the site."
+        },
+        {
+          "heading": "[[AR]] Site assessment",
+          "body": "[[AR]] We look at the entrance or car park you have in mind: siting, power, connectivity and collection access. This can start as a call and a photo of the doorway."
+        },
+        {
+          "heading": "[[AR]] Install plan for one named store",
+          "body": "[[AR]] You get a written plan for a single site — placement, servicing rota, and what we need from your team — before anything is committed."
+        }
+      ],
+      "responseLabel": "[[AR]] Response time",
+      "changedYourMind": "[[AR]] If you need to correct anything you sent, reply to the confirmation email or write to us directly."
+    },
+    "dataRoom": {
+      "eyebrow": "[[AR]] Request lodged",
+      "heading": "[[AR]] Your request is with us.",
+      "referenceLabel": "[[AR]] Your reference",
+      "referenceNote": "[[AR]] Quote this if you follow up.",
+      "nextHeading": "[[AR]] What happens next",
+      "steps": [
+        {
+          "heading": "[[AR]] A person reviews the request",
+          "body": "[[AR]] Requests are reviewed individually against who is asking and why. Nothing is granted automatically, and submitting this form has granted nothing."
+        },
+        {
+          "heading": "[[AR]] We reply either way",
+          "body": "[[AR]] You get an answer whether or not access is granted. A decision not to open the data room is not a silence."
+        },
+        {
+          "heading": "[[AR]] Access, if granted, is a time-limited link",
+          "body": "[[AR]] Approved requesters receive a signed link to the materials that expires. It is issued to you by name and is not transferable."
+        }
+      ],
+      "responseLabel": "[[AR]] Review time",
+      "notGranted": "[[AR]] Access has not been granted by this submission."
+    }
+  },
+  "investorDisclaimer": {
+    "marker": "LEGAL-PLACEHOLDER-DO-NOT-SHIP",
+    "heading": "[[AR]] Placeholder disclaimer — not legal text",
+    "body": "[[AR]] This block is a placeholder for a disclaimer to be drafted by a qualified lawyer covering, at minimum: that nothing on these pages is an offer or solicitation to buy or sell securities, the jurisdictions in which the materials may be received, forward-looking-statement language, and the basis on which any figure is presented. It has deliberately not been drafted in-house. The production build fails while this placeholder is in place."
+  },
+  "investors": {
+    "hero": {
+      "headline": "[[AR]] Deposit infrastructure for the Egyptian retail network.",
+      "subhead": "[[AR]] Machines built in Romania, deployed and operated in Egypt. Revenue from recovered material and retail partnerships."
+    },
+    "thesis": {
+      "headline": "[[AR]] The position",
+      "body": "[[AR]] PET and aluminium enter Egypt in volume and are recovered at a fraction of that rate. Retail is where containers are already carried in."
+    },
+    "unitEconomics": {
+      "headline": "[[AR]] Unit economics",
+      "body": "[[AR]] Capital cost, operating cost and payback measured per machine. Material offtake priced by stream."
+    },
+    "defensibility": {
+      "headline": "[[AR]] Defensibility",
+      "body": "[[AR]] We build the hardware and hold the retail siting agreements and collection routes. Placement compounds: each site makes the next route cheaper to serve."
+    },
+    "market": {
+      "headline": "[[AR]] Market",
+      "body": "[[AR]] Egypt first, on the retail network. MENA is expansion, not the near-term case."
+    },
+    "dataRoom": {
+      "headline": "[[AR]] Data room",
+      "body": "[[AR]] Financial model, deployment plan, machine specification and offtake terms. Access on request."
+    }
+  },
+  "technology": {
+    "eyebrow": "[[AR]] Technology",
+    "headline": "[[AR]] One container, end to end.",
+    "intro": "[[AR]] What happens between a depositor putting a bottle in and a reprocessor buying the material back. Each step carries the specification that governs it.",
+    "progressLabel": "[[AR]] Sequence progress",
+    "steps": [
+      {
+        "id": "[[AR]] deposit",
+        "title": "[[AR]] Deposit",
+        "body": "[[AR]] The depositor feeds a single container into the intake. One at a time, upright or on its side — the machine indexes it onto the transport before anything else happens.",
+        "factId": "accepted-container-sizes"
+      },
+      {
+        "id": "[[AR]] identify",
+        "title": "[[AR]] Identify",
+        "body": "[[AR]] A barcode read establishes which product it is. In parallel, near-infrared sensing reads the polymer and an inductive sensor detects metal, so the machine knows the material even if the label is damaged.",
+        "factId": "container-recognition-rate"
+      },
+      {
+        "id": "[[AR]] validate",
+        "title": "[[AR]] Validate",
+        "body": "[[AR]] The read is checked against the register of deposit-bearing containers, and the container is checked for shape and emptiness. Anything unrecognised is handed straight back rather than swallowed.",
+        "factId": "deposit-cycle-per-container"
+      },
+      {
+        "id": "[[AR]] return-value",
+        "title": "[[AR]] Return value",
+        "body": "[[AR]] Accepted containers are credited to the depositor at the machine — the reason they came. Value is redeemable in the store, which is what turns a return trip into a shopping trip.",
+        "factId": "deposit-value-per-container"
+      },
+      {
+        "id": "[[AR]] sort",
+        "title": "[[AR]] Sort by stream",
+        "body": "[[AR]] The container is diverted to its own path on the strength of the material read: PET one way, aluminium the other. Sorting happens here, before anything is crushed, because a compacted mixed mass cannot be separated.",
+        "factId": "stream-separation-purity"
+      },
+      {
+        "id": "[[AR]] compact",
+        "title": "[[AR]] Compact",
+        "body": "[[AR]] Each stream is compacted its own way. PET is perforated and flattened so it cannot be re-inflated and claimed twice; cans are pressed flat. This is what makes a collection worth sending a vehicle for.",
+        "factId": "compaction-ratio"
+      },
+      {
+        "id": "[[AR]] store",
+        "title": "[[AR]] Store",
+        "body": "[[AR]] Compacted material drops into a separate bin per stream, never a single mixed hopper. Fill level is monitored continuously, so a collection is scheduled against real volume rather than a calendar.",
+        "factId": "machine-capacity-per-collection"
+      },
+      {
+        "id": "[[AR]] collect",
+        "title": "[[AR]] Collect and report",
+        "body": "[[AR]] Green Exchange collects on a route driven by fill level. Every accepted container is already counted, so the site receives volumes by stream and machine availability without anyone tallying anything.",
+        "factId": "servicing-frequency"
+      },
+      {
+        "id": "[[AR]] offtake",
+        "title": "[[AR]] Bale and offtake",
+        "body": "[[AR]] Material is baled by stream at a processing centre, not in the store, then sold to a reprocessor. Separation quality upstream is what the bale is priced on.",
+        "factId": "value-per-tonne-baled-pet"
+      }
+    ]
+  },
+  "forms": {
+    "pilot": {
+      "headline": "[[AR]] Request a pilot",
+      "subhead": "[[AR]] Tell us the chain and the store. We come back with a site assessment.",
+      "fields": {
+        "name": "[[AR]] Full name",
+        "role": "[[AR]] Role",
+        "company": "[[AR]] Chain or company",
+        "email": "[[AR]] Work email",
+        "phone": "[[AR]] Phone",
+        "storeCount": "[[AR]] Number of stores",
+        "city": "[[AR]] City",
+        "siteType": "[[AR]] Intended placement",
+        "message": "[[AR]] Anything we should know about the site"
+      },
+      "submit": "[[AR]] Request a pilot",
+      "success": "[[AR]] Received. We will come back to you with next steps for a site assessment.",
+      "error": "[[AR]] That did not send. Please try again, or email us directly."
+    },
+    "dataRoom": {
+      "headline": "[[AR]] Request data room access",
+      "subhead": "[[AR]] Access is granted to named individuals.",
+      "fields": {
+        "name": "[[AR]] Full name",
+        "firm": "[[AR]] Firm",
+        "email": "[[AR]] Work email",
+        "type": "[[AR]] Investor type",
+        "ticket": "[[AR]] Typical cheque size",
+        "message": "[[AR]] What you want to see first"
+      },
+      "submit": "[[AR]] Request access",
+      "success": "[[AR]] Received. We will review and come back to you about access.",
+      "error": "[[AR]] That did not send. Please try again, or email us directly."
+    }
+  },
+  "footer": {
+    "company": "[[AR]] Green Exchange",
+    "legal": "[[AR]] Registered in Romania.",
+    "rights": "[[AR]] All rights reserved.",
+    "registrationHeading": "[[AR]] Registered entity",
+    "contactHeading": "[[AR]] Contact",
+    "legalHeading": "[[AR]] Legal",
+    "languageHeading": "[[AR]] Language",
+    "links": [
+      {
+        "label": "[[AR]] Privacy",
+        "href": "/legal/privacy"
+      },
+      {
+        "label": "[[AR]] Cookies",
+        "href": "/legal/cookies"
+      },
+      {
+        "label": "[[AR]] Terms",
+        "href": "/legal/terms"
+      },
+      {
+        "label": "[[AR]] Investor disclaimer",
+        "href": "/legal/investor-disclaimer"
+      }
+    ]
+  },
+  "a11y": {
+    "skipToContent": "[[AR]] Skip to main content",
+    "mainNav": "[[AR]] Main navigation",
+    "openMenu": "[[AR]] Open menu",
+    "closeMenu": "[[AR]] Close menu",
+    "menuLabel": "[[AR]] Site menu",
+    "forkLabel": "[[AR]] Choose the path that describes you",
+    "currentLanguage": "[[AR]] Current language",
+    "placeholderFact": "[[AR]] Figure not yet published"
+  }
+}

@@ -1,4 +1,6 @@
-import { COPY } from '@/content/copy';
+'use client';
+
+import { useCopy } from '@/i18n/copy';
 import { FACTS } from '@/content/facts';
 import type { FailureReason } from '@/lib/forms/state';
 
@@ -19,13 +21,6 @@ import type { FailureReason } from '@/lib/forms/state';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
-const HEADINGS: Record<FailureReason, { heading: string; body: string }> = {
-  delivery: COPY.formFailure.delivery,
-  'rate-limited': COPY.formFailure.rateLimited,
-  stale: COPY.formFailure.stale,
-  'suspected-bot': COPY.formFailure.suspectedBot,
-};
-
 function retryPhrase(seconds: number): string {
   const minutes = Math.ceil(seconds / 60);
   if (minutes <= 1) return 'Try again in about a minute.';
@@ -39,7 +34,14 @@ export function FormFailure({
   reason: FailureReason;
   retryAfter?: number;
 }) {
-  const copy = HEADINGS[reason];
+  const COPY = useCopy();
+  /* Reason -> copy block. Built per render because the copy is locale-bound. */
+  const copy = {
+    delivery: COPY.formFailure.delivery,
+    'rate-limited': COPY.formFailure.rateLimited,
+    stale: COPY.formFailure.stale,
+    'suspected-bot': COPY.formFailure.suspectedBot,
+  }[reason];
   const contact = FACTS['contact-email'];
   const hasAddress = contact.status !== 'PLACEHOLDER' && contact.value !== '—';
 

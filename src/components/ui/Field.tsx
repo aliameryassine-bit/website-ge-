@@ -191,7 +191,7 @@ export function Honeypot() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute left-[-9999px] h-px w-px overflow-hidden"
+      className="pointer-events-none absolute start-[-9999px] h-px w-px overflow-hidden"
     >
       <label htmlFor={HONEYPOT_FIELD}>Leave this field empty</label>
       <input

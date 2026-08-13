@@ -5,7 +5,7 @@ import { ButtonLink } from '@/components/ui/Button';
 import { Callout } from '@/components/ui/Callout';
 import { Eyebrow } from '@/components/ui/Panel';
 import { ScrollCue } from '@/components/ui/ScrollCue';
-import { COPY } from '@/content/copy';
+import { getCopy } from '@/i18n/copy';
 import { FACTS, type FactId } from '@/content/facts';
 
 /**
@@ -53,7 +53,8 @@ const CALLOUTS: FactId[] = ['floor-space-required-m2', 'accepted-container-sizes
 
 const delay = (ms: number) => ({ '--hero-delay': `${ms}ms` }) as CSSProperties;
 
-export function Hero() {
+export async function Hero() {
+  const COPY = await getCopy();
   /**
    * The headline states throughput inside the sentence as soon as that figure
    * exists. Until then it states what the company does, and the specification

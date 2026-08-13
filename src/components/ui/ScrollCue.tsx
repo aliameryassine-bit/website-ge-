@@ -26,7 +26,7 @@ export function ScrollCue({ label, delayMs }: { label: string; delayMs: number }
               '--hero-travel-distance': 'calc(var(--spacing-2xl) - var(--spacing-sm))',
             } as React.CSSProperties
           }
-          className="absolute -left-[3px] top-0 block size-2 bg-action"
+          className="absolute -start-[3px] top-0 block size-2 bg-action"
         />
       </span>
       <span className="text-label text-ink-muted uppercase">{label}</span>

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { FACTS, isCountable, type FactId } from '@/content/facts';
-import { COPY } from '@/content/copy';
+import { useCopy } from '@/i18n/copy';
 import { useReducedMotion } from '@/lib/use-reduced-motion';
 
 /**
@@ -40,6 +40,7 @@ function format(value: number, fractionDigits: number): string {
 }
 
 export function Counter({ id, className }: { id: FactId; className?: string }) {
+  const COPY = useCopy();
   const fact = FACTS[id];
   const countable = isCountable(fact);
   const target = fact.numeric ?? 0;

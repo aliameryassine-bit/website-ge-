@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run check:facts && npm run check:legal",
+    "prebuild": "npm run check:facts && npm run check:legal && npm run check:i18n",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
@@ -18,12 +18,15 @@
     "prepare": "husky",
     "check:facts:commit": "npm run check:facts -- --commit",
     "check:legal": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-legal.ts",
-    "grant:data-room": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/grant-data-room.ts"
+    "grant:data-room": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/grant-data-room.ts",
+    "build:messages": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/build-messages.ts",
+    "check:i18n": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-i18n.ts"
   },
   "dependencies": {
     "lenis": "^1.1.20",
     "motion": "^13.1.0",
     "next": "^16.3.0",
+    "next-intl": "^4.13.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "zod": "^4.4.3"

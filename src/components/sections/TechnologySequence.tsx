@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { TechStage } from '@/components/sections/technology/TechStage';
 import { Callout } from '@/components/ui/Callout';
 import { Eyebrow } from '@/components/ui/Panel';
-import { COPY } from '@/content/copy';
+import { useCopy } from '@/i18n/copy';
 import { useReducedMotion } from '@/lib/use-reduced-motion';
 
 /**
@@ -47,8 +47,15 @@ import { useReducedMotion } from '@/lib/use-reduced-motion';
 const STAGE_OFFSET = [0, 31, 58, 67, 101, 159, 262, 371, 430] as const;
 
 export function TechnologySequence() {
+  const COPY = useCopy();
   const root = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  /*
+    Only the step IDS are needed inside the scroll driver, and they are
+    structural rather than translated — pulling them out keeps the effect from
+    depending on the whole copy tree, which changes identity on every render.
+  */
+  const stepIds = COPY.technology.steps.map((step) => step.id).join(',');
   const stepCount = COPY.technology.steps.length;
 
   useEffect(() => {
@@ -95,8 +102,8 @@ export function TechnologySequence() {
 
         // The machine fills in as material passes through it: stages already
         // travelled stay lit rather than dropping back to dormant.
-        COPY.technology.steps.forEach((step, i) => {
-          const stage = el.querySelector(`[data-stage="${step.id}"]`);
+        stepIds.split(',').forEach((id, i) => {
+          const stage = el.querySelector(`[data-stage="${id}"]`);
           if (!stage) return;
           stage.setAttribute(
             'data-state',
@@ -140,7 +147,7 @@ export function TechnologySequence() {
       window.removeEventListener('resize', onScroll);
       wide.removeEventListener('change', sync);
     };
-  }, [reduced, stepCount]);
+  }, [reduced, stepCount, stepIds]);
 
   return (
     <section

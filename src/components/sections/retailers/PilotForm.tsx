@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { CheckboxField, FormToken, Honeypot, TextField } from '@/components/ui/Field';
 import { FormFailure } from '@/components/ui/FormFailure';
 import { Panel } from '@/components/ui/Panel';
-import { COPY } from '@/content/copy';
+import { useCopy } from '@/i18n/copy';
 import { submitPilotRequest } from '@/lib/forms/actions';
 import { PILOT_FIELDS, pilotSchema } from '@/lib/forms/schemas';
 import { PILOT_INITIAL_STATE } from '@/lib/forms/state';
@@ -28,6 +28,7 @@ import { useFormValidation } from '@/lib/forms/use-form-validation';
  */
 
 export function PilotForm({ token, heading = true }: { token: string; heading?: boolean }) {
+  const COPY = useCopy();
   const [state, formAction, pending] = useActionState(submitPilotRequest, PILOT_INITIAL_STATE);
   const copy = COPY.forRetailers.pilot;
 

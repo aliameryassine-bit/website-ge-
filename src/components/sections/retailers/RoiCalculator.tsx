@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 
 import { Eyebrow, Panel } from '@/components/ui/Panel';
-import { COPY } from '@/content/copy';
+import { useCopy } from '@/i18n/copy';
 import {
   computeRoi,
   ROI_COEFFICIENTS,
@@ -39,25 +39,26 @@ const DEFAULTS: RoiInputs = {
   machinesPerStore: 1,
 };
 
+/**
+ * Field identity and bounds are structural and stay at module scope; only the
+ * LABEL is copy, so it is looked up per locale at render.
+ */
 const FIELDS = [
-  { key: 'stores', label: COPY.forRetailers.roi.inputs.stores, limits: ROI_INPUT_LIMITS.stores },
-  {
-    key: 'dailyFootfall',
-    label: COPY.forRetailers.roi.inputs.dailyFootfall,
-    limits: ROI_INPUT_LIMITS.dailyFootfall,
-  },
+  { key: 'stores', labelKey: 'stores', limits: ROI_INPUT_LIMITS.stores },
+  { key: 'dailyFootfall', labelKey: 'dailyFootfall', limits: ROI_INPUT_LIMITS.dailyFootfall },
   {
     key: 'machinesPerStore',
-    label: COPY.forRetailers.roi.inputs.machinesPerStore,
+    labelKey: 'machinesPerStore',
     limits: ROI_INPUT_LIMITS.machinesPerStore,
   },
 ] as const satisfies readonly {
   key: keyof RoiInputs;
-  label: string;
+  labelKey: 'stores' | 'dailyFootfall' | 'machinesPerStore';
   limits: { min: number; max: number; step: number };
 }[];
 
 export function RoiCalculator() {
+  const COPY = useCopy();
   const [inputs, setInputs] = useState<RoiInputs>(DEFAULTS);
   const result = useMemo(() => computeRoi(inputs), [inputs]);
 
@@ -82,7 +83,7 @@ export function RoiCalculator() {
           {FIELDS.map((field) => (
             <div key={field.key} className="flex flex-col gap-sm">
               <label htmlFor={`roi-${field.key}`} className="text-label text-ink uppercase">
-                {field.label}
+                {COPY.forRetailers.roi.inputs[field.labelKey]}
               </label>
               <div className="flex items-center gap-md">
                 <input
@@ -98,7 +99,7 @@ export function RoiCalculator() {
                 />
                 <input
                   type="range"
-                  aria-label={`${field.label} (slider)`}
+                  aria-label={`${COPY.forRetailers.roi.inputs[field.labelKey]} (slider)`}
                   min={field.limits.min}
                   max={field.limits.max}
                   step={field.limits.step}

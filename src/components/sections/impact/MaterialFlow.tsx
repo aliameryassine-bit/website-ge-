@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { COPY } from '@/content/copy';
+import { useCopy } from '@/i18n/copy';
 import { FACTS, isPubliclyCitable, type FactId } from '@/content/facts';
 
 /**
@@ -114,6 +114,7 @@ function resolve():
 }
 
 export function MaterialFlow() {
+  const COPY = useCopy();
   const copy = COPY.impact.flow;
   const data = resolve();
   const container = useRef<HTMLDivElement>(null);
@@ -142,9 +143,17 @@ export function MaterialFlow() {
 
   return (
     <figure ref={container} className="flex flex-col gap-lg">
+      {/*
+        RTL: the whole bar is mirrored so it reads from the start of the line,
+        like the sentence above it. Mirroring the SVG rather than reversing the
+        band order is safe here because the bars carry no text — the labels live
+        in the legend below, which mirrors on its own as ordinary flow content.
+        Combined with the flipped transform-origin in globals.css, the bands
+        also grow from the reading start.
+      */}
       <svg
         viewBox={`0 0 ${WIDTH} ${BAR_HEIGHT}`}
-        className="h-auto w-full"
+        className="h-auto w-full rtl:-scale-x-100"
         role="img"
         aria-labelledby="flow-title flow-desc"
       >

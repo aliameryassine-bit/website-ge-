@@ -1,6 +1,6 @@
 import { ButtonLink } from '@/components/ui/Button';
 import { Eyebrow, Panel } from '@/components/ui/Panel';
-import { COPY } from '@/content/copy';
+import { getCopy } from '@/i18n/copy';
 
 /**
  * Honest placeholder for a route the global shell links to but whose content
@@ -12,7 +12,7 @@ import { COPY } from '@/content/copy';
  * page is not built, and they still offer both conversion paths so a visitor
  * who lands here is not stranded.
  */
-export function StubPage({
+export async function StubPage({
   title,
   intent,
 }: {
@@ -20,6 +20,7 @@ export function StubPage({
   /** What this page will need to do for its audience once written. */
   intent: string;
 }) {
+  const COPY = await getCopy();
   return (
     <main id="main" className="mx-auto flex max-w-page flex-col gap-xl px-md py-3xl md:px-xl">
       <Eyebrow>{COPY.site.name}</Eyebrow>

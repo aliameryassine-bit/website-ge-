@@ -922,17 +922,12 @@ export const COPY = {
       { label: 'Terms', href: '/legal/terms' },
       { label: 'Investor disclaimer', href: '/legal/investor-disclaimer' },
     ],
-    /**
-     * EN is live. AR and RO are stubs and are marked unavailable rather than
-     * rendered as working controls — a language switch that silently does
-     * nothing is worse than one that says it isn't ready.
-     */
-    locales: [
-      { code: 'EN', label: 'English', available: true },
-      { code: 'AR', label: 'العربية', available: false },
-      { code: 'RO', label: 'Română', available: false },
-    ],
-    localeUnavailable: 'Not yet available',
+    /*
+      The locale list itself is NOT here. Locale codes and their native names
+      live in src/i18n/routing.ts, because they are routing configuration rather
+      than copy — and because "العربية" must read identically in all three
+      translations of this file, which it cannot if each one owns a copy of it.
+    */
   },
 
   a11y: {

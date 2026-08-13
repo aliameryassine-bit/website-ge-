@@ -1,7 +1,6 @@
-import type { Route } from 'next';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 
-import { COPY } from '@/content/copy';
+import { getCopy } from '@/i18n/copy';
 
 /**
  * THE AUDIENCE FORK — the primary routing device of the site.
@@ -54,7 +53,7 @@ type Door = {
   summary: string;
   preview: readonly string[];
   cta: string;
-  href: Route;
+  href: string;
 };
 
 function Door({ door }: { door: Door }) {
@@ -88,10 +87,15 @@ function Door({ door }: { door: Door }) {
 
       <p className="mt-auto flex items-center gap-sm text-label text-action uppercase">
         {door.cta}
+        {/*
+          Directional icon. "Forward" is the reading direction, so under RTL the
+          arrowhead flips and the hover nudge travels the other way. An arrow
+          that keeps pointing right in Arabic points backwards.
+        */}
         <svg
           aria-hidden="true"
           viewBox="0 0 24 8"
-          className="h-2 w-8 transition-transform duration-[var(--duration-component)] ease-enter group-hover:translate-x-xs group-focus-within:translate-x-xs"
+          className="h-2 w-8 transition-transform duration-[var(--duration-component)] ease-enter ltr:group-hover:translate-x-xs ltr:group-focus-within:translate-x-xs rtl:-scale-x-100 rtl:group-hover:-translate-x-xs rtl:group-focus-within:-translate-x-xs"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
@@ -104,7 +108,8 @@ function Door({ door }: { door: Door }) {
   );
 }
 
-export function Fork() {
+export async function Fork() {
+  const COPY = await getCopy();
   return (
     <section aria-labelledby="fork-heading" className="mx-auto w-full max-w-page px-md md:px-xl">
       <h2 id="fork-heading" className="sr-only">

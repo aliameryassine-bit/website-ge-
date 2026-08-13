@@ -1,9 +1,12 @@
 'use server';
 
+import { getLocale } from 'next-intl/server';
 import { headers } from 'next/headers';
+
 import { redirect } from 'next/navigation';
 
-import { COPY } from '@/content/copy';
+import { getCopy } from '@/i18n/copy';
+import { getPathname } from '@/i18n/navigation';
 import { deliver, referenceCode } from './delivery';
 import { check, clientKey } from './rate-limit';
 import {
@@ -87,6 +90,9 @@ export async function submitPilotRequest(
   const blocked = await gate<(typeof PILOT_FIELDS)[number]>(formData);
   if (blocked) return { ...blocked, values: formValues(formData, PILOT_FIELDS) };
 
+  const COPY = await getCopy();
+  const locale = await getLocale();
+
   const raw = formValues(formData, PILOT_FIELDS);
   const parsed = pilotSchema.safeParse(raw);
 
@@ -114,6 +120,10 @@ export async function submitPilotRequest(
       City: data.city ?? '',
       'Received at': received,
       'Consent version': CONSENT_VERSION,
+      // The wording AS SHOWN, in the language it was shown in. A consent record
+      // that stores only the English text cannot answer what an Arabic reader
+      // actually agreed to.
+      'Consent locale': locale,
       'Consent text': COPY.consent.pilot,
       Source: 'website: pilot form',
     },
@@ -143,7 +153,7 @@ export async function submitPilotRequest(
   }
 
   // Outside any try/catch: redirect() signals by throwing.
-  redirect(`/pilot/received?ref=${reference}`);
+  redirect(getPathname({ href: '/pilot/received', locale }) + `?ref=${reference}`);
 }
 
 // ---------------------------------------------------------------------------
@@ -162,6 +172,9 @@ export async function requestDataRoomAccess(
 ): Promise<DataRoomFormState> {
   const blocked = await gate<(typeof DATA_ROOM_FIELDS)[number]>(formData);
   if (blocked) return { ...blocked, values: formValues(formData, DATA_ROOM_FIELDS) };
+
+  const COPY = await getCopy();
+  const locale = await getLocale();
 
   const raw = formValues(formData, DATA_ROOM_FIELDS);
   const schema = dataRoomSchema(
@@ -200,6 +213,7 @@ export async function requestDataRoomAccess(
       // requests predate the real wording.
       'Declaration version': COPY.investorDisclaimer.marker,
       'Consent version': CONSENT_VERSION,
+      'Consent locale': locale,
       'Consent text': COPY.consent.dataRoom,
       Status: 'Awaiting review',
       Source: 'website: data room request',
@@ -235,5 +249,5 @@ export async function requestDataRoomAccess(
     };
   }
 
-  redirect(`/investors/data-room/received?ref=${reference}`);
+  redirect(getPathname({ href: '/investors/data-room/received', locale }) + `?ref=${reference}`);
 }

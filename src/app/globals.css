@@ -43,7 +43,7 @@
   --color-stream-alu: var(--color-alu);
 
   /* ---- Typefaces ------------------------------------------------------ */
-  /* Assigned by next/font in src/app/layout.tsx. */
+  /* Assigned by next/font in src/app/[locale]/layout.tsx. */
   --font-display: var(--font-array), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-martian), ui-monospace, monospace;
@@ -189,6 +189,91 @@
     background-color: var(--color-action);
     color: var(--color-on-action);
   }
+}
+
+/* ==========================================================================
+   ARABIC — typeface and typographic corrections.
+
+   Scoped to :lang(ar) rather than [dir='rtl'], because these are properties of
+   the SCRIPT, not of the direction. A Hebrew locale would be RTL and would want
+   none of them.
+   ========================================================================== */
+
+:lang(ar) {
+  /*
+    Array has no Arabic and no dot-matrix Arabic display face exists at retail
+    quality, so the display role is filled by the Arabic text face at its
+    heaviest weight rather than by a Latin face dropping to fallback glyphs.
+    A nameplate rendered in fallback Arabic is the single clearest signal to an
+    Egyptian reader that their language was an afterthought.
+  */
+  --font-display: var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  /*
+    Numerals stay in Martian Mono — the readouts are Latin digits and tabular
+    figures matter more there than script matching — with the Arabic face behind
+    it for any label that lands in a readout.
+  */
+  --font-mono: var(--font-martian), var(--font-arabic), ui-monospace, monospace;
+}
+
+/*
+  THE ONE THAT MATTERS MOST. Arabic is a connected script: letters join into
+  words. Letter-spacing pulls those joins apart and produces text that reads as
+  broken rather than as styled. Every negative tracking value in the type scale
+  is tuned for Array and Archivo and is actively damaging here.
+
+  Applied to the elements, not to the tokens, because the tracking is bound into
+  each --text-* step and has to be overridden where it lands.
+*/
+:lang(ar) * {
+  letter-spacing: normal;
+}
+
+/*
+  Arabic needs more leading than a tight Latin display setting. The nameplate
+  runs at 0.92 for Array, which clips ascenders, descenders and any diacritic in
+  Arabic. These are floors, applied only where the Latin value is too tight.
+*/
+:lang(ar) .text-nameplate {
+  line-height: 1.25;
+}
+
+:lang(ar) .text-section,
+:lang(ar) .text-subsection {
+  line-height: 1.4;
+}
+
+:lang(ar) .text-lead,
+:lang(ar) .text-body {
+  line-height: 1.9;
+}
+
+/* ==========================================================================
+   RTL — the directional exceptions.
+
+   Almost nothing is listed here, and that is the point: the layout mirrors
+   because it is built from logical properties and `dir` on <html>, not because
+   of a parallel stylesheet. What remains is the handful of places where a
+   PHYSICAL axis is written into a transform, which CSS logical properties do
+   not reach.
+   ========================================================================== */
+
+/*
+  Leader lines extend from their anchor. The anchor is the inline start, so
+  under RTL the line has to grow from the right instead of the left, or it
+  extends away from the thing it points at.
+*/
+[dir='rtl'] [data-hero-extend] {
+  transform-origin: right center;
+}
+
+/*
+  Material flow bands grow from the reading start. Mirrored with the chart
+  itself; see the RTL note in MaterialFlow.tsx.
+*/
+[dir='rtl'] [data-flow-band] {
+  transform-origin: right center;
 }
 
 /* ==========================================================================

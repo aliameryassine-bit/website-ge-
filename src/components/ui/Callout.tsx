@@ -26,18 +26,23 @@ const STATUS_LABEL: Record<string, string> = {
 
 type CalloutProps = {
   id: FactId;
-  /** Which side the leader line runs to. */
-  side?: 'left' | 'right';
+  /**
+   * Which side the leader line runs to, in READING order rather than in
+   * physical left/right. `start` puts the line before the figure, `end` after
+   * it, and both mirror with the document direction — under RTL a line on the
+   * reader's left would point away from what it measures.
+   */
+  side?: 'start' | 'end';
   className?: string;
 };
 
-export function Callout({ id, side = 'right', className }: CalloutProps) {
+export function Callout({ id, side = 'end', className }: CalloutProps) {
   const fact = FACTS[id];
   const isPlaceholder = fact.status === 'PLACEHOLDER';
 
   return (
     <div
-      className={`flex items-center gap-md ${side === 'left' ? 'flex-row-reverse' : ''} ${className ?? ''}`}
+      className={`flex items-center gap-md ${side === 'start' ? 'flex-row-reverse' : ''} ${className ?? ''}`}
       data-callout={fact.id}
       data-fact-status={fact.status}
     >
