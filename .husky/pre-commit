@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# Fail fast on formatting/lint, then verify no PLACEHOLDER fact has reached a
+# committed surface. ALLOW_PLACEHOLDERS is deliberately NOT honoured here:
+# the escape hatch exists for local builds, not for commits.
+npx lint-staged
+npm run check:facts

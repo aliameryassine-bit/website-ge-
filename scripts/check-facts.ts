@@ -23,8 +23,19 @@ const SCAN_DIRS = ['app', 'components', 'content', 'lib', 'src', 'pages'];
 const SCAN_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx', '.mdx'];
 const SKIP_DIRS = new Set(['node_modules', '.next', '.git', 'dist', 'build']);
 
-/** Files that define the system rather than consume it. */
-const SKIP_FILES = new Set(['content/facts.ts', 'components/Fact.tsx']);
+/**
+ * Files that define or catalogue the system rather than ship it to a buyer.
+ *
+ * The styleguide is exempt on purpose: it is a noindex internal reference whose
+ * job includes demonstrating the placeholder state of the Fact and Callout
+ * primitives. Nothing else is exempt — every public surface is gated.
+ */
+const SKIP_FILES = new Set([
+  'content/facts.ts',
+  'src/components/ui/Fact.tsx',
+  'src/components/ui/Callout.tsx',
+  'src/app/styleguide/page.tsx',
+]);
 
 const REFERENCE_PATTERNS: RegExp[] = [
   /<Fact\b[^>]*?\bid\s*=\s*["'`]([^"'`]+)["'`]/gs,
@@ -72,8 +83,10 @@ function collectReferences(): Reference[] {
         pattern.lastIndex = 0;
         let match: RegExpExecArray | null;
         while ((match = pattern.exec(source)) !== null) {
+          const id = match[1];
+          if (!id) continue;
           references.push({
-            id: match[1],
+            id,
             file: relativePath,
             line: lineOf(source, match.index),
           });
