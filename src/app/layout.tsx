@@ -68,7 +68,19 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${array.variable} ${archivo.variable} ${martianMono.variable}`}>
+    <html
+      lang="en"
+      className={`${array.variable} ${archivo.variable} ${martianMono.variable}`}
+      /*
+        The data-js script below sets an attribute on this element before React
+        hydrates, which React reports as an attribute mismatch it "won't patch
+        up". The mismatch is intentional and one-directional — the client has an
+        attribute the server could not have sent — so it is suppressed here
+        rather than removed, which is the same pattern a theme script uses.
+        Scoped to this element's own attributes; it does not affect children.
+      */
+      suppressHydrationWarning
+    >
       <body className="min-h-dvh bg-ground text-ink antialiased">
         {/*
           Marks the document as JavaScript-capable BEFORE first paint.

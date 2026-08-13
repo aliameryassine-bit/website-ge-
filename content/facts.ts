@@ -101,10 +101,30 @@ export const FACTS = {
     'Power requirement per machine',
     'Retail sites need this before they can approve an install.',
   ),
+  'floor-loading': placeholder(
+    'floor-loading',
+    'Floor loading, machine full',
+    'kg per m². Shopping-centre and upper-floor sites will ask for this before they approve a site.',
+  ),
+  'connectivity-requirement': placeholder(
+    'connectivity-requirement',
+    'Connectivity requirement',
+    'State whether it runs on its own cellular connection or needs store network access — the answer decides whether IT has to be involved.',
+  ),
+  'service-clearance': placeholder(
+    'service-clearance',
+    'Service clearance required',
+    'Working space in front and to the side for a collection. Distinct from the machine footprint.',
+  ),
   'servicing-frequency': placeholder(
     'servicing-frequency',
     'Servicing frequency',
     'Also state who performs it — Green Exchange, not store staff, if that is the case.',
+  ),
+  'fault-response-time': placeholder(
+    'fault-response-time',
+    'Fault response time',
+    'From fault raised to an engineer on site. The commitment a risk-averse operations lead is actually buying.',
   ),
   'install-lead-time': placeholder(
     'install-lead-time',
@@ -134,6 +154,46 @@ export const FACTS = {
     'esg-reporting-cadence',
     'ESG reporting cadence provided to partners',
     'What the retailer receives and how often — feeds their compliance reporting.',
+  ),
+  'voucher-redemption-rate': placeholder(
+    'voucher-redemption-rate',
+    'Voucher redemption rate in store',
+    'Share of issued value spent in the store rather than taken as cash. The number that turns a return trip into a basket.',
+  ),
+
+  // ---------------------------------------------------------------------
+  // ROI model coefficients.
+  //
+  // These are the inputs to the retailer calculator on /for-retailers. They
+  // are held to a higher standard than the rest, not a lower one: a retail
+  // operations lead may take a decision on the output, so no coefficient here
+  // gets a plausible-looking value. Until each is measured, the calculator
+  // reports that it cannot compute rather than producing a number.
+  // ---------------------------------------------------------------------
+  'capture-rate-per-footfall': placeholder(
+    'capture-rate-per-footfall',
+    'Containers returned per visitor',
+    'Containers deposited per store visitor per day. Must come from a live pilot — no published figure from another market transfers to Egyptian retail.',
+  ),
+  'average-container-mass-pet': placeholder(
+    'average-container-mass-pet',
+    'Average PET container mass',
+    'Grams per accepted PET container, weighted by the size mix actually returned. Publicly citable industry ranges exist but the mix does not — measure it.',
+  ),
+  'average-container-mass-aluminium': placeholder(
+    'average-container-mass-aluminium',
+    'Average aluminium container mass',
+    'Grams per accepted can, weighted by the size mix actually returned.',
+  ),
+  'stream-split-pet-share': placeholder(
+    'stream-split-pet-share',
+    'PET share of accepted containers',
+    'Share of accepted containers that are PET rather than aluminium. Drives tonnage and material value, and varies by site.',
+  ),
+  'benefit-range-band': placeholder(
+    'benefit-range-band',
+    'Benefit estimate range band',
+    'Plus/minus band applied to the benefit figure to express uncertainty. Set from the spread observed across pilot sites, not chosen for comfort.',
   ),
 
   // ---------------------------------------------------------------------

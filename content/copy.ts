@@ -23,7 +23,7 @@ export const COPY = {
     label: 'Primary',
     items: [
       { label: 'Technology', href: '/technology' },
-      { label: 'For Retailers', href: '/retailers' },
+      { label: 'For Retailers', href: '/for-retailers' },
       { label: 'Impact', href: '/impact' },
       { label: 'Investors', href: '/investors' },
       { label: 'Company', href: '/company' },
@@ -49,7 +49,7 @@ export const COPY = {
         'Volumes and availability, reported per site',
       ],
       cta: 'Request a pilot',
-      href: '/retailers',
+      href: '/for-retailers',
     },
     investor: {
       title: 'I invest',
@@ -155,6 +155,221 @@ export const COPY = {
     closing: {
       headline: 'Start with one store.',
       body: 'A pilot is a single site, a defined review period, and a written assessment at the end of it.',
+    },
+  },
+
+  /**
+   * /for-retailers — audience A, and the page that has to survive a
+   * risk-averse operations lead reading it properly.
+   *
+   * The headline names their exposure rather than our product, and the page is
+   * ordered the way the objections arrive: what does it cost me in space, in
+   * labour, in attention. Nothing on this page carries a price; the ask is a
+   * pilot conversation.
+   */
+  forRetailers: {
+    hero: {
+      eyebrow: 'For retail operators',
+      headline: 'Take-back arrives as three costs: floor space, staff time, and attention.',
+      subhead:
+        'Green Exchange installs and operates the machine, so the only one you carry is the floor space. This page states how much of it, what the machine needs from the site, who does the work when something jams, and what comes back to you.',
+    },
+
+    deployment: {
+      heading: 'Deployment model',
+      intro:
+        'One line each, so there is no question about where the boundary sits. The machine stays on our balance sheet and our rota.',
+      columns: [
+        {
+          heading: 'What we install',
+          items: [
+            'The machine, commissioned and tested on site',
+            'Signage at the deposit point',
+            'Connectivity and remote monitoring',
+            'Fill-level telemetry that schedules its own collection',
+          ],
+        },
+        {
+          heading: 'What we own and operate',
+          items: [
+            'The hardware, for its whole life',
+            'Collection, transport and baling',
+            'Maintenance, spares and fault response',
+            'Material offtake and the reporting you receive',
+          ],
+        },
+        {
+          heading: 'What you provide',
+          items: [
+            'Floor space at an agreed position',
+            'A power supply within reach of it',
+            'Access for a collection vehicle',
+            'A named site contact — not a trained operator',
+          ],
+        },
+      ],
+      placementHeading: 'Placement options',
+      placementIntro:
+        'Three positions, and they trade off against each other. The right one is a site-by-site decision made at the assessment, not a policy.',
+      placementColumns: [
+        'Placement',
+        'Space comes from',
+        'Weather exposure',
+        'Footfall exposure',
+        'Servicing access',
+        'Power run',
+      ],
+      placements: [
+        {
+          name: 'Inside the entrance',
+          space: 'Sales floor',
+          weather: 'None — fully sheltered',
+          footfall: 'Highest: every visitor passes it',
+          servicing: 'During trading hours, through the entrance',
+          power: 'Shortest, from the store board',
+        },
+        {
+          name: 'Under an external canopy',
+          space: 'External area, not sales floor',
+          weather: 'Sheltered from rain, exposed to heat',
+          footfall: 'High: visible on the approach',
+          servicing: 'Outside trading hours, no entry to the store',
+          power: 'External run required',
+        },
+        {
+          name: 'Car park island',
+          space: 'Parking bay, no sales floor at all',
+          weather: 'Full exposure — needs the outdoor specification',
+          footfall: 'Lower: a deliberate stop, not a passing one',
+          servicing: 'Easiest — vehicle pulls alongside',
+          power: 'Longest run, and a civils job',
+        },
+      ],
+    },
+
+    footprint: {
+      heading: 'Footprint and site requirements',
+      intro:
+        'What a site engineer needs before they can say yes. Every figure here is measured or marked as unmeasured — none of it is indicative.',
+      note: 'Service clearance is additional to the machine footprint. A site that fits the machine but not the clearance is not a site.',
+      specs: [
+        'floor-space-required-m2',
+        'machine-dimensions',
+        'service-clearance',
+        'floor-loading',
+        'power-requirement',
+        'connectivity-requirement',
+      ],
+    },
+
+    servicing: {
+      heading: 'Servicing',
+      intro:
+        'The part that decides whether this is an asset or a chore. None of it lands on your staff.',
+      items: [
+        {
+          question: 'Who empties it?',
+          answer:
+            'We do. A Green Exchange crew collects on a route driven by fill-level telemetry, not by a calendar and not by a phone call from your duty manager.',
+          factId: 'servicing-frequency',
+        },
+        {
+          question: 'What happens when it jams?',
+          answer:
+            'The machine reports the fault itself and takes itself out of service so it cannot swallow another container. Your site contact does not diagnose anything; they do not need a key. We attend.',
+          factId: 'fault-response-time',
+        },
+        {
+          question: 'What is the uptime commitment?',
+          answer:
+            'Availability is measured per machine over a stated window and reported to you with the volumes. A machine that is down is our problem and it appears in your report, not just ours.',
+          factId: 'machine-uptime',
+        },
+      ],
+    },
+
+    benefits: {
+      heading: 'What comes back to you',
+      intro:
+        'Four things, in the order a board will ask about them. Two of them are unmeasured, and this page says so rather than borrowing a number from another market.',
+      items: [
+        {
+          heading: 'Footfall and dwell',
+          body: 'A deposit point gives a reason to come, and the value returned is redeemable in store. We will not put a figure on this before a pilot measures it at your site — anyone who does is guessing on your behalf.',
+          factIds: ['footfall-effect', 'dwell-time-effect'],
+        },
+        {
+          heading: 'Loyalty integration',
+          body: 'Value can be issued to your existing loyalty scheme instead of a paper voucher, which keeps the redemption inside your basket and inside your data.',
+          factIds: ['voucher-redemption-rate'],
+        },
+        {
+          heading: 'ESG reporting output',
+          body: 'Volumes by material stream, recovered tonnage, and machine availability, per site, on a fixed cadence — in a form you can put into a disclosure without re-deriving it.',
+          factIds: ['esg-reporting-cadence'],
+        },
+        {
+          heading: 'Compliance positioning',
+          body: 'Egypt has no national deposit-return scheme today. Operating collection infrastructure before one exists is a materially different position from retrofitting under a deadline, and it is the one we can help you take.',
+          factIds: ['retailer-revenue-share'],
+        },
+      ],
+    },
+
+    roi: {
+      heading: 'Estimate the scale',
+      intro:
+        'Set your own numbers. The model is deliberately simple and every coefficient behind it is listed below, with the source it has to come from.',
+      inputs: {
+        stores: 'Stores in scope',
+        dailyFootfall: 'Average daily visitors per store',
+        machinesPerStore: 'Machines per store',
+      },
+      outputs: {
+        containers: 'Containers recovered per month',
+        tonnage: 'Material recovered per month',
+        benefit: 'Estimated benefit to you per month',
+      },
+      /** Permanent and non-dismissible. Not a toast, not a tooltip. */
+      disclaimer:
+        'These outputs are estimates produced by a model, not a quotation and not a forecast. They are only as good as the assumptions listed below, and they carry no commercial commitment.',
+      assumptionsHeading: 'Assumptions in this model',
+      assumptions: [
+        'Every visitor is counted once per day, and a fixed share of visitors deposits containers.',
+        'Deposits cannot exceed what the machines on site can physically accept, so throughput caps the result.',
+        'The split between PET and aluminium is treated as constant across all sites.',
+        'Container mass is an average over the size mix actually returned, not a single container size.',
+        'Material value is a spot price per tonne and is volatile; the benefit range does not model that volatility.',
+        'Your benefit is a share of recovered material value only. Redemption in store, footfall effects and compliance value are excluded — they are real, and none of them is measured yet.',
+        'No capital cost, operating cost or price appears here. Commercial terms are a conversation, not a calculator.',
+      ],
+      unavailableHeading: 'This calculator cannot produce a number yet',
+      unavailableBody:
+        'The coefficients below have not been measured. Rather than fill them with plausible values, the model reports that it cannot compute. Every input above still works, and the moment a pilot supplies these figures the outputs appear.',
+      throughputNote:
+        'At these settings machine throughput is the limit, not footfall — additional visitors would not add containers.',
+    },
+
+    pilot: {
+      heading: 'Request a pilot',
+      intro:
+        'One site, a defined review period, and a written assessment at the end of it. No price, no commitment on this page — a pilot conversation.',
+      progressiveSummary: 'Add role and city (optional)',
+      fields: {
+        company: 'Chain or company',
+        email: 'Work email',
+        stores: 'Number of stores',
+        role: 'Your role',
+        city: 'City',
+      },
+      submit: 'Request a pilot',
+      /**
+       * There is no submission destination configured yet. The form validates
+       * properly and says so plainly rather than pretending to have sent.
+       */
+      unconfigured:
+        'This form has no destination configured yet, so nothing was sent. Your details were validated but not stored.',
+      validationFailed: 'Check the highlighted fields.',
     },
   },
 
