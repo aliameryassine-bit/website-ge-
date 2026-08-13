@@ -1,9 +1,11 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 import { Eyebrow, Panel } from '@/components/ui/Panel';
 import { useCopy } from '@/i18n/copy';
+import { EVENTS, storeBucket } from '@/lib/analytics/events';
+import { track } from '@/lib/analytics/track';
 import {
   computeRoi,
   ROI_COEFFICIENTS,
@@ -62,9 +64,35 @@ export function RoiCalculator() {
   const [inputs, setInputs] = useState<RoiInputs>(DEFAULTS);
   const result = useMemo(() => computeRoi(inputs), [inputs]);
 
+  /**
+   * Reported once per visit, on the first change to any input.
+   *
+   * Once, not per keystroke: a slider drags through dozens of values and each
+   * one is the same person, the same session and the same decision. The bucket
+   * is read at the moment of first use, which is the chain size they arrived
+   * intending to model rather than whatever they settle on after playing.
+   *
+   * `computed` is the reading that matters right now. Every coefficient in
+   * content/roi.ts is still a PLACEHOLDER, so the calculator answers with what
+   * it is missing instead of a number. This flag counts how many prospects
+   * reached that dead end — which is the argument for how hard to chase those
+   * nine figures.
+   */
+  const reported = useRef(false);
+
   const setField = (key: keyof RoiInputs, raw: string) => {
     const parsed = Number(raw);
-    setInputs((current) => ({ ...current, [key]: Number.isFinite(parsed) ? parsed : 0 }));
+    const next = { ...inputs, [key]: Number.isFinite(parsed) ? parsed : 0 };
+
+    if (!reported.current) {
+      reported.current = true;
+      track(EVENTS.roiCalculatorUsed, {
+        stores: storeBucket(next.stores),
+        computed: computeRoi(next).available ? 'yes' : 'no',
+      });
+    }
+
+    setInputs(next);
   };
 
   return (

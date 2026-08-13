@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useRef } from 'react';
 
 import { Button } from '@/components/ui/Button';
 import { CheckboxField, Honeypot, TextField } from '@/components/ui/Field';
@@ -11,6 +11,8 @@ import { submitPilotRequest } from '@/lib/forms/actions';
 import { PILOT_FIELDS } from '@/lib/forms/fields';
 import { PILOT_INITIAL_STATE } from '@/lib/forms/state';
 import { useFormValidation } from '@/lib/forms/use-form-validation';
+import { EVENTS } from '@/lib/analytics/events';
+import { track } from '@/lib/analytics/track';
 
 /**
  * Pilot request form. Goal one of the site.
@@ -33,6 +35,22 @@ const LOAD_PILOT_SCHEMA = () => import('@/lib/forms/schemas').then((m) => m.pilo
 
 export function PilotForm({ heading = true }: { heading?: boolean }) {
   const COPY = useCopy();
+
+  /**
+   * "Started" means someone typed, not that the page rendered.
+   *
+   * Fired on first input rather than on focus or on mount: a tab that lands in
+   * the first field, or a page view of /for-retailers where the form is far
+   * below the fold, is not an intent to request a pilot. Counting either would
+   * inflate the denominator and make the start-to-submit rate — the only thing
+   * this pair is for — meaningless.
+   */
+  const started = useRef(false);
+  const onFirstInput = () => {
+    if (started.current) return;
+    started.current = true;
+    track(EVENTS.pilotFormStarted, { entry: heading ? 'for-retailers' : 'pilot' });
+  };
   const [state, formAction, pending] = useActionState(submitPilotRequest, PILOT_INITIAL_STATE);
   const copy = COPY.forRetailers.pilot;
 
@@ -59,6 +77,7 @@ export function PilotForm({ heading = true }: { heading?: boolean }) {
           action={formAction}
           onSubmit={onSubmit}
           onBlur={onBlur}
+          onInput={onFirstInput}
           noValidate
           className="flex flex-col gap-lg"
         >

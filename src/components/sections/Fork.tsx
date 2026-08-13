@@ -56,7 +56,19 @@ type Door = {
   href: string;
 };
 
-function Door({ door }: { door: Door }) {
+/**
+ * Plausible tagged-event classes.
+ *
+ * The fork is instrumented WITHOUT becoming a client component. Plausible's
+ * tagged-events script reads these classes off the anchor and fires the event
+ * itself, so the panel keeps the property that makes it trustworthy: the site's
+ * primary routing device still has no JavaScript of its own and cannot break.
+ */
+function tag(choice: 'retailer' | 'investor'): string {
+  return `plausible-event-name=fork_selected plausible-event-choice=${choice}`;
+}
+
+function Door({ door, choice }: { door: Door; choice: 'retailer' | 'investor' }) {
   return (
     <div className={PANEL}>
       <h3 className="font-display text-section text-ink">
@@ -68,7 +80,7 @@ function Door({ door }: { door: Door }) {
         */}
         <Link
           href={door.href}
-          className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+          className={`after:absolute after:inset-0 after:content-[''] focus-visible:outline-none ${tag(choice)}`}
         >
           {door.title}
         </Link>
@@ -120,10 +132,10 @@ export async function Fork() {
       {/* 3/2 split on desktop: the retail buyer gets the wider door. */}
       <div className="grid gap-md md:grid-cols-5 md:gap-lg">
         <div className="md:col-span-3">
-          <Door door={COPY.fork.retail} />
+          <Door door={COPY.fork.retail} choice="retailer" />
         </div>
         <div className="md:col-span-2">
-          <Door door={COPY.fork.investor} />
+          <Door door={COPY.fork.investor} choice="investor" />
         </div>
       </div>
     </section>

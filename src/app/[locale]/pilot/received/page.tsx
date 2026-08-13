@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 
+import { TrackOnMount } from '@/components/analytics/TrackOnMount';
 import { Received } from '@/components/sections/Received';
+import { EVENTS } from '@/lib/analytics/events';
 import { getCopy } from '@/i18n/copy';
 
 export const metadata: Metadata = {
@@ -19,17 +21,20 @@ export default async function PilotReceivedPage({
   const copy = COPY.received.pilot;
 
   return (
-    <Received
-      eyebrow={copy.eyebrow}
-      heading={copy.heading}
-      reference={ref}
-      referenceLabel={copy.referenceLabel}
-      referenceNote={copy.referenceNote}
-      nextHeading={copy.nextHeading}
-      steps={copy.steps}
-      responseLabel={copy.responseLabel}
-      responseFactId="pilot-response-time"
-      footnote={copy.changedYourMind}
-    />
+    <>
+      <TrackOnMount event={EVENTS.pilotFormSubmitted} props={{}} />
+      <Received
+        eyebrow={copy.eyebrow}
+        heading={copy.heading}
+        reference={ref}
+        referenceLabel={copy.referenceLabel}
+        referenceNote={copy.referenceNote}
+        nextHeading={copy.nextHeading}
+        steps={copy.steps}
+        responseLabel={copy.responseLabel}
+        responseFactId="pilot-response-time"
+        footnote={copy.changedYourMind}
+      />
+    </>
   );
 }

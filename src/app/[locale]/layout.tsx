@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
+import { Analytics } from '@/components/Analytics';
 import { MotionProvider } from '@/components/MotionProvider';
 import { OrganizationSchema } from '@/components/StructuredData';
 import { Footer } from '@/components/sections/Footer';
@@ -220,6 +221,7 @@ export default async function LocaleLayout({
           component.
         */}
         <OrganizationSchema locale={locale as Locale} />
+        <Analytics />
         <NextIntlClientProvider messages={messages}>
           <SkipLink />
           <MotionProvider>

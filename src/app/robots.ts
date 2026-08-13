@@ -17,6 +17,9 @@ import { SITE_URL } from '@/lib/seo';
  * - the data room request and its gated access route are not public surfaces.
  * - the confirmation pages are post-conversion; landing on one from a search
  *   result tells someone their request was received when it was not.
+ * - /admin is the internal dashboard. It is also behind Basic Auth, which a
+ *   crawler cannot pass, but listing it keeps the URL out of logs and out of
+ *   anyone's site: search.
  */
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -31,6 +34,7 @@ export default function robots(): MetadataRoute.Robots {
           '/*/investors/data-room',
           '/pilot/received',
           '/*/pilot/received',
+          '/admin',
         ],
       },
     ],

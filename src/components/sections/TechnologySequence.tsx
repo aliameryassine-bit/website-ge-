@@ -6,6 +6,8 @@ import { TechStage } from '@/components/sections/technology/TechStage';
 import { Callout } from '@/components/ui/Callout';
 import { Eyebrow } from '@/components/ui/Panel';
 import { useCopy } from '@/i18n/copy';
+import { EVENTS } from '@/lib/analytics/events';
+import { track } from '@/lib/analytics/track';
 import { useReducedMotion } from '@/lib/use-reduced-motion';
 
 /**
@@ -57,6 +59,18 @@ export function TechnologySequence() {
   */
   const stepIds = COPY.technology.steps.map((step) => step.id).join(',');
   const stepCount = COPY.technology.steps.length;
+
+  /**
+   * Completion, counted once per visit.
+   *
+   * This is the whole of the technology instrumentation, and it deliberately
+   * replaces continuous scroll depth. The only decision hiding in "how far did
+   * they get" is "is the pin trapping people", and one boolean per session
+   * answers that: if almost nobody reaches the last step, unpin the section
+   * into the plain list it already degrades to. Depth would add a stream of
+   * events per session and no further decision.
+   */
+  const completed = useRef(false);
 
   useEffect(() => {
     if (reduced) return;
@@ -110,6 +124,12 @@ export function TechnologySequence() {
             i < index ? 'passed' : i === index ? 'active' : 'future',
           );
         });
+
+        // The last step reached. Fires once, whether pinned or scrolling as a list.
+        if (index >= stepCount - 1 && !completed.current) {
+          completed.current = true;
+          track(EVENTS.technologySequenceCompleted, { mode: wide.matches ? 'pinned' : 'list' });
+        }
 
         lastIndex = index;
       }
