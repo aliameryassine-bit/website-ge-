@@ -13,6 +13,11 @@ export type PilotFormState = {
   status: 'idle' | 'invalid' | 'unconfigured';
   /** Field name → message. Rendered next to the field it belongs to. */
   errors: Partial<Record<PilotFieldName, string>>;
+  /**
+   * What was typed, echoed back so a validation error does not empty the form.
+   * React 19 resets an uncontrolled form once its action resolves.
+   */
+  values?: Partial<Record<PilotFieldName, string>>;
 };
 
 export const PILOT_INITIAL_STATE: PilotFormState = { status: 'idle', errors: {} };

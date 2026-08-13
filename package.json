@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run check:facts",
+    "prebuild": "npm run check:facts && npm run check:legal",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
@@ -16,7 +16,9 @@
     "check:facts": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-facts.ts",
     "typecheck": "tsc --noEmit",
     "prepare": "husky",
-    "check:facts:commit": "npm run check:facts -- --commit"
+    "check:facts:commit": "npm run check:facts -- --commit",
+    "check:legal": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-legal.ts",
+    "grant:data-room": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/grant-data-room.ts"
   },
   "dependencies": {
     "lenis": "^1.1.20",

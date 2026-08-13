@@ -409,6 +409,158 @@ export const COPY = {
     },
   },
 
+  /**
+   * /investors — the PUBLIC page. Qualitative and directional only.
+   *
+   * Hard rules encoded in this copy:
+   * - No projected returns, no valuation, no multiples, no raise size.
+   * - No "invest now" language. The ask is data room access, reviewed manually.
+   * - Revenue lines are described as mechanisms, never quantified here.
+   * - Market figures are not written into this copy at all. They render from
+   *   facts.ts only when a fact carries a named public source, so an unsourced
+   *   statistic cannot reach this page through prose.
+   */
+  investorsPublic: {
+    hero: {
+      eyebrow: 'For investors',
+      headline: 'Deposit infrastructure, built before the mandate arrives.',
+      /** The thesis, in three sentences. No more. */
+      thesis: [
+        'PET and aluminium enter Egypt in volume and are recovered at a fraction of the rate, because collection depends on informal channels rather than infrastructure.',
+        'Retail is where those containers are already carried in and out every day, which makes a store entrance the cheapest place to intercept them.',
+        'Regulation is moving toward producer responsibility across the region, and the operators holding retail siting agreements and collection routes when it lands are the ones who can serve it.',
+      ],
+    },
+
+    market: {
+      heading: 'Market context',
+      intro:
+        'Four figures matter here, and each appears only when it carries a named public source. Anything unsourced is absent from this page rather than shown with a caveat.',
+      /** Rendered through SourcedFigure — omitted entirely when unsourced. */
+      figures: [
+        'egypt-annual-pet-consumption',
+        'egypt-pet-collection-rate',
+        'egypt-aluminium-collection-rate',
+        'egypt-regulatory-direction',
+      ],
+      /** Shown in place of the figures while none are citable. Not a caveat on a number — a statement that there is no number. */
+      pendingHeading: 'No sourced market figures are published yet',
+      pendingBody:
+        'The figures for this section have not been tied to a named public source. Rather than publish them with a hedge, they are withheld until each one cites the instrument or dataset it comes from. The full market analysis, with its sources, is in the data room.',
+      regulatoryNote:
+        'Direction of travel, not a prediction: Egypt legislated a framework for waste management in 2020, and producer-responsibility instruments across MENA have followed the same pattern. We do not model a mandate date, and nothing on this page depends on one arriving.',
+    },
+
+    model: {
+      heading: 'How a machine makes money',
+      intro:
+        'Four revenue lines. Described as mechanisms only — no figures appear on this page, and the unit economics are in the data room.',
+      lines: [
+        {
+          heading: 'Retailer contract',
+          body: 'The site pays for placement and service, or takes a share of recovered material value, depending on the deal. Either way the machine is contracted per site rather than sold as hardware.',
+        },
+        {
+          heading: 'Material sale',
+          body: 'Baled PET and aluminium are sold to reprocessors. Separation quality upstream sets the price, which is why sorting happens before compaction rather than after.',
+        },
+        {
+          heading: 'Brand sponsorship',
+          body: 'A machine at a store entrance is a branded surface with a measurable interaction count, and beverage producers facing producer-responsibility obligations have a reason to fund collection directly.',
+        },
+        {
+          heading: 'Data',
+          body: 'Every accepted container is a counted, located, time-stamped return by material and by product. That record is what a producer needs to evidence recovery, and it is the line with the lowest marginal cost.',
+        },
+      ],
+      note: 'Which lines carry the model, in what proportion, and at what cost is exactly the question the data room answers. It is not answered here.',
+    },
+
+    traction: {
+      heading: 'Where we actually are',
+      intro:
+        'Stated conservatively and stage-appropriately. Built, signed and deployed are separate counts and are kept separate; an unmeasured figure is shown as unmeasured rather than rounded up.',
+      figures: [
+        'company-stage',
+        'machines-built',
+        'machines-deployed',
+        'pilots-signed',
+        'lois-signed',
+      ],
+      note: 'A letter of intent is not a pilot and a pilot is not a rollout. Conflating them is the most common way an early company overstates itself, so these are counted separately here.',
+    },
+
+    team: {
+      heading: 'Team',
+      intro: 'Real names and real current roles only.',
+      /** Rendered when TEAM is empty. Honest, and obviously incomplete. */
+      pendingHeading: 'Team details are not published yet',
+      pendingBody:
+        'No names or roles have been supplied for publication. An investor will verify every person listed on a page like this, so nothing is listed until it is accurate and the individuals have agreed to appear. Team and background are covered in the data room.',
+    },
+
+    cta: {
+      heading: 'Request data room access',
+      body: 'Access is reviewed and granted manually. Requests are not approved automatically, and submitting this form does not create any commitment on either side.',
+    },
+  },
+
+  /**
+   * The gated data room request.
+   *
+   * The declaration text is a legal representation, so it is a marked
+   * PLACEHOLDER on the same footing as the disclaimer: a lawyer writes it.
+   */
+  dataRoomRequest: {
+    heading: 'Request data room access',
+    intro:
+      'Six details and one declaration. Requests are reviewed by a person; nothing is granted on submission.',
+    fields: {
+      name: 'Full name',
+      organisation: 'Organisation',
+      role: 'Role',
+      investorType: 'Investor type',
+      country: 'Country',
+      email: 'Work email',
+      linkedin: 'LinkedIn profile',
+    },
+    investorTypes: ['Angel', 'Venture capital', 'Family office', 'Strategic', 'Other'],
+    investorTypePrompt: 'Select investor type',
+    declaration: {
+      /**
+       * PLACEHOLDER — NOT FINAL. Must be written by a qualified lawyer in the
+       * relevant jurisdictions before this form is used with real requesters.
+       * Deliberately not drafted here: a self-certification of investor status
+       * has legal effect and the wording carries the risk.
+       */
+      label:
+        'PLACEHOLDER — LAWYER TO DRAFT: a self-declaration that the requester is a professional or qualified investor, and that they understand these materials are not an offer of securities.',
+      requiredError: 'You must confirm the declaration to request access.',
+    },
+    submit: 'Request access',
+    pending: {
+      heading: 'Request lodged',
+      body: 'Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form.',
+    },
+    failure: {
+      heading: 'Request could not be lodged',
+      body: 'Nothing was recorded, so please do not treat this as submitted. The request store is not configured in this environment.',
+    },
+    validationFailed: 'Check the highlighted fields.',
+  },
+
+  /**
+   * Persistent investor disclaimer.
+   *
+   * PLACEHOLDER ONLY. `scripts/check-legal.ts` fails a production build while
+   * this marker is present, so it cannot ship as final by accident.
+   */
+  investorDisclaimer: {
+    marker: 'LEGAL-PLACEHOLDER-DO-NOT-SHIP',
+    heading: 'Placeholder disclaimer — not legal text',
+    body: 'This block is a placeholder for a disclaimer to be drafted by a qualified lawyer covering, at minimum: that nothing on these pages is an offer or solicitation to buy or sell securities, the jurisdictions in which the materials may be received, forward-looking-statement language, and the basis on which any figure is presented. It has deliberately not been drafted in-house. The production build fails while this placeholder is in place.',
+  },
+
   // -----------------------------------------------------------------
   // Investors — audience B
   // -----------------------------------------------------------------

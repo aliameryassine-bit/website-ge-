@@ -19,7 +19,30 @@ export type Fact = {
   source: string; // URL, internal doc name, or "UNSOURCED"
   status: 'verified' | 'internal' | 'PLACEHOLDER';
   note?: string;
+  /**
+   * Link for the named source, when one exists.
+   *
+   * Separate from `source` so a citation can read as a name — "Egypt Ministry
+   * of Environment, 2024" — while still linking out. Public-facing citations
+   * need both; an internal doc has a name and no URL.
+   */
+  sourceUrl?: string;
 };
+
+/**
+ * Whether a fact may appear on a PUBLIC investor surface.
+ *
+ * The investor market-context rule is absolute: a figure without a named
+ * public source does not go on the page. Not greyed out, not marked pending —
+ * absent. An unsourced market statistic in front of an investor is the single
+ * most damaging thing this site could publish, so the test is a function
+ * rather than a habit, and the component that renders citations calls it.
+ *
+ * `internal` deliberately fails: an internal document is not a public source.
+ */
+export function isPubliclyCitable(fact: Fact): boolean {
+  return fact.status === 'verified' && fact.source !== 'UNSOURCED' && fact.source.trim().length > 0;
+}
 
 /** A placeholder fact. Keeps the shape honest and the intent obvious. */
 function placeholder(id: string, label: string, note?: string): Fact {
@@ -247,6 +270,11 @@ export const FACTS = {
     'Addressable retail sites in Egypt',
     'Basis for TAM. Define what counts as a site.',
   ),
+  'egypt-regulatory-direction': placeholder(
+    'egypt-regulatory-direction',
+    'Egypt packaging regulation status',
+    'Waste Management Regulation Law 202/2020 and any EPR instrument under it. Needs a citation to the instrument itself, not to commentary about it.',
+  ),
   'mena-addressable-retail-sites': placeholder(
     'mena-addressable-retail-sites',
     'Addressable retail sites across MENA',
@@ -256,6 +284,31 @@ export const FACTS = {
   // ---------------------------------------------------------------------
   // Traction — these prove "operating company, not student concept"
   // ---------------------------------------------------------------------
+  'company-stage': placeholder(
+    'company-stage',
+    'Current stage',
+    'One phrase, e.g. "pre-pilot" or "first pilot installed". Stage-appropriate beats inflated: an investor discounts a vague claim harder than a small one.',
+  ),
+  'machines-built': placeholder(
+    'machines-built',
+    'Machines built',
+    'Units manufactured, whether or not deployed. Distinct from machines-deployed and usually the larger number at this stage.',
+  ),
+  'pilots-signed': placeholder(
+    'pilots-signed',
+    'Pilots signed',
+    'Signed pilot agreements. Count only executed documents — a verbal yes is not a pilot.',
+  ),
+  'lois-signed': placeholder(
+    'lois-signed',
+    'Letters of intent signed',
+    'Non-binding LOIs. Keep separate from pilots-signed; conflating them is the most common traction inflation.',
+  ),
+  'team-size': placeholder(
+    'team-size',
+    'Team size',
+    'Headcount, and state whether it includes founders and part-time.',
+  ),
   'machines-deployed': placeholder(
     'machines-deployed',
     'Machines deployed',

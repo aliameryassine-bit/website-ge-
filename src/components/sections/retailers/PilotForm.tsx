@@ -55,6 +55,7 @@ export function PilotForm() {
             <input
               id="company"
               name="company"
+              defaultValue={state.values?.company ?? ''}
               type="text"
               autoComplete="organization"
               required
@@ -76,6 +77,7 @@ export function PilotForm() {
             <input
               id="email"
               name="email"
+              defaultValue={state.values?.email ?? ''}
               type="email"
               autoComplete="email"
               required
@@ -97,6 +99,7 @@ export function PilotForm() {
             <input
               id="stores"
               name="stores"
+              defaultValue={state.values?.stores ?? ''}
               type="number"
               inputMode="numeric"
               min={1}

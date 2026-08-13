@@ -36,7 +36,10 @@ export async function submitPilotRequest(
     errors.stores = 'Enter the number of stores, as a whole number of 1 or more.';
   }
 
-  if (Object.keys(errors).length > 0) return { status: 'invalid', errors };
+  // Echoed back: React 19 resets the form after the action resolves.
+  if (Object.keys(errors).length > 0) {
+    return { status: 'invalid', errors, values: { company, email, stores: storesRaw } };
+  }
 
   // Validated. Nothing is stored or forwarded, and the response says so.
   return { status: 'unconfigured', errors: {} };
