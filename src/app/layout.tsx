@@ -3,6 +3,8 @@ import { Archivo, Martian_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
 import { MotionProvider } from '@/components/MotionProvider';
+import { Footer } from '@/components/sections/Footer';
+import { Header } from '@/components/sections/Header';
 import { COPY } from '@/content/copy';
 
 import './globals.css';
@@ -74,7 +76,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           {COPY.a11y.skipToContent}
         </a>
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <div className="flex min-h-dvh flex-col">
+            <Header />
+            {/* Pages own their <main> so each can label its own landmark. */}
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
+        </MotionProvider>
       </body>
     </html>
   );

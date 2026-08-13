@@ -208,6 +208,40 @@ export const FACTS = {
     'CO₂e avoided per tonne of PET recovered',
     'Requires a stated methodology in `source`, not a round number.',
   ),
+
+  // ---------------------------------------------------------------------
+  // Corporate identity — footer disclosure.
+  //
+  // Not statistics, but the same rule applies with more force: a wrong
+  // registration number or a guessed address is a legal misstatement, not
+  // an approximation. These route through the same gate as every figure.
+  // ---------------------------------------------------------------------
+  'legal-entity-name': placeholder(
+    'legal-entity-name',
+    'Registered entity name',
+    'The full Romanian legal form as registered (e.g. SRL / SA), not the trading name.',
+  ),
+  'company-registration-number': placeholder(
+    'company-registration-number',
+    'Company registration number',
+    'Romanian trade register number. Must match the register exactly.',
+  ),
+  'vat-number': placeholder(
+    'vat-number',
+    'VAT number',
+    'Include the RO prefix if VAT-registered. If not registered, say so rather than leaving it blank.',
+  ),
+  'registered-address': placeholder(
+    'registered-address',
+    'Registered office address',
+    'The registered office as filed, not an operational or correspondence address.',
+  ),
+  'contact-email': placeholder('contact-email', 'Contact email'),
+  'contact-phone': placeholder(
+    'contact-phone',
+    'Contact phone',
+    'Include the country code. Consider whether an Egypt-local number is needed for retail enquiries.',
+  ),
 } as const satisfies Record<string, Fact>;
 
 /** Every valid fact id. Use this for props so bad ids fail at compile time. */

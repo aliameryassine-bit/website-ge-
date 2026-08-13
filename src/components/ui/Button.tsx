@@ -13,7 +13,7 @@ import type { ComponentProps, ReactNode } from 'react';
 type Variant = 'primary' | 'secondary';
 
 const BASE =
-  'inline-flex min-h-11 items-center justify-center gap-sm rounded-panel px-lg py-sm ' +
+  'inline-flex min-h-11 items-center justify-center gap-sm whitespace-nowrap rounded-panel px-lg py-sm ' +
   'text-label uppercase transition-colors duration-[var(--duration-state)] ease-enter ' +
   'cursor-pointer disabled:cursor-not-allowed disabled:opacity-40';
 

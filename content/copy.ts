@@ -20,10 +20,49 @@ export const COPY = {
   },
 
   nav: {
-    retail: 'For retail',
-    investors: 'For investors',
-    howItWorks: 'How it works',
-    company: 'Company',
+    label: 'Primary',
+    items: [
+      { label: 'Technology', href: '/technology' },
+      { label: 'For Retailers', href: '/retailers' },
+      { label: 'Impact', href: '/impact' },
+      { label: 'Investors', href: '/investors' },
+      { label: 'Company', href: '/company' },
+    ],
+  },
+
+  /**
+   * The audience fork — the primary routing device of the site.
+   *
+   * Retail is listed first and weighted heavier because audience A outranks
+   * audience B. The previews say what is behind each door in that audience's
+   * own terms, so nobody has to guess which panel is for them.
+   */
+  fork: {
+    eyebrow: 'Two ways in',
+    retail: {
+      title: 'I run retail stores',
+      summary: 'Floor space, servicing, revenue share, and reporting you can file.',
+      preview: [
+        'Footprint, power, and collection access per machine',
+        'Who services the machine, and how often',
+        'Revenue share and in-store redemption',
+        'Volumes and availability, reported per site',
+      ],
+      cta: 'Request a pilot',
+      href: '/retailers',
+    },
+    investor: {
+      title: 'I invest',
+      summary: 'Unit economics, payback, material offtake, and the deployment plan.',
+      preview: [
+        'Capital and operating cost per machine',
+        'Payback period and the assumptions behind it',
+        'Offtake pricing by material stream',
+        'Egypt deployment plan and MENA expansion case',
+      ],
+      cta: 'Investor access',
+      href: '/investors',
+    },
   },
 
   cta: {
@@ -36,6 +75,11 @@ export const COPY = {
       label: 'Request data room access',
       href: '/investors/data-room',
       supporting: 'Unit economics, deployment plan and material offtake.',
+    },
+    /** Header CTA — deliberately quieter wording than the data room request. */
+    investorAccess: {
+      label: 'Investor access',
+      href: '/investors',
     },
     spec: {
       label: 'Download machine specification',
@@ -210,6 +254,27 @@ export const COPY = {
     // No certifications, awards or memberships until they exist and are documented.
     legal: 'Registered in Romania.',
     rights: 'All rights reserved.',
+    registrationHeading: 'Registered entity',
+    contactHeading: 'Contact',
+    legalHeading: 'Legal',
+    languageHeading: 'Language',
+    links: [
+      { label: 'Privacy', href: '/legal/privacy' },
+      { label: 'Cookies', href: '/legal/cookies' },
+      { label: 'Terms', href: '/legal/terms' },
+      { label: 'Investor disclaimer', href: '/legal/investor-disclaimer' },
+    ],
+    /**
+     * EN is live. AR and RO are stubs and are marked unavailable rather than
+     * rendered as working controls — a language switch that silently does
+     * nothing is worse than one that says it isn't ready.
+     */
+    locales: [
+      { code: 'EN', label: 'English', available: true },
+      { code: 'AR', label: 'العربية', available: false },
+      { code: 'RO', label: 'Română', available: false },
+    ],
+    localeUnavailable: 'Not yet available',
   },
 
   a11y: {
@@ -217,6 +282,9 @@ export const COPY = {
     mainNav: 'Main navigation',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
+    menuLabel: 'Site menu',
+    forkLabel: 'Choose the path that describes you',
+    currentLanguage: 'Current language',
     placeholderFact: 'Figure not yet published',
   },
 } as const;

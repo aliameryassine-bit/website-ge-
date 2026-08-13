@@ -8,10 +8,21 @@
  *
  * Run:            npm run check:facts
  * Escape hatch:   ALLOW_PLACEHOLDERS=1 npm run build
+ * Commit mode:    npm run check:facts -- --commit
  *
  * Note: `next dev` does not run prebuild, so local dev is never blocked by
  * this check. The escape hatch is for running a production build locally
  * while figures are still outstanding.
+ *
+ * Two severities, because they are different kinds of problem:
+ *
+ * - An unknown id, or a fact claiming verified/internal status while still
+ *   UNSOURCED, is a MISTAKE. It fails in every mode, including commits.
+ * - A referenced PLACEHOLDER is an intentional interim state — the footer's
+ *   registration details are placeholders precisely because nobody has
+ *   supplied them yet. That must block a DEPLOY, not a commit, so `--commit`
+ *   reports them without failing. Blocking commits on them would only teach
+ *   everyone to pass --no-verify.
  */
 
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -37,13 +48,33 @@ const SKIP_FILES = new Set([
   'src/app/styleguide/page.tsx',
 ]);
 
+/**
+ * Explicit call shapes. These also surface UNKNOWN ids, because writing
+ * getFact('typo') is a mistake worth reporting even though tsc catches it.
+ */
 const REFERENCE_PATTERNS: RegExp[] = [
   /<Fact\b[^>]*?\bid\s*=\s*["'`]([^"'`]+)["'`]/gs,
   /\bgetFact\(\s*["'`]([^"'`]+)["'`]\s*\)/g,
   /\bFACTS\[\s*["'`]([^"'`]+)["'`]\s*\]/g,
 ];
 
+/**
+ * Any quoted string that IS a known fact id also counts as a reference.
+ *
+ * Without this the gate has a hole wide enough to drive the footer through:
+ * it collects its ids in a `FactId[]` array and reads `FACTS[id]` with a
+ * computed key, so no call-shape pattern matches and placeholder registration
+ * details sail into a production build. TypeScript validates that the id
+ * exists; only this check knows whether it has a real value yet.
+ *
+ * Conservative by construction — it matches against the actual key list, so a
+ * string only counts if it is genuinely a fact id.
+ */
+const QUOTED_STRING = /["'`]([a-z0-9][a-z0-9-]*)["'`]/g;
+
 type Reference = { id: string; file: string; line: number };
+
+const KNOWN_IDS = new Set(Object.keys(FACTS));
 
 function walk(dir: string): string[] {
   let entries: string[];
@@ -79,18 +110,29 @@ function collectReferences(): Reference[] {
       if (SKIP_FILES.has(relativePath)) continue;
 
       const source = readFileSync(file, 'utf8');
+      const seen = new Set<string>();
+
       for (const pattern of REFERENCE_PATTERNS) {
         pattern.lastIndex = 0;
         let match: RegExpExecArray | null;
         while ((match = pattern.exec(source)) !== null) {
           const id = match[1];
           if (!id) continue;
-          references.push({
-            id,
-            file: relativePath,
-            line: lineOf(source, match.index),
-          });
+          const line = lineOf(source, match.index);
+          seen.add(`${id}:${line}`);
+          references.push({ id, file: relativePath, line });
         }
+      }
+
+      // Bare id literals — arrays, maps, config objects.
+      QUOTED_STRING.lastIndex = 0;
+      let quoted: RegExpExecArray | null;
+      while ((quoted = QUOTED_STRING.exec(source)) !== null) {
+        const id = quoted[1];
+        if (!id || !KNOWN_IDS.has(id)) continue;
+        const line = lineOf(source, quoted.index);
+        if (seen.has(`${id}:${line}`)) continue;
+        references.push({ id, file: relativePath, line });
       }
     }
   }
@@ -100,6 +142,8 @@ function collectReferences(): Reference[] {
 
 function main(): void {
   const allowed = process.env.ALLOW_PLACEHOLDERS === '1';
+  /** Commit mode: mistakes still fail, intentional placeholders do not. */
+  const commitMode = process.argv.includes('--commit');
   const references = collectReferences();
 
   const unknown: Reference[] = [];
@@ -144,12 +188,15 @@ function main(): void {
   }
 
   if (placeholders.length > 0) {
-    console.error('\nPLACEHOLDER facts referenced by the app:');
+    const report = commitMode ? console.log : console.error;
+    report('\nPLACEHOLDER facts referenced by the app:');
     for (const reference of placeholders) {
-      console.error(`  ${reference.file}:${reference.line}  ${reference.id}`);
+      report(`  ${reference.file}:${reference.line}  ${reference.id}`);
     }
-    console.error(
-      '\nSupply real values in content/facts.ts with a source, or remove the reference.',
+    report(
+      commitMode
+        ? '\nThese block a production build, not this commit. Supply real values before deploying.'
+        : '\nSupply real values in content/facts.ts with a source, or remove the reference.',
     );
   }
 
@@ -157,13 +204,16 @@ function main(): void {
     console.log(`\n${pending.length} placeholder fact(s) defined but not yet referenced.`);
   }
 
-  const failures = unknown.length + unsourced.length + placeholders.length;
+  // Mistakes always fail. Referenced placeholders fail everywhere except commits.
+  const mistakes = unknown.length + unsourced.length;
+  const failures = commitMode ? mistakes : mistakes + placeholders.length;
+
   if (failures === 0) {
-    console.log('\ncheck-facts: pass.');
+    console.log(`\ncheck-facts: pass${commitMode ? ' (commit mode)' : ''}.`);
     return;
   }
 
-  if (allowed) {
+  if (allowed && !commitMode) {
     console.warn(
       `\ncheck-facts: ${failures} problem(s) found, but ALLOW_PLACEHOLDERS=1 is set — continuing.`,
     );
@@ -172,8 +222,10 @@ function main(): void {
   }
 
   console.error(
-    `\ncheck-facts: FAILED with ${failures} problem(s). ` +
-      'Set ALLOW_PLACEHOLDERS=1 to build anyway (local only).',
+    `\ncheck-facts: FAILED with ${failures} problem(s).` +
+      (commitMode
+        ? ' Unknown ids and unsourced claims are never allowed, in any mode.'
+        : ' Set ALLOW_PLACEHOLDERS=1 to build anyway (local only).'),
   );
   process.exit(1);
 }

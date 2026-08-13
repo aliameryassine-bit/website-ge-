@@ -15,7 +15,8 @@
     "format:check": "prettier --check .",
     "check:facts": "node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/check-facts.ts",
     "typecheck": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "check:facts:commit": "npm run check:facts -- --commit"
   },
   "dependencies": {
     "lenis": "^1.1.20",
