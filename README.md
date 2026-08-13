@@ -351,17 +351,23 @@ Any one of them failing means `next build` never starts. **This is the
 intended behaviour and it is currently blocking**: as of this commit the fact
 gate reports 92 blocking references across 53 facts.
 
-To build locally with the placeholders still in place:
+To build with the placeholders still in place:
 
 ```bash
 ALLOW_PLACEHOLDERS=1 npm run build
 ```
 
 One switch for all three gates, on purpose — it means "this build contains
-known placeholders and must not be deployed", rather than three flags someone
-can set one at a time without noticing what else they let through. **Do not
-set it in the Vercel project environment.** The moment it is set there, the
-gates stop protecting anything.
+known placeholders and must not go in front of a customer", rather than three
+flags someone can set one at a time without noticing what else they let
+through.
+
+**Where it may be set: local, and the Vercel Preview environment. Never
+Production.** A preview deploy is how the team looks at the site before the
+figures exist, and that is exactly what the switch is for. Production is the
+surface a retail buyer or an investor sees, and there the gates have to be the
+thing that stops an unfilled number reaching them — so if a production build
+fails, the fix is to supply the fact, never to set the flag.
 
 ### Security headers
 

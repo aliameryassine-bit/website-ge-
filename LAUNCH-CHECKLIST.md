@@ -219,8 +219,11 @@ nothing. An investor reading forty decks a month will notice.
       `FORM_SIGNING_SECRET`, `DATA_ROOM_SIGNING_SECRET`, `ADMIN_PASSWORD`.
       `openssl rand -base64 48`.
 - [ ] Register the site in Plausible and set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`.
-- [ ] **Confirm `ALLOW_PLACEHOLDERS` is NOT set in the Vercel project.** The
-      moment it is, all three gates stop protecting anything.
+- [ ] **Confirm `ALLOW_PLACEHOLDERS` is not set on the Production
+      environment.** Preview may carry it — that is how the team reviews the
+      site before the figures land. On Production it disables all three gates,
+      which is the only thing standing between an unfilled number and a retail
+      buyer.
 - [ ] **HSTS preload.** The header ships with `preload` and a two-year max-age.
       Only submit to the preload list once the domain is genuinely HTTPS-only
       including every subdomain — it is effectively irreversible.
