@@ -92,9 +92,24 @@ export const COPY = {
   // -----------------------------------------------------------------
   home: {
     hero: {
-      headline: 'Take back containers at the store entrance.',
+      /**
+       * Two headline forms, both real code paths.
+       *
+       * `scaled` is used once containers-per-machine-per-day has a value, and
+       * states throughput inside the sentence. `base` is used while it is a
+       * PLACEHOLDER, because "Take back — containers a day" is not a headline.
+       * The scale is then carried by the specification strip below, with each
+       * pending figure visibly marked.
+       */
+      headline: {
+        base: 'Take back PET and aluminium at the store entrance.',
+        scaled: { before: 'Take back', after: 'containers a day, at the store entrance.' },
+      },
       subhead:
         'Green Exchange builds and operates reverse vending machines that accept used PET bottles and aluminium cans and return value to the depositor. We install, service and report. Your staff do not touch the machine.',
+      /** Reads to both audiences: throughput and uptime for operations, deployment for investors. */
+      specHeading: 'Per machine',
+      scrollCue: 'Next — two ways in',
     },
     proposition: {
       headline: 'One machine, three outcomes',
