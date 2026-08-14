@@ -422,6 +422,15 @@ export const COPY = {
         city: 'City',
       },
       submit: 'Request a pilot',
+      /*
+        Shown on the button and announced politely while the action is in
+        flight. Both, not one: a dimmed button is invisible to a screen reader,
+        and on a slow mobile connection — which is how the Egyptian buyer will
+        submit this — that is several seconds of silence after the most
+        important click on the site.
+      */
+      submitPending: 'Sending',
+      submitPendingAnnouncement: 'Sending your request.',
       /**
        * There is no submission destination configured yet. The form validates
        * properly and says so plainly rather than pretending to have sent.
@@ -674,6 +683,13 @@ export const COPY = {
       requiredError: 'You must confirm the declaration to request access.',
     },
     submit: 'Request access',
+    /*
+      In-flight state. Named submitPending rather than pending because
+      `pending` below already means something else on this form — the lodged
+      state after a successful submission.
+    */
+    submitPending: 'Sending',
+    submitPendingAnnouncement: 'Sending your request.',
     pending: {
       heading: 'Request lodged',
       body: 'Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form.',
@@ -1025,5 +1041,15 @@ export const COPY = {
     forkLabel: 'Choose the path that describes you',
     currentLanguage: 'Current language',
     placeholderFact: 'Figure not yet published',
+    /*
+      The VISIBLE marker beside an unfilled figure, as opposed to the
+      screen-reader sentence above.
+
+      "Not yet measured" rather than "pending" on purpose: a reader has to be
+      able to tell an unmeasured figure from one that is still loading, and
+      "pending" reads as loading. This states that nobody has taken the
+      measurement, which is the true and less flattering reading.
+    */
+    factNotMeasured: 'Not yet measured',
   },
 } as const;

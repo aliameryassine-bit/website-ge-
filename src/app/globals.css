@@ -268,6 +268,30 @@
    ========================================================================== */
 
 /*
+  Direction sign.
+
+  The one thing logical properties cannot express is a translate along the
+  PHYSICAL x axis: `translateX(-40px)` enters from the left in English and from
+  the wrong side entirely in Arabic, because transforms have no logical
+  equivalent and never flip on their own.
+
+  Multiply by this instead:
+
+      transform: translateX(calc(var(--dir) * -40px));
+
+  and an entrance that arrives from the reading start arrives from the reading
+  start in every locale. Any new directional animation uses it; a raw signed
+  translateX is an RTL bug by construction.
+*/
+:root {
+  --dir: 1;
+}
+
+[dir='rtl'] {
+  --dir: -1;
+}
+
+/*
   Leader lines extend from their anchor. The anchor is the inline start, so
   under RTL the line has to grow from the right instead of the left, or it
   extends away from the thing it points at.

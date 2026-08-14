@@ -351,6 +351,8 @@
         "city": "[[AR]] City"
       },
       "submit": "[[AR]] Request a pilot",
+      "submitPending": "[[AR]] Sending",
+      "submitPendingAnnouncement": "[[AR]] Sending your request.",
       "unconfigured": "[[AR]] This form has no destination configured yet, so nothing was sent. Your details were validated but not stored.",
       "validationFailed": "[[AR]] Check the highlighted fields."
     }
@@ -539,6 +541,8 @@
       "requiredError": "[[AR]] You must confirm the declaration to request access."
     },
     "submit": "[[AR]] Request access",
+    "submitPending": "[[AR]] Sending",
+    "submitPendingAnnouncement": "[[AR]] Sending your request.",
     "pending": {
       "heading": "[[AR]] Request lodged",
       "body": "[[AR]] Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form."
@@ -801,6 +805,7 @@
     "menuLabel": "[[AR]] Site menu",
     "forkLabel": "[[AR]] Choose the path that describes you",
     "currentLanguage": "[[AR]] Current language",
-    "placeholderFact": "[[AR]] Figure not yet published"
+    "placeholderFact": "[[AR]] Figure not yet published",
+    "factNotMeasured": "[[AR]] Not yet measured"
   }
 }

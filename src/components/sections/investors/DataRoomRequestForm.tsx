@@ -61,6 +61,7 @@ export function DataRoomRequestForm() {
         onSubmit={onSubmit}
         onBlur={onBlur}
         noValidate
+        aria-busy={pending}
         className="flex flex-col gap-lg"
       >
         <Honeypot />
@@ -162,15 +163,17 @@ export function DataRoomRequestForm() {
 
         <div className="flex flex-col gap-md">
           <Button type="submit" disabled={pending}>
-            {copy.submit}
+            {pending ? copy.submitPending : copy.submit}
           </Button>
 
           {state.status === 'failed' && state.reason ? (
             <FormFailure reason={state.reason} retryAfter={state.retryAfter} />
           ) : null}
 
+          {/* In-flight state as well as the validation result — see PilotForm. */}
           <p aria-live="polite" className="text-data text-ink-muted">
-            {state.status === 'invalid' ? copy.validationFailed : null}
+            {pending ? copy.submitPendingAnnouncement : null}
+            {!pending && state.status === 'invalid' ? copy.validationFailed : null}
           </p>
         </div>
       </form>

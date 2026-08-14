@@ -79,6 +79,7 @@ export function PilotForm({ heading = true }: { heading?: boolean }) {
           onBlur={onBlur}
           onInput={onFirstInput}
           noValidate
+          aria-busy={pending}
           className="flex flex-col gap-lg"
         >
           <Honeypot />
@@ -157,16 +158,22 @@ export function PilotForm({ heading = true }: { heading?: boolean }) {
 
           <div className="flex flex-col gap-md">
             <Button type="submit" disabled={pending}>
-              {copy.submit}
+              {pending ? copy.submitPending : copy.submit}
             </Button>
 
             {state.status === 'failed' && state.reason ? (
               <FormFailure reason={state.reason} retryAfter={state.retryAfter} />
             ) : null}
 
-            {/* Announced without stealing focus. */}
+            {/*
+              Announced without stealing focus. Carries the in-flight state as
+              well as the validation result: a disabled button is a visual
+              affordance only, so without this a screen reader hears nothing
+              between the click and the response.
+            */}
             <p aria-live="polite" className="text-data text-ink-muted">
-              {state.status === 'invalid' ? copy.validationFailed : null}
+              {pending ? copy.submitPendingAnnouncement : null}
+              {!pending && state.status === 'invalid' ? copy.validationFailed : null}
             </p>
           </div>
         </form>

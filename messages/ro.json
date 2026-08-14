@@ -351,6 +351,8 @@
         "city": "[[RO]] City"
       },
       "submit": "[[RO]] Request a pilot",
+      "submitPending": "[[RO]] Sending",
+      "submitPendingAnnouncement": "[[RO]] Sending your request.",
       "unconfigured": "[[RO]] This form has no destination configured yet, so nothing was sent. Your details were validated but not stored.",
       "validationFailed": "[[RO]] Check the highlighted fields."
     }
@@ -539,6 +541,8 @@
       "requiredError": "[[RO]] You must confirm the declaration to request access."
     },
     "submit": "[[RO]] Request access",
+    "submitPending": "[[RO]] Sending",
+    "submitPendingAnnouncement": "[[RO]] Sending your request.",
     "pending": {
       "heading": "[[RO]] Request lodged",
       "body": "[[RO]] Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form."
@@ -801,6 +805,7 @@
     "menuLabel": "[[RO]] Site menu",
     "forkLabel": "[[RO]] Choose the path that describes you",
     "currentLanguage": "[[RO]] Current language",
-    "placeholderFact": "[[RO]] Figure not yet published"
+    "placeholderFact": "[[RO]] Figure not yet published",
+    "factNotMeasured": "[[RO]] Not yet measured"
   }
 }

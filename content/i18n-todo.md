@@ -39,9 +39,9 @@ company reads as an unserious one.
 - **Legal strings** under `investorDisclaimer` and `dataRoomRequest.declaration`
   are placeholders pending a lawyer in English too. Do not translate them yet.
 
-## Outstanding: 403 strings per locale, 806 total
+## Outstanding: 408 strings per locale, 816 total
 
-### `a11y` — 8 strings
+### `a11y` — 9 strings
 
 | Key | English |
 | --- | --- |
@@ -53,6 +53,7 @@ company reads as an unserious one.
 | `a11y.forkLabel` | Choose the path that describes you |
 | `a11y.currentLanguage` | Current language |
 | `a11y.placeholderFact` | Figure not yet published |
+| `a11y.factNotMeasured` | Not yet measured |
 
 ### `consent` — 3 strings
 
@@ -73,7 +74,7 @@ company reads as an unserious one.
 | `cta.investorAccess.label` | Investor access |
 | `cta.spec.label` | Download machine specification |
 
-### `dataRoomRequest` — 23 strings
+### `dataRoomRequest` — 25 strings
 
 | Key | English |
 | --- | --- |
@@ -95,6 +96,8 @@ company reads as an unserious one.
 | `dataRoomRequest.declaration.label` | PLACEHOLDER — LAWYER TO DRAFT: a self-declaration that the requester is a professional or qualified investor, and that they understand these materials are not an offer of securities. |
 | `dataRoomRequest.declaration.requiredError` | You must confirm the declaration to request access. |
 | `dataRoomRequest.submit` | Request access |
+| `dataRoomRequest.submitPending` | Sending |
+| `dataRoomRequest.submitPendingAnnouncement` | Sending your request. |
 | `dataRoomRequest.pending.heading` | Request lodged |
 | `dataRoomRequest.pending.body` | Your request has been recorded and our team has been notified. Access is granted manually — you will receive a time-limited link by email if it is approved. Nothing has been granted by submitting this form. |
 | `dataRoomRequest.failure.heading` | Request could not be lodged |
@@ -130,7 +133,7 @@ company reads as an unserious one.
 | `footer.links.2.label` | Terms |
 | `footer.links.3.label` | Investor disclaimer |
 
-### `forRetailers` — 98 strings
+### `forRetailers` — 100 strings
 
 | Key | English |
 | --- | --- |
@@ -230,6 +233,8 @@ company reads as an unserious one.
 | `forRetailers.pilot.fields.role` | Your role |
 | `forRetailers.pilot.fields.city` | City |
 | `forRetailers.pilot.submit` | Request a pilot |
+| `forRetailers.pilot.submitPending` | Sending |
+| `forRetailers.pilot.submitPendingAnnouncement` | Sending your request. |
 | `forRetailers.pilot.unconfigured` | This form has no destination configured yet, so nothing was sent. Your details were validated but not stored. |
 | `forRetailers.pilot.validationFailed` | Check the highlighted fields. |
 
